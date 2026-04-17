@@ -2,7 +2,7 @@
 
 > **Beyond the Blueprint: Exploring Teachers' Adaptive Agency in Maximising Inclusive Utility under Kenya's CBC**
 >
-> An interactive, browser-based qualitative data analysis environment built for an MSc Education dissertation — University of Glasgow, 2026.
+> An interactive, browser-based qualitative data analysis environment.
 
 ---
 
@@ -10,7 +10,7 @@
 
 **QualSight** is a fully responsive, single-file HTML/CSS/JS application that replicates and extends the functionality of professional qualitative analysis software (NVivo, MAXQDA, Atlas.ti) entirely in the browser — no installation, no backend, no dependencies beyond Chart.js.
 
-It was built as the analytic companion to an MSc Education dissertation investigating how primary school teachers in Nakuru County, Kenya exercise *adaptive agency* to include neurodivergent learners within the country's Competency-Based Education (CBE) framework. The tool presents the complete findings of a nine-participant reflexive thematic analysis, grounded in Braun & Clarke's (2006) six-phase approach with an abductive orientation.
+It was built as the analytic companion to a study investigating how primary school teachers in Nakuru County, Kenya exercise *adaptive agency* to include neurodivergent learners within the country's Competency-Based Education (CBE) framework. The tool presents the complete findings of a nine-participant reflexive thematic analysis, grounded in Braun & Clarke's (2006) six-phase approach with an abductive orientation.
 
 The file is designed to be shared as a **standalone research artefact** — open `qualsight_responsive.html` in any modern browser and the full analysis is immediately accessible.
 
