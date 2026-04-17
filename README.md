@@ -21,10 +21,8 @@ The file is designed to be shared as a **standalone research artefact** — open
 | Field | Detail |
 |---|---|
 | **Programme** | MSc Education |
-| **Institution** | University of Glasgow, School of Education |
-| **Student ID** | 2812274M |
+| **Institution** | School of Education |
 | **Dissertation title** | *Beyond the Blueprint: Exploring Teachers' Adaptive Agency in Maximising Inclusive Utility under Kenya's CBC* |
-| **Supervisors** | Dr Matthew Sutherland · Dr Lauren Boath |
 | **Study site** | Nakuru County, Kenya — urban, peri-urban & rural public primary schools |
 | **Participants** | n = 9 teachers (7 mainstream · 1 SNE specialist · 1 mixed) |
 | **Data** | ~9 hours of semi-structured interview audio; verbatim transcripts |
@@ -225,15 +223,6 @@ This study received ethical approval from the **University of Glasgow School of 
 
 ---
 
-## 👩🏾‍💻 About the Researcher
-
-**Beatrice Wairimu Mungai**
-MSc Education candidate, University of Glasgow (2025–2026)
-Former special education teacher (US) · Kenyan public school system alumni · Education equity advocate
-
-*This tool was designed and built by the researcher as part of the dissertation deliverables, combining academic analysis with front-end development to produce a shareable, accessible research artefact.*
-
----
 
 ## 📄 Licence
 
