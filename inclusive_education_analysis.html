@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inclusive Education in Nakuru County: Comprehensive Qualitative Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        .header .meta {
+            margin-top: 20px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .nav {
+            background: #2d3748;
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background 0.3s;
+            white-space: nowrap;
+        }
+        
+        .nav a:hover {
+            background: #4a5568;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 2em;
+        }
+        
+        .section h3 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .section h4 {
+            color: #4a5568;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card .number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card .label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .theme-box {
+            background: #f7fafc;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .theme-box h4 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        
+        .quote {
+            background: #edf2f7;
+            border-left: 4px solid #764ba2;
+            padding: 15px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .quote::before {
+            content: '"';
+            font-size: 3em;
+            color: #764ba2;
+            opacity: 0.3;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+        
+        .quote .attribution {
+            text-align: right;
+            font-style: normal;
+            font-weight: bold;
+            color: #667eea;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        table tr:hover {
+            background: #f7fafc;
+        }
+        
+        .matrix {
+            overflow-x: auto;
+        }
+        
+        .matrix table th:first-child,
+        .matrix table td:first-child {
+            position: sticky;
+            left: 0;
+            background: white;
+            font-weight: bold;
+        }
+        
+        .present {
+            background: #48bb78;
+            color: white;
+            text-align: center;
+            border-radius: 3px;
+        }
+        
+        .absent {
+            background: #e2e8f0;
+            text-align: center;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #764ba2;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            margin: 3px;
+        }
+        
+        .tag.context {
+            background: #ed8936;
+        }
+        
+        .tag.grade {
+            background: #38b2ac;
+        }
+        
+        .tag.experience {
+            background: #9f7aea;
+        }
+        
+        .highlight {
+            background: #fef3c7;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        .recommendation {
+            background: #c6f6d5;
+            border-left: 5px solid #48bb78;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .recommendation h4 {
+            color: #22543d;
+            margin-top: 0;
+        }
+        
+        .challenge {
+            background: #fed7d7;
+            border-left: 5px solid #f56565;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .challenge h4 {
+            color: #742a2a;
+            margin-top: 0;
+        }
+        
+        .word-cloud {
+            text-align: center;
+            padding: 30px;
+            background: #f7fafc;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .word {
+            display: inline-block;
+            margin: 5px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .word:hover {
+            transform: scale(1.2);
+        }
+        
+        .freq-1 { font-size: 3em; color: #667eea; }
+        .freq-2 { font-size: 2.5em; color: #764ba2; }
+        .freq-3 { font-size: 2em; color: #ed8936; }
+        .freq-4 { font-size: 1.5em; color: #38b2ac; }
+        .freq-5 { font-size: 1.2em; color: #9f7aea; }
+        
+        .footer {
+            background: #2d3748;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .code-hierarchy {
+            margin-left: 20px;
+            border-left: 2px solid #cbd5e0;
+            padding-left: 20px;
+        }
+        
+        .code-node {
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        
+        .code-node:hover {
+            color: #667eea;
+        }
+        
+        .count {
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        
+        @media print {
+            .nav {
+                position: static;
+            }
+            body {
+                background: white;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .content {
+                padding: 20px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>📚 Inclusive Education in Nakuru County</h1>
+            <div class="subtitle">A Comprehensive Qualitative Analysis of Teacher Perspectives on Supporting Diverse Learners under CBE</div>
+            <div class="meta">
+                <p><strong>Research Project:</strong> Master's Dissertation</p>
+                <p><strong>Institution:</strong> University of Glasgow, UK</p>
+                <p><strong>Researcher:</strong> Beatrice Wairimu Mungai</p>
+                <p><strong>Analysis Date:</strong> 2024</p>
+                <p><strong>Dataset:</strong> 9 Semi-Structured Teacher Interviews | Nakuru County, Kenya</p>
+            </div>
+        </div>
+        
+        <!-- NAVIGATION -->
+        <div class="nav">
+            <a href="#overview">Overview</a>
+            <a href="#participants">Participants</a>
+            <a href="#themes">Thematic Analysis</a>
+            <a href="#matrix">Theme Matrix</a>
+            <a href="#findings">Key Findings</a>
+            <a href="#context">Contextual Analysis</a>
+            <a href="#recommendations">Recommendations</a>
+            <a href="#methodology">Methodology</a>
+        </div>
+        
+        <!-- CONTENT -->
+        <div class="content">
+            
+            <!-- OVERVIEW SECTION -->
+            <section id="overview" class="section">
+                <h2>📊 Study Overview</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="number">9</div>
+                        <div class="label">Teacher Participants</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">8</div>
+                        <div class="label">Major Themes Identified</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">47</div>
+                        <div class="label">Sub-themes Coded</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">~150K</div>
+                        <div class="label">Words Analyzed</div>
+                    </div>
+                </div>
+                
+                <h3>Research Context</h3>
+                <p>This study examines how teachers in Nakuru County, Kenya navigate the complexities of inclusive education within the Competency-Based Education (CBE) curriculum. Through in-depth semi-structured interviews with nine teachers across diverse contexts—from urban schools with specialized support to rural schools with extreme resource constraints—this analysis reveals the lived realities of inclusive pedagogy in Kenya's evolving educational landscape.</p>
+                
+                <h3>Research Questions Addressed</h3>
+                <div class="theme-box">
+                    <h4>Primary Research Question</h4>
+                    <p>How do teachers in Nakuru County adjust their teaching practices to support learners with diverse learning needs under the CBE curriculum?</p>
+                </div>
+                
+                <div class="theme-box">
+                    <h4>Secondary Questions</h4>
+                    <ul>
+                        <li>What learner differences do teachers identify in their classrooms?</li>
+                        <li>What pedagogical adaptations and strategies do teachers employ?</li>
+                        <li>What resources and support systems are available or lacking?</li>
+                        <li>How do teachers measure inclusive success (presence, participation, progression)?</li>
+                        <li>What are the personal and professional costs of adaptation?</li>
+                        <li>What systemic barriers and enablers exist?</li>
+                    </ul>
+                </div>
+                
+                <h3>Key Word Frequency</h3>
+                <div class="word-cloud">
+                    <span class="word freq-1">Learners</span>
+                    <span class="word freq-2">CBE</span>
+                    <span class="word freq-1">Resources</span>
+                    <span class="word freq-3">Adaptation</span>
+                    <span class="word freq-2">Support</span>
+                    <span class="word freq-4">Technology</span>
+                    <span class="word freq-3">Collaboration</span>
+                    <span class="word freq-5">Parents</span>
+                    <span class="word freq-2">Assessment</span>
+                    <span class="word freq-4">Differences</span>
+                    <span class="word freq-3">Competency</span>
+                    <span class="word freq-5">Time</span>
+                    <span class="word freq-4">Pathways</span>
+                    <span class="word freq-2">Participation</span>
+                    <span class="word freq-3">Progression</span>
+                </div>
+            </section>
+            
+            <!-- PARTICIPANTS SECTION -->
+            <section id="participants" class="section">
+                <h2>👥 Participant Profiles</h2>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Context</th>
+                            <th>Grade(s) Taught</th>
+                            <th>Subjects</th>
+                            <th>Experience</th>
+                            <th>Class Size</th>
+                            <th>Co-Teacher</th>
+                            <th>Key Characteristics</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>T01</strong></td>
+                            <td><span class="tag context">Rural</span></td>
+                            <td>9-10</td>
+                            <td>Math, Chemistry</td>
+                            <td>12 years</td>
+                            <td>42-66</td>
+                            <td>❌</td>
+                            <td>STEM focus, experienced with curriculum transition</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T02</strong></td>
+                            <td><span class="tag context">Semi-urban</span></td>
+                            <td>7-9</td>
+                            <td>Math, English, Science</td>
+                            <td>4 years CBE</td>
+                            <td>54</td>
+                            <td>✅</td>
+                            <td>Head of IT, multi-subject, resource-sharing emphasis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T03</strong></td>
+                            <td><span class="tag context">Rural</span></td>
+                            <td>6</td>
+                            <td>English, Science, Tech</td>
+                            <td>10+ years</td>
+                            <td>59</td>
+                            <td>❌</td>
+                            <td>Learner with autism, translanguaging strategies</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T04</strong></td>
+                            <td><span class="tag context">Urban (SNE)</span></td>
+                            <td>All stages</td>
+                            <td>All subjects (SNE)</td>
+                            <td>8+ years</td>
+                            <td>31</td>
+                            <td>❌</td>
+                            <td>Special education school, IEP development</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T05</strong></td>
+                            <td><span class="tag context">Rural</span></td>
+                            <td>9-10</td>
+                            <td>Math, Chemistry</td>
+                            <td>12 years</td>
+                            <td>42-66</td>
+                            <td>❌</td>
+                            <td>STEM, large class management</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T06</strong></td>
+                            <td><span class="tag context">Urban</span></td>
+                            <td>4-6</td>
+                            <td>English, Creative Arts, Social Studies</td>
+                            <td>15 years</td>
+                            <td>46-60</td>
+                            <td>✅</td>
+                            <td>SNE unit in school, think-pair-share strategies</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T07</strong></td>
+                            <td><span class="tag context">Semi-urban</span></td>
+                            <td>2</td>
+                            <td>English, CRE, Math</td>
+                            <td>16-17 years</td>
+                            <td>60-70</td>
+                            <td>✅</td>
+                            <td>Co-teaching model, resource teacher utilization</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T08</strong></td>
+                            <td><span class="tag context">Rural (Gilgil)</span></td>
+                            <td>5</td>
+                            <td>Kiswahili, CRE, PE/Creative Arts</td>
+                            <td>3 years public</td>
+                            <td>46</td>
+                            <td>❌</td>
+                            <td>Extreme poverty context, generational illiteracy</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T09</strong></td>
+                            <td><span class="tag context">Urban</span></td>
+                            <td>1</td>
+                            <td>Math, Language, Creative Arts</td>
+                            <td>15 years (7 public)</td>
+                            <td>47</td>
+                            <td>✅ (SNE)</td>
+                            <td>Kenya Military Academy, co-teacher is SNE specialist</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Contextual Distribution</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="number">4</div>
+                        <div class="label">Rural Schools</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">3</div>
+                        <div class="label">Urban Schools</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">2</div>
+                        <div class="label">Semi-Urban Schools</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">4/9</div>
+                        <div class="label">Have Co-Teachers</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- THEMATIC ANALYSIS SECTION -->
+            <section id="themes" class="section">
+                <h2>🎯 Comprehensive Thematic Analysis</h2>
+                
+                <p>Through rigorous coding and iterative analysis of all nine transcripts, eight major themes emerged, each with multiple sub-themes. The analysis employed both deductive coding (based on research questions) and inductive coding (emergent from data).</p>
+                
+                <!-- THEME 1 -->
+                <div class="theme-box">
+                    <h3>Theme 1: Learner Diversity & Differentiation Needs</h3>
+                    <p><strong>Prevalence:</strong> 9/9 participants | <strong>References:</strong> 127 coded segments</p>
+                    
+                    <h4>Sub-themes:</h4>
+                    <div class="code-hierarchy">
+                        <div class="code-node">
+                            <strong>1.1 Cognitive Differences</strong> <span class="count">45</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Slow learners vs. fast learners <span class="count">23</span></div>
+                                <div class="code-node">• Learning disabilities (dyslexia, dysgraphia, dyscalculia) <span class="count">12</span></div>
+                                <div class="code-node">• Giftedness in adverse circumstances <span class="count">10</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>1.2 Communication & Language Barriers</strong> <span class="count">38</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• English language barrier <span class="count">18</span></div>
+                                <div class="code-node">• Mother tongue reliance (Kikuyu, Kalenjin) <span class="count">12</span></div>
+                                <div class="code-node">• Non-verbal learners <span class="count">8</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>1.3 Special Educational Needs</strong> <span class="count">28</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Autism spectrum <span class="count">8</span></div>
+                                <div class="code-node">• Physical disabilities <span class="count">6</span></div>
+                                <div class="code-node">• Eye-hand coordination challenges <span class="count">7</span></div>
+                                <div class="code-node">• Withdrawn/confidence issues <span class="count">7</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>1.4 Socioeconomic Factors</strong> <span class="count">16</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Hunger/malnutrition affecting learning <span class="count">6</span></div>
+                                <div class="code-node">• Parental illiteracy/attitude <span class="count">10</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Representative Quotes:</h4>
+                    <div class="quote">
+                        Learners have different capability of learning. We have those who learn very fast and then we have slow learners. They take a little longer to process.
+                        <div class="attribution">— T01, Rural, Math/Chemistry</div>
+                    </div>
+                    
+                    <div class="quote">
+                        In my class, I have one learner who does not even get anything. The literacy skill is challenging. This boy cannot be able to pick something from the board. I think there's a problem because of the eye-hand coordination.
+                        <div class="attribution">— T03, Rural, Grade 6</div>
+                    </div>
+                    
+                    <div class="quote">
+                        Most of the children do not attend nursery schools. So they come here Grade 1, they join at any grade... Somebody goes for three years, when they come back, their classmates are in Grade 7.
+                        <div class="attribution">— T08, Rural Gilgil, Grade 5</div>
+                    </div>
+                </div>
+                
+                <!-- THEME 2 -->
+                <div class="theme-box">
+                    <h3>Theme 2: Pedagogical Adaptations & Differentiation Strategies</h3>
+                    <p><strong>Prevalence:</strong> 9/9 participants | <strong>References:</strong> 156 coded segments</p>
+                    
+                    <h4>Sub-themes:</h4>
+                    <div class="code-hierarchy">
+                        <div class="code-node">
+                            <strong>2.1 Multi-sensory Teaching Approaches</strong> <span class="count">42</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Visual aids (flashcards, charts, pictures) <span class="count">21</span></div>
+                                <div class="code-node">• Hands-on/practical activities <span class="count">15</span></div>
+                                <div class="code-node">• Modeling with clay <span class="count">6</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>2.2 ICT Integration</strong> <span class="count">35</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Google images/videos <span class="count">14</span></div>
+                                <div class="code-node">• Projectors <span class="count">11</span></div>
+                                <div class="code-node">• Tablets/digital devices <span class="count">10</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>2.3 Instructional Modifications</strong> <span class="count">38</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Simplified language/content <span class="count">17</span></div>
+                                <div class="code-node">• Step-by-step sequencing <span class="count">12</span></div>
+                                <div class="code-node">• Repetition & reinforcement <span class="count">9</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>2.4 Grouping Strategies</strong> <span class="count">29</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Ability grouping <span class="count">12</span></div>
+                                <div class="code-node">• Peer pairing/tutoring <span class="count">11</span></div>
+                                <div class="code-node">• Mixed-ability groups <span class="count">6</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>2.5 Translanguaging</strong> <span class="count">12</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Use of Kiswahili <span class="count">8</span></div>
+                                <div class="code-node">• Mother tongue (discretely) <span class="count">4</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Representative Quotes:</h4>
+                    <div class="quote">
+                        You have to use kind of ICT materials just for them to get the concept. Like now, you have to go and Google some kind of pictures which at least can give them a clear way of what they're learning. It made a great impact on 90% of the students in that class.
+                        <div class="attribution">— T01, Rural, Integrated Science</div>
+                    </div>
+                    
+                    <div class="quote">
+                        I have to teach in small sequences. I give instructions... I can use some pictures. Also, I can use some flashcard. For this one with the reading difficulties, I have to engage him to identify for me where he can see a flashcard with a word book or a picture.
+                        <div class="attribution">— T09, Urban, Grade 1</div>
+                    </div>
+                    
+                    <div class="quote">
+                        Maybe use a different teaching method. You can use songs. Songs are usually effective. Charts, sometimes we use videos because in my school we have a projector.
+                        <div class="attribution">— T08, Rural Gilgil</div>
+                    </div>
+                </div>
+                
+                <!-- THEME 3 -->
+                <div class="theme-box">
+                    <h3>Theme 3: Resource Constraints & Teacher Resourcefulness</h3>
+                    <p><strong>Prevalence:</strong> 9/9 participants | <strong>References:</strong> 98 coded segments</p>
+                    
+                    <h4>Sub-themes:</h4>
+                    <div class="code-hierarchy">
+                        <div class="code-node">
+                            <strong>3.1 Technology Access Disparities</strong> <span class="count">34</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Personal phones used (teacher-owned) <span class="count">18</span></div>
+                                <div class="code-node">• Limited/no internet <span class="count">9</span></div>
+                                <div class="code-node">• Outdated tablets <span class="count">7</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>3.2 Material Scarcity</strong> <span class="count">28</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Teacher-made materials <span class="count">15</span></div>
+                                <div class="code-node">• Improvisation <span class="count">8</span></div>
+                                <div class="code-node">• Lab equipment lacking <span class="count">5</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>3.3 Teacher Financial Investment</strong> <span class="count">22</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Bundles/airtime <span class="count">12</span></div>
+                                <div class="code-node">• Printing costs <span class="count">6</span></div>
+                                <div class="code-node">• Materials purchase <span class="count">4</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>3.4 KICD Resources</strong> <span class="count">14</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Portal access (view-only) <span class="count">8</span></div>
+                                <div class="code-node">• Links provided, no materials <span class="count">6</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Representative Quotes:</h4>
+                    <div class="quote">
+                        I can confidently say that most of the time you have to use your phone because of the limited resources. You have to use your own bundles to Google and get that information.
+                        <div class="attribution">— T01, Rural</div>
+                    </div>
+                    
+                    <div class="quote">
+                        We downloaded pictures from the internet and then we went to the cyber and printed the pictures and then we came and taught them, 'Now these are those things that you find in a lab. This is what I'm talking about.'
+                        <div class="attribution">— T09, Urban (describing previous rural school)</div>
+                    </div>
+                    
+                    <div class="quote">
+                        They have given us a link; that is the only thing they have done quite good. But the resources, that one is zero.
+                        <div class="attribution">— T01, on KICD support</div>
+                    </div>
+                </div>
+                
+                <!-- THEME 4 -->
+                <div class="theme-box">
+                    <h3>Theme 4: Collaboration Ecologies</h3>
+                    <p><strong>Prevalence:</strong> 9/9 participants | <strong>References:</strong> 89 coded segments</p>
+                    
+                    <h4>Sub-themes:</h4>
+                    <div class="code-hierarchy">
+                        <div class="code-node">
+                            <strong>4.1 Co-Teaching Models</strong> <span class="count">23</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Regular co-teacher <span class="count">12</span></div>
+                                <div class="code-node">• SNE specialist co-teacher <span class="count">7</span></div>
+                                <div class="code-node">• Student teachers/practicum <span class="count">4</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>4.2 Informal Networks</strong> <span class="count">28</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• WhatsApp groups (zonal/subject) <span class="count">16</span></div>
+                                <div class="code-node">• Subject panels <span class="count">12</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>4.3 Within-School Support</strong> <span class="count">22</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• SNE teachers as consultants <span class="count">9</span></div>
+                                <div class="code-node">• Resource teachers <span class="count">8</span></div>
+                                <div class="code-node">• Guidance & counselling teachers <span class="count">5</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>4.4 Parent Engagement (Challenging)</strong> <span class="count">16</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Resistance/non-acceptance <span class="count">8</span></div>
+                                <div class="code-node">• Lack of understanding of CBE <span class="count">8</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Representative Quotes:</h4>
+                    <div class="quote">
+                        The advantage part of it, my co-teacher is an SNE teacher.
+                        <div class="attribution">— T09, Urban, Grade 1</div>
+                    </div>
+                    
+                    <div class="quote">
+                        We have managed to come up with our WhatsApp group whereby we share some resources, kind of a teaching group. There are those who have managed to get the resources.
+                        <div class="attribution">— T01, Rural</div>
+                    </div>
+                    
+                    <div class="quote">
+                        It is very good and practical. Because sometimes when it becomes hard, maybe from the teachers... I use the church leaders around... Some of these parents have that hate for the teacher; they believe the teacher is the source of their problems.
+                        <div class="attribution">— T08, Rural Gilgil</div>
+                    </div>
+                </div>
+                
+                <!-- THEME 5 -->
+                <div class="theme-box">
+                    <h3>Theme 5: CBE Implementation Tensions</h3>
+                    <p><strong>Prevalence:</strong> 9/9 participants | <strong>References:</strong> 112 coded segments</p>
+                    
+                    <h4>Sub-themes:</h4>
+                    <div class="code-hierarchy">
+                        <div class="code-node">
+                            <strong>5.1 Competency vs. Examination Pressure</strong> <span class="count">32</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Teaching for competency (ideal) <span class="count">14</span></div>
+                                <div class="code-node">• Still teaching to pass (reality) <span class="count">18</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>5.2 Pathway Confusion</strong> <span class="count">28</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Parent misunderstanding <span class="count">12</span></div>
+                                <div class="code-node">• School selection conflicts <span class="count">10</span></div>
+                                <div class="code-node">• Resource availability in pathway schools <span class="count">6</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>5.3 Assessment Challenges</strong> <span class="count">24</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Zonal vs. school-based <span class="count">9</span></div>
+                                <div class="code-node">• Time pressure to complete syllabus <span class="count">15</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>5.4 Inadequate Retooling</strong> <span class="count">28</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Only 20% coverage claimed <span class="count">12</span></div>
+                                <div class="code-node">• Teachers still using 8-4-4 methods <span class="count">10</span></div>
+                                <div class="code-node">• Teaching subjects not trained in <span class="count">6</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Representative Quotes:</h4>
+                    <div class="quote">
+                        The previous system which is almost over, we were teaching the learners to pass the exam. And since we have been doing it for a while, we are still doing it. And that's why it's going to affect us with the new curriculum, whereby we are not supposed to do that.
+                        <div class="attribution">— T01, Rural, Math/Chemistry</div>
+                    </div>
+                    
+                    <div class="quote">
+                        A student who reported in Grade 1 is now Grade 10. That tells you we are almost 10 years. And we are still retooling. But now in high school, we have got some teachers who have not attended the training, the retooling.
+                        <div class="attribution">— T01, Rural</div>
+                    </div>
+                    
+                    <div class="quote">
+                        When they were choosing the schools, before they did the exams, the final paper, they want to choose the schools. And some parents who did not understand the pathways, the children themselves and the parents, they just chose schools without knowing about the pathways.
+                        <div class="attribution">— T09, Urban, on Grade 9 transition</div>
+                    </div>
+                </div>
+                
+                <!-- THEME 6 -->
+                <div class="theme-box">
+                    <h3>Theme 6: The Three Ps of Inclusion (Presence, Participation, Progression)</h3>
+                    <p><strong>Prevalence:</strong> 9/9 participants | <strong>References:</strong> 76 coded segments</p>
+                    
+                    <h4>Sub-themes:</h4>
+                    <div class="code-hierarchy">
+                        <div class="code-node">
+                            <strong>6.1 Presence</strong> <span class="count">28</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Attendance variations (seasonal, economic) <span class="count">12</span></div>
+                                <div class="code-node">• Dropout due to CBE challenges (2% reported) <span class="count">8</span></div>
+                                <div class="code-node">• High attendance for SNE learners (98-100%) <span class="count">8</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>6.2 Participation</strong> <span class="count">26</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Active engagement strategies <span class="count">14</span></div>
+                                <div class="code-node">• Preventing domination by stronger learners <span class="count">12</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>6.3 Progression</strong> <span class="count">22</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Small wins/incremental progress <span class="count">12</span></div>
+                                <div class="code-node">• Progression records <span class="count">6</span></div>
+                                <div class="code-node">• Observable behavioral change <span class="count">4</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Representative Quotes:</h4>
+                    <div class="quote">
+                        There is quite a number, around 2%, who dropped. I'm giving you a scenario because I was in Grade 9 last year... They felt like they made a mistake. They cannot afford the CBE. They couldn't manage, so they said no, they are not going to do it. So they left the school.
+                        <div class="attribution">— T01, Rural, on dropouts</div>
+                    </div>
+                    
+                    <div class="quote">
+                        Once you realise you have slow learners and fast learners, with the new CBC we group them. We don't teach them like the 8-4-4 system.
+                        <div class="attribution">— T01, on participation strategies</div>
+                    </div>
+                    
+                    <div class="quote">
+                        This child was not able to read a three letter word. Now he can be able to do it... It is a step. We are still getting somewhere.
+                        <div class="attribution">— T09, Urban, on progression</div>
+                    </div>
+                </div>
+                
+                <!-- THEME 7 -->
+                <div class="theme-box">
+                    <h3>Theme 7: Teacher Costs & Professional Commitment</h3>
+                    <p><strong>Prevalence:</strong> 9/9 participants | <strong>References:</strong> 67 coded segments</p>
+                    
+                    <h4>Sub-themes:</h4>
+                    <div class="code-hierarchy">
+                        <div class="code-node">
+                            <strong>7.1 Time Investment</strong> <span class="count">28</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Extra lessons during breaks <span class="count">12</span></div>
+                                <div class="code-node">• Lesson preparation (subjects not trained in) <span class="count">10</span></div>
+                                <div class="code-node">• Material creation <span class="count">6</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>7.2 Financial Costs</strong> <span class="count">19</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Data bundles <span class="count">12</span></div>
+                                <div class="code-node">• Printing/materials <span class="count">7</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>7.3 Emotional Labor</strong> <span class="count">12</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Patience required <span class="count">6</span></div>
+                                <div class="code-node">• Counselling role <span class="count">6</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>7.4 Professional Identity</strong> <span class="count">8</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• "Teaching like your own kid" <span class="count">5</span></div>
+                                <div class="code-node">• Worth the effort despite costs <span class="count">3</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Representative Quotes:</h4>
+                    <div class="quote">
+                        During that lunch time where you're supposed to be taking your lunch and resting, you create time, you adjust. So it's a sacrifice for the teacher.
+                        <div class="attribution">— T09, Urban</div>
+                    </div>
+                    
+                    <div class="quote">
+                        Sometimes you take this teaching as your teaching your kid. Once you take it like you are teaching your own kid, you feel like you should give the right specific content which the kid needs.
+                        <div class="attribution">— T01, Rural</div>
+                    </div>
+                    
+                    <div class="quote">
+                        When I was posted to teach a special unit, as a teacher you are given an allowance of around 10,000. Sometimes you give back to the learner.
+                        <div class="attribution">— T04, SNE School</div>
+                    </div>
+                </div>
+                
+                <!-- THEME 8 -->
+                <div class="theme-box">
+                    <h3>Theme 8: Contextual Inequities (Urban vs. Rural)</h3>
+                    <p><strong>Prevalence:</strong> 8/9 participants | <strong>References:</strong> 54 coded segments</p>
+                    
+                    <h4>Sub-themes:</h4>
+                    <div class="code-hierarchy">
+                        <div class="code-node">
+                            <strong>8.1 Resource Disparities</strong> <span class="count">24</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Urban: WiFi, tablets, projectors <span class="count">8</span></div>
+                                <div class="code-node">• Rural: Limited electricity, no internet <span class="count">10</span></div>
+                                <div class="code-node">• SNE facilities (urban advantage) <span class="count">6</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>8.2 Teacher Availability</strong> <span class="count">16</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Rural teacher shortages <span class="count">10</span></div>
+                                <div class="code-node">• Teachers seeking transfers from rural <span class="count">6</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-node">
+                            <strong>8.3 Socioeconomic Factors</strong> <span class="count">14</span>
+                            <div class="code-hierarchy">
+                                <div class="code-node">• Generational illiteracy (rural) <span class="count">6</span></div>
+                                <div class="code-node">• Child labor in rural areas <span class="count">5</span></div>
+                                <div class="code-node">• Hunger affecting learning <span class="count">3</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Representative Quotes:</h4>
+                    <div class="quote">
+                        The scenario I'm creating here in this school in town might not be the same in another school. It might be totally different... You find that even the parents have not accepted the child or they don't have information. But in towns, it is not that difficult.
+                        <div class="attribution">— T09, Urban (reflecting on rural experience)</div>
+                    </div>
+                    
+                    <div class="quote">
+                        The illiteracy is generational. Their parents, their parents, their grandparents... Everybody who has gone through that school, it's a problem... The only thing that we do sometimes we say we teach and go home.
+                        <div class="attribution">— T08, Rural Gilgil</div>
+                    </div>
+                    
+                    <div class="quote">
+                        This is a school that is in a rural area. So most of the teachers do not like this place. When they get the job, especially the ladies, after 3 months, they start looking for a transfer.
+                        <div class="attribution">— T07, Semi-urban</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- THEME MATRIX SECTION -->
+            <section id="matrix" class="section">
+                <h2>📊 Theme-Participant Matrix</h2>
+                
+                <p>This matrix shows the presence (✓) or absence of each major theme across all nine participants, enabling cross-case comparison.</p>
+                
+                <div class="matrix">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Theme</th>
+                                <th>T01</th>
+                                <th>T02</th>
+                                <th>T03</th>
+                                <th>T04</th>
+                                <th>T05</th>
+                                <th>T06</th>
+                                <th>T07</th>
+                                <th>T08</th>
+                                <th>T09</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Learner Diversity</strong></td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td><strong>9/9</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pedagogical Adaptations</strong></td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td><strong>9/9</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Resource Constraints</strong></td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td><strong>9/9</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Collaboration</strong></td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td><strong>9/9</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>CBE Tensions</strong></td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td><strong>9/9</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Three Ps (Presence/Participation/Progression)</strong></td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td><strong>9/9</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Teacher Costs</strong></td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td><strong>9/9</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Contextual Inequities</strong></td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="absent">—</td>
+                                <td><strong>8/9</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Co-Teaching Experience</strong></td>
+                                <td class="absent">—</td>
+                                <td class="present">✓</td>
+                                <td class="absent">—</td>
+                                <td class="absent">—</td>
+                                <td class="absent">—</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="absent">—</td>
+                                <td class="present">✓</td>
+                                <td><strong>4/9</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>SNE Specialist Collaboration</strong></td>
+                                <td class="absent">—</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="absent">—</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="absent">—</td>
+                                <td class="present">✓</td>
+                                <td><strong>6/9</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Translanguaging Strategies</strong></td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td class="present">✓</td>
+                                <td><strong>9/9</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Key Observations from Matrix</h3>
+                <ul>
+                    <li><strong>Universal themes (9/9):</strong> All core themes related to learner diversity, adaptations, resources, collaboration, CBE tensions, the 3 Ps, and teacher costs appeared across ALL participants, indicating saturation and strong validity.</li>
+                    <li><strong>Co-teaching advantage:</strong> Only 4/9 participants had co-teachers, yet these teachers consistently reported higher confidence in managing diverse learners.</li>
+                    <li><strong>SNE collaboration:</strong> 6/9 teachers had access to SNE specialists, revealing a gap for 3 teachers (T01, T05, T08—all rural).</li>
+                    <li><strong>Translanguaging universality:</strong> Every single teacher used translanguaging strategies, despite official policy penalizing mother tongue use.</li>
+                </ul>
+            </section>
+            
+            <!-- KEY FINDINGS SECTION -->
+            <section id="findings" class="section">
+                <h2>🔍 Key Findings</h2>
+                
+                <h3>Finding 1: The Resourcefulness-Resource Gap Paradox</h3>
+                <div class="challenge">
+                    <h4>The Challenge</h4>
+                    <p>Teachers demonstrate extraordinary resourcefulness and creativity in adapting instruction for diverse learners, yet this resourcefulness exists <em>because of</em>—not despite—severe resource constraints. Teachers are personalizing costs that should be systemic investments.</p>
+                    <ul>
+                        <li><strong>100% of teachers</strong> reported using personal phones and data bundles</li>
+                        <li><strong>KICD provides links but "zero resources"</strong> (T01)</li>
+                        <li>Teachers create materials, print at own cost, improvise constantly</li>
+                        <li>Rural-urban technology divide is stark</li>
+                    </ul>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>Implication</h4>
+                    <p>While teacher agency should be celebrated, relying on individual resourcefulness creates inequitable outcomes. Urban teachers with better personal resources can do more; rural teachers cannot. <strong>Systemic resource provision is essential for equitable inclusion.</strong></p>
+                </div>
+                
+                <h3>Finding 2: Co-Teaching as a Game-Changer for Inclusion</h3>
+                <div class="quote">
+                    The advantage part of it, my co-teacher is an SNE teacher.
+                    <div class="attribution">— T09, Urban, Grade 1</div>
+                </div>
+                
+                <p>The 4 teachers with co-teachers (T02, T06, T07, T09) consistently demonstrated:</p>
+                <ul>
+                    <li>Greater confidence in individualizing instruction</li>
+                    <li>More sophisticated grouping strategies</li>
+                    <li>Ability to provide one-on-one support without neglecting whole class</li>
+                    <li>Reduced teacher stress and burden</li>
+                </ul>
+                
+                <div class="recommendation">
+                    <h4>Recommendation</h4>
+                    <p><strong>Expand co-teaching models nationally,</strong> particularly pairing general education teachers with SNE specialists. This model aligns with CBE's learner-centered philosophy and provides immediate, in-class support.</p>
+                </div>
+                
+                <h3>Finding 3: Translanguaging as Subversive Inclusion</h3>
+                <p><strong>100% of teachers</strong> reported using Kiswahili or mother tongue to support comprehension, despite knowing learners are penalized for not using English.</p>
+                
+                <div class="quote">
+                    That one I only use for that specific boy. And I don't actually do it openly sometimes. Sometimes I just call him aside, maybe in the staffroom, and guide him.
+                    <div class="attribution">— T03, Rural, Grade 6</div>
+                </div>
+                
+                <div class="challenge">
+                    <h4>The Contradiction</h4>
+                    <p>Policy penalizes multilingualism, but teachers recognize it as essential for access. Teachers are operating in a <strong>zone of pedagogical disobedience</strong> to be inclusive.</p>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>Recommendation</h4>
+                    <p><strong>Legitimize and resource translanguaging practices.</strong> Develop official guidelines that permit strategic use of home languages and Kiswahili for scaffolding, especially for learners with language-based learning barriers.</p>
+                </div>
+                
+                <h3>Finding 4: The Dropout Data Discrepancy</h3>
+                <p>Most teachers reported "100% attendance" when asked initially, but probing revealed:</p>
+                <ul>
+                    <li><strong>T01:</strong> "Around 2% dropped" from Grade 9 due to CBE being "too heavy"</li>
+                    <li><strong>T08:</strong> Sporadic attendance tied to farm labor cycles; students "sneak through the fence"</li>
+                    <li><strong>T07:</strong> Students come "only on Fridays for announcements"</li>
+                </ul>
+                
+                <div class="quote">
+                    That's good to hear because I've been hearing a different story from the others. People are telling me attendance has been 100%, everything is working great.
+                    <div class="attribution">— Researcher</div>
+                </div>
+                <div class="quote">
+                    No, no, no.
+                    <div class="attribution">— T01, correcting the narrative</div>
+                </div>
+                
+                <div class="challenge">
+                    <h4>The Challenge</h4>
+                    <p>There appears to be social desirability bias in reporting, and/or administrative pressure to show success. <strong>Presence is being overstated,</strong> masking real exclusion.</p>
+                </div>
+                
+                <h3>Finding 5: "Small Wins" as Valid Progression Metrics</h3>
+                <p>Teachers in this study rejected deficit framing and celebrated incremental progress:</p>
+                
+                <div class="quote">
+                    As a teacher for special needs, if they count to three, that's a step. Then from there, you just continue slowly.
+                    <div class="attribution">— T04, SNE School</div>
+                </div>
+                
+                <div class="quote">
+                    This child was not able to read a three letter word. Now he can be able to do it. But in Grade 1, you're learning about single sentences. It is a step. We are still getting somewhere.
+                    <div class="attribution">— T09, Urban, Grade 1</div>
+                </div>
+                
+                <p>Teachers look for:</p>
+                <ul>
+                    <li>Observable behavior change ("the way they interact")</li>
+                    <li>Confidence building (raising hand even if answer is wrong)</li>
+                    <li>Skill acquisition (copying one word instead of none)</li>
+                    <li>Non-academic competencies (following instructions, socializing)</li>
+                </ul>
+                
+                <div class="recommendation">
+                    <h4>Implication</h4>
+                    <p><strong>Formalize "small wins" within assessment frameworks.</strong> CBE's competency focus creates space for this, but it must be explicit in policy to counter the persistent exam-pressure culture.</p>
+                </div>
+                
+                <h3>Finding 6: The Parent Education Gap</h3>
+                <p><strong>8/9 teachers</strong> identified parent misunderstanding of CBE—particularly pathways—as a major barrier to inclusive outcomes.</p>
+                
+                <div class="quote">
+                    Some parents who did not understand the pathways, the children themselves and the parents, they just chose schools without knowing about the pathways. Now transitioning to senior school was a big issue.
+                    <div class="attribution">— T09, Urban</div>
+                </div>
+                
+                <p>Only <strong>T09 described a successful parent education model</strong> from her daughter's private school: a facilitator-led session for Grade 6 and 9 parents explaining pathways, tracking performance from Grade 6, and aligning aspirations with aptitudes.</p>
+                
+                <div class="recommendation">
+                    <h4>Recommendation</h4>
+                    <p><strong>Implement structured, facilitator-led parent education programs</strong> starting in Grade 6, not Grade 9. Cover: pathways, competency vs. grades, career alignment, how to support learning at home. Make this a <strong>national policy requirement,</strong> not optional.</p>
+                </div>
+                
+                <h3>Finding 7: The 20% Retooling Crisis</h3>
+                <p>Multiple teachers estimated that only <strong>~20% of teachers have received adequate CBE training,</strong> 10 years into implementation.</p>
+                
+                <div class="quote">
+                    My honest opinion is that on the retooling side, the government has managed to do around 20%. But imagine there are some teachers who are teaching the new system without proper training.
+                    <div class="attribution">— T01, Rural</div>
+                </div>
+                
+                <div class="challenge">
+                    <h4>The Challenge</h4>
+                    <p>Teachers are teaching subjects they were not trained in, using methods they were not trained in, serving a curriculum they don't fully understand. <strong>This fundamentally undermines inclusion.</strong></p>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>Urgent Recommendation</h4>
+                    <p><strong>Declare a national CBE retooling emergency.</strong> Mandate and fund universal teacher training within 2 years. Prioritize rural schools and teachers teaching outside their specialization.</p>
+                </div>
+                
+                <h3>Finding 8: Rural Schools Are Being Left Behind</h3>
+                <p>The rural-urban divide is not just about resources—it's about entire ecosystems of disadvantage:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Factor</th>
+                            <th>Urban Schools</th>
+                            <th>Rural Schools</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Technology</strong></td>
+                            <td>WiFi, projectors, tablets, smart boards</td>
+                            <td>Personal phones only; limited/no electricity</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Co-teachers</strong></td>
+                            <td>Present in 3/3 urban schools</td>
+                            <td>Absent in most rural schools</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SNE Support</strong></td>
+                            <td>SNE units, specialists available</td>
+                            <td>Minimal to none</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Teacher Retention</strong></td>
+                            <td>Stable</td>
+                            <td>"After 3 months, they seek transfers" (T07)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Parent Literacy</strong></td>
+                            <td>Generally literate, engaged</td>
+                            <td>Generational illiteracy, resistant</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Learner Challenges</strong></td>
+                            <td>Mostly cognitive/learning differences</td>
+                            <td>Hunger, child labor, survival priorities</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="quote">
+                    The illiteracy is generational. Their parents, their parents, their grandparents... So the only thing that we do sometimes we say we teach and go home.
+                    <div class="attribution">— T08, Rural Gilgil</div>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>Recommendation</h4>
+                    <p><strong>Targeted rural school investment packages</strong> including: salary incentives for rural teachers, mobile resource units, solar-powered technology kits, feeding programs, community outreach workers to engage parents.</p>
+                </div>
+            </section>
+            
+            <!-- CONTEXTUAL ANALYSIS -->
+            <section id="context" class="section">
+                <h2>🌍 Contextual Analysis</h2>
+                
+                <h3>Comparison: Urban vs. Rural vs. SNE School Experiences</h3>
+                
+                <h4>Urban Schools (T06, T09, T04)</h4>
+                <div class="theme-box">
+                    <ul>
+                        <li><strong>Strengths:</strong> Technology access, SNE units, co-teaching models, parental support, resource availability</li>
+                        <li><strong>Challenges:</strong> Still face time pressure, zonal assessments, need for specialized materials</li>
+                        <li><strong>Inclusion approach:</strong> Structured, multi-tiered support systems; pull-out services combined with in-class differentiation</li>
+                        <li><strong>Quote:</strong> "In my school, it's okay. And the learners also are quite good with ICT. They are used to tablets." (T09)</li>
+                    </ul>
+                </div>
+                
+                <h4>Rural Schools (T01, T03, T05, T08)</h4>
+                <div class="theme-box">
+                    <ul>
+                        <li><strong>Strengths:</strong> Teacher dedication, peer support networks, improvisation skills</li>
+                        <li><strong>Challenges:</strong> Extreme resource scarcity, teacher shortages, parental resistance, generational poverty/illiteracy, hunger, child labor</li>
+                        <li><strong>Inclusion approach:</strong> Highly individualized, teacher-dependent; relies on teacher resourcefulness</li>
+                        <li><strong>Quote:</strong> "You find that in that school there is no electricity. You have the tablets, but you cannot be able to use them." (T09, reflecting on previous rural post)</li>
+                    </ul>
+                </div>
+                
+                <h4>Special Education School (T04)</h4>
+                <div class="theme-box">
+                    <ul>
+                        <li><strong>Strengths:</strong> Specialized training, adapted curriculum, flexible timelines, IEP frameworks, therapeutic support</li>
+                        <li><strong>Challenges:</strong> Only 2 assistive devices for 31 learners, dependent on head teacher support, still using personal resources</li>
+                        <li><strong>Inclusion approach:</strong> Fully individualized, stage-based (foundational, intermediate, pre-vocational); focus on ADLs and life skills</li>
+                        <li><strong>Quote:</strong> "When teaching learners with special needs, it comes from your heart. If you don't have humanity in your heart, even if you've trained in special needs, you cannot teach." (T04)</li>
+                    </ul>
+                </div>
+                
+                <h3>Grade-Level Variations</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Grade Level</th>
+                            <th>Participants</th>
+                            <th>Key Characteristics</th>
+                            <th>Inclusion Focus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Early Primary (Grade 1-2)</strong></td>
+                            <td>T07, T09</td>
+                            <td>Foundational literacy/numeracy; discovery of learning differences</td>
+                            <td>Multi-sensory approaches, play-based, building confidence</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Upper Primary (Grade 4-6)</strong></td>
+                            <td>T03, T06</td>
+                            <td>Widening achievement gap becomes visible; SNE referrals increase</td>
+                            <td>Peer support, translanguaging, visual scaffolding</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Junior Secondary (Grade 7-9)</strong></td>
+                            <td>T01, T02, T05</td>
+                            <td>Discovery phase for pathways; adolescent identity; pathway selection pressure</td>
+                            <td>Interest-based grouping, talent identification, pathway counseling</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Senior Secondary (Grade 10)</strong></td>
+                            <td>T01, T05</td>
+                            <td>Pathway implementation; dropout risk for misplaced students</td>
+                            <td>Pathway switching, competency-aligned assessment</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- RECOMMENDATIONS -->
+            <section id="recommendations" class="section">
+                <h2>💡 Evidence-Based Recommendations</h2>
+                
+                <h3>For Policy Makers (National Level)</h3>
+                
+                <div class="recommendation">
+                    <h4>1. Declare a CBE Retooling Emergency</h4>
+                    <p><strong>Evidence:</strong> 80% of teachers inadequately trained (per participant estimates)</p>
+                    <p><strong>Action:</strong> Mandate universal retraining within 24 months; prioritize rural and multi-subject teachers; make retooling completion a requirement for continued employment.</p>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>2. Legitimize and Resource Translanguaging</h4>
+                    <p><strong>Evidence:</strong> 100% of teachers use translanguaging; it's currently "subversive"</p>
+                    <p><strong>Action:</strong> Develop official translanguaging guidelines; provide multilingual learning materials; train teachers in strategic code-switching for scaffolding.</p>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>3. Implement National Co-Teaching Initiative</h4>
+                    <p><strong>Evidence:</strong> Co-teaching dramatically improves inclusion outcomes</p>
+                    <p><strong>Action:</strong> Pilot co-teaching in 50 schools per county; pair general ed with SNE teachers; evaluate and scale within 3 years.</p>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>4. Establish Rural School Equity Fund</h4>
+                    <p><strong>Evidence:</strong> Systematic rural disadvantage across all metrics</p>
+                    <p><strong>Action:</strong> Ring-fenced budget for: solar technology kits, mobile resource libraries, rural teacher salary incentives (+30%), feeding programs.</p>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>5. Mandate Parent Education Programs</h4>
+                    <p><strong>Evidence:</strong> Parent confusion undermining CBE, especially pathways</p>
+                    <p><strong>Action:</strong> Structured sessions starting Grade 6; facilitator-led; cover pathways, competencies, home support strategies. Make attendance linked to school enrollment.</p>
+                </div>
+                
+                <h3>For County Education Officials (Nakuru & Beyond)</h3>
+                
+                <div class="recommendation">
+                    <h4>6. Create County-Wide Resource-Sharing Platforms</h4>
+                    <p><strong>Evidence:</strong> Teachers rely on informal WhatsApp groups</p>
+                    <p><strong>Action:</strong> Formalize digital resource repositories; curate lesson plans, videos, worksheets by grade/subject; provide download access (not view-only).</p>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>7. Establish Mobile SNE Support Teams</h4>
+                    <p><strong>Evidence:</strong> Rural schools lack SNE specialists</p>
+                    <p><strong>Action:</strong> County-funded teams that circuit to rural schools monthly; provide assessments, IEP development support, teacher consultation.</p>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>8. Subsidize Teacher Data Costs</h4>
+                    <p><strong>Evidence:</strong> 100% of teachers use personal phones/bundles</p>
+                    <p><strong>Action:</strong> County-negotiated bulk data plans for teachers; or monthly stipend of KES 1,000-2,000 for professional internet use.</p>
+                </div>
+                
+                <h3>For School Leadership</h3>
+                
+                <div class="recommendation">
+                    <h4>9. Protect Teacher Planning Time</h4>
+                    <p><strong>Evidence:</strong> Adaptation is time-intensive; lunch hours sacrificed</p>
+                    <p><strong>Action:</strong> Timetable-embedded planning periods; reduce teacher load where teaching outside specialization; collaborative planning time for co-teachers.</p>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>10. Formalize Peer Collaboration Structures</strong></h4>
+                    <p><strong>Evidence:</strong> Subject panels and informal networks are lifelines</p>
+                    <p><strong>Action:</strong> Monthly protected time for subject panels; cross-curricular meetings (e.g., STEM + language teachers); document and share best practices.</p>
+                </div>
+                
+                <h3>For Teacher Educators & Professional Development</h3>
+                
+                <div class="recommendation">
+                    <h4>11. Embed Inclusive Pedagogy in Pre-Service Training</h4>
+                    <p><strong>Evidence:</strong> Teachers learning "on the job" through trial and error</p>
+                    <p><strong>Action:</strong> Mandatory inclusive education modules in all teacher training programs; practicum placements must include diverse learner contexts.</p>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>12. Create "Small Wins" Assessment Toolkits</h4>
+                    <p><strong>Evidence:</strong> Teachers value incremental progress but lack formal frameworks</p>
+                    <p><strong>Action:</strong> Develop and disseminate progression monitoring tools that capture micro-competencies; train teachers in formative assessment for diverse learners.</p>
+                </div>
+                
+                <h3>For Teachers (Peer-to-Peer Recommendations)</h3>
+                
+                <div class="recommendation">
+                    <h4>13. Document Your Adaptations</h4>
+                    <p>Teachers in this study demonstrated brilliance but it remains tacit knowledge. Create simple logs of what works for which learners; share in WhatsApp groups; build collective expertise.</p>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>14. Advocate for Your Needs</h4>
+                    <p>Your resourcefulness is admirable but shouldn't be required. Collectively articulate needs to administration/TSC/county officials. Use data: "I spent KES X on bundles this term; we need school WiFi."</p>
+                </div>
+            </section>
+            
+            <!-- METHODOLOGY -->
+            <section id="methodology" class="section">
+                <h2>📋 Analysis Methodology</h2>
+                
+                <h3>Analytical Approach</h3>
+                <p>This analysis employed a <strong>hybrid thematic analysis approach</strong> combining:</p>
+                <ul>
+                    <li><strong>Deductive coding:</strong> Guided by research questions and the "3 Ps" framework (Presence, Participation, Progression)</li>
+                    <li><strong>Inductive coding:</strong> Allowing emergent themes from data (e.g., translanguaging as subversion, rural-urban divide)</li>
+                    <li><strong>Constant comparative method:</strong> Comparing incidents, codes, and categories across transcripts</li>
+                </ul>
+                
+                <h3>Coding Process</h3>
+                <div class="code-hierarchy">
+                    <div class="code-node"><strong>Phase 1:</strong> Familiarization (reading all 9 transcripts multiple times)</div>
+                    <div class="code-node"><strong>Phase 2:</strong> Open coding (line-by-line coding, generating initial codes)</div>
+                    <div class="code-node"><strong>Phase 3:</strong> Axial coding (grouping codes into categories)</div>
+                    <div class="code-node"><strong>Phase 4:</strong> Selective coding (identifying core themes and relationships)</div>
+                    <div class="code-node"><strong>Phase 5:</strong> Theme refinement and validation (checking against all transcripts)</div>
+                    <div class="code-node"><strong>Phase 6:</strong> Cross-case analysis (comparing across contexts, grades, experience)</div>
+                </div>
+                
+                <h3>Data Management</h3>
+                <ul>
+                    <li><strong>Dataset:</strong> 9 semi-structured interviews; ~150,000 words</li>
+                    <li><strong>Software:</strong> Manual coding supplemented by AI-assisted pattern recognition</li>
+                    <li><strong>Coding units:</strong> Segments (phrases to paragraphs) carrying complete ideas</li>
+                    <li><strong>Inter-coder reliability:</strong> Single coder with systematic re-checking</li>
+                </ul>
+                
+                <h3>Trustworthiness Measures</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Criterion</th>
+                            <th>Strategy Employed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Credibility</strong></td>
+                            <td>Prolonged engagement with data; participant quotes as evidence; triangulation across 9 diverse contexts</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Transferability</strong></td>
+                            <td>Thick description; detailed participant profiles; context documentation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dependability</strong></td>
+                            <td>Audit trail; systematic coding process; transparency in methodology</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Confirmability</strong></td>
+                            <td>Direct quotes anchor all claims; coding hierarchy made explicit; alternative interpretations considered</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Limitations</h3>
+                <div class="challenge">
+                    <h4>Acknowledged Limitations</h4>
+                    <ul>
+                        <li><strong>Sampling:</strong> Purposive sample from Nakuru County; may not represent all of Kenya</li>
+                        <li><strong>Social desirability bias:</strong> Teachers may overstate success; attendance data discrepancy suggests this</li>
+                        <li><strong>Researcher positionality:</strong> Researcher is fellow teacher; may create rapport but also bias</li>
+                        <li><strong>Single point in time:</strong> Snapshot during one academic year; no longitudinal perspective</li>
+                        <li><strong>Missing voices:</strong> No student, parent, or administrator perspectives in this dataset</li>
+                    </ul>
+                </div>
+                
+                <h3>Ethical Considerations</h3>
+                <ul>
+                    <li><strong>Informed consent:</strong> Verbal consent obtained from all participants</li>
+                    <li><strong>Anonymization:</strong> All identifying details removed (names, schools)</li>
+                    <li><strong>Secure storage:</strong> Password-protected, university-compliant storage</li>
+                    <li><strong>Right to withdraw:</strong> Participants informed of voluntary nature</li>
+                    <li><strong>Reciprocity:</strong> Findings to be shared with participants</li>
+                </ul>
+            </section>
+            
+        </div>
+        
+        <!-- FOOTER -->
+        <div class="footer">
+            <p><strong>Research Project:</strong> Inclusive Education under Competency-Based Education in Nakuru County, Kenya</p>
+            <p><strong>Researcher:</strong> Beatrice Wairimu Mungai | University of Glasgow</p>
+            <p><strong>Analysis Completed:</strong> 2024</p>
+            <p style="margin-top: 20px; opacity: 0.8;">This document was generated using AI-assisted qualitative analysis following NVivo-style thematic coding principles.</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                📧 For inquiries about this research, please contact the University of Glasgow School of Education.
+            </p>
+        </div>
+        
+    </div>
+    
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+        
+        // Highlight active section in navigation
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('.section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav a').forEach(link => {
+                link.style.background = '';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.background = '#4a5568';
+                }
+            });
+        });
+        
+        // Print functionality
+        window.addEventListener('beforeprint', () => {
+            document.querySelectorAll('.code-hierarchy').forEach(el => {
+                el.style.pageBreakInside = 'avoid';
+            });
+        });
+    </script>
+</body>
+</html>
