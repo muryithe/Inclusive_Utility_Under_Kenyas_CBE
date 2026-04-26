@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Checking Form | Beyond the Blueprint | 2812274M</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0d14;--surface:#111622;--s2:#181f30;--border:#2a3348;
+  --gold:#d4a843;--gold-dim:rgba(212,168,67,.12);
+  --cream:#f0ead6;--text:#e2ddd4;--tdim:#8a9ab5;--tmut:#4e5e78;
+  --a1:#4e8fca;--a3:#4aab8a;--a4:#c45b5b;
+  --r:9px;--r2:6px;
+  --fxs:clamp(9px,1.8vw,11px);--fsm:clamp(11px,2vw,13px);--fb:clamp(12px,2.2vw,14px);
+  --fmd:clamp(14px,2.6vw,17px);--flg:clamp(18px,3.5vw,24px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text);font-size:var(--fb);min-height:100vh;padding:0}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--surface)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* HEADER */
+.hdr{background:var(--surface);border-bottom:1px solid var(--border);padding:18px clamp(16px,5vw,40px);display:flex;align-items:center;gap:14px;flex-wrap:wrap;position:sticky;top:0;z-index:50}
+.hdr-ico{font-size:22px;color:var(--gold)}
+.hdr-t{font-family:'Playfair Display',serif;font-size:var(--fmd);color:var(--gold);font-weight:600}
+.hdr-s{font-size:var(--fxs);color:var(--tmut);margin-top:2px}
+.hdr-btns{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.btn{padding:7px 14px;border-radius:var(--r2);border:none;cursor:pointer;font-family:'IBM Plex Sans',sans-serif;font-size:var(--fxs);font-weight:600;transition:opacity .15s}
+.btn:hover{opacity:.85}
+.btn-g{background:var(--gold);color:#000}
+.btn-o{background:transparent;border:1px solid var(--border);color:var(--tdim)}
+.btn-b{background:var(--a1);color:#fff}
+
+/* LAYOUT */
+.wrap{max-width:860px;margin:0 auto;padding:clamp(16px,4vw,36px) clamp(14px,4vw,32px)}
+
+/* INTRO */
+.intro{background:linear-gradient(135deg,rgba(212,168,67,.07),rgba(74,171,138,.04));
+  border:1px solid rgba(212,168,67,.25);border-radius:var(--r);padding:20px 22px;margin-bottom:24px}
+.intro-t{font-family:'Playfair Display',serif;font-size:var(--fmd);color:var(--gold);font-weight:600;margin-bottom:8px}
+.intro-b{font-size:var(--fsm);color:var(--tdim);line-height:1.7}
+.intro-b p{margin-bottom:8px}
+.intro-b p:last-child{margin-bottom:0}
+
+/* PID SELECTOR */
+.pid-row{display:flex;align-items:center;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+.pid-label{font-size:var(--fsm);color:var(--tdim);font-weight:500}
+.pid-sel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);
+  padding:8px 12px;color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:var(--fsm);outline:none;cursor:pointer;min-width:180px}
+.pid-sel:focus{border-color:var(--gold)}
+.pid-sel option{background:var(--s2)}
+
+/* THEME SECTION */
+.theme-sec{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);margin-bottom:18px;overflow:hidden}
+.theme-hdr{padding:16px 18px;display:flex;align-items:flex-start;gap:12px;cursor:pointer;user-select:none}
+.theme-hdr:hover{background:rgba(255,255,255,.02)}
+.th-num{width:32px;height:32px;min-width:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:var(--fsm);font-weight:700;flex-shrink:0}
+.th-info{flex:1;min-width:0}
+.th-name{font-family:'Playfair Display',serif;font-size:var(--fmd);color:var(--cream);font-weight:600;line-height:1.3;margin-bottom:3px}
+.th-lens{font-size:var(--fxs);color:var(--tmut)}
+.th-arrow{font-size:13px;color:var(--tmut);margin-left:auto;flex-shrink:0;transition:transform .2s;margin-top:4px}
+.th-arrow.open{transform:rotate(90deg)}
+.theme-body{display:none;padding:0 18px 18px;border-top:1px solid var(--border)}
+.theme-body.open{display:block}
+.summary-box{background:var(--s2);border-radius:var(--r2);padding:14px 16px;margin-bottom:14px;margin-top:14px}
+.summary-title{font-size:var(--fxs);font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--tmut);margin-bottom:7px}
+.summary-text{font-size:var(--fsm);color:var(--tdim);line-height:1.7}
+
+/* QUESTIONS */
+.q-block{margin-bottom:14px}
+.q-label{font-size:var(--fsm);color:var(--cream);font-weight:500;margin-bottom:8px;line-height:1.5}
+.q-label .qn{color:var(--gold);font-weight:700;margin-right:4px}
+
+/* RADIO OPTIONS */
+.radio-group{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.radio-opt{display:flex;align-items:center;gap:6px;cursor:pointer;padding:5px 10px;border-radius:var(--r2);
+  border:1px solid var(--border);background:var(--s2);transition:all .15s;font-size:var(--fsm);color:var(--tdim)}
+.radio-opt:hover{border-color:var(--gold);color:var(--text)}
+.radio-opt input{accent-color:var(--gold);cursor:pointer;flex-shrink:0}
+.radio-opt.selected{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
+
+/* TEXTAREA */
+.ta{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:var(--r2);
+  padding:10px 12px;color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:var(--fsm);
+  resize:vertical;min-height:80px;outline:none;transition:border-color .2s;line-height:1.6}
+.ta:focus{border-color:var(--gold)}
+.ta::placeholder{color:var(--tmut)}
+.ta-hint{font-size:var(--fxs);color:var(--tmut);margin-top:4px}
+
+/* SCALE */
+.scale-wrap{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.scale-btn{padding:5px 10px;border-radius:var(--r2);border:1px solid var(--border);
+  background:var(--s2);color:var(--tdim);cursor:pointer;font-size:var(--fxs);font-weight:600;
+  font-family:'IBM Plex Sans',sans-serif;transition:all .15s;min-width:36px;text-align:center}
+.scale-btn:hover{border-color:var(--gold);color:var(--gold)}
+.scale-btn.sel{background:var(--gold-dim);border-color:var(--gold);color:var(--gold)}
+.scale-labels{display:flex;justify-content:space-between;font-size:var(--fxs);color:var(--tmut);margin-bottom:8px}
+
+/* PROGRESS */
+.prog-bar-wrap{background:var(--s2);border-radius:100px;height:5px;margin-bottom:20px;overflow:hidden}
+.prog-bar{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--gold),var(--a3));transition:width .4s ease}
+.prog-label{font-size:var(--fxs);color:var(--tmut);margin-bottom:6px;text-align:right}
+
+/* SUBMIT */
+.submit-sec{background:var(--surface);border:1px solid rgba(212,168,67,.3);border-radius:var(--r);padding:22px;margin-top:24px}
+.submit-t{font-family:'Playfair Display',serif;font-size:var(--fmd);color:var(--cream);margin-bottom:8px}
+.submit-s{font-size:var(--fsm);color:var(--tdim);line-height:1.65;margin-bottom:14px}
+.submit-actions{display:flex;gap:10px;flex-wrap:wrap}
+.submit-actions .btn{padding:10px 20px;font-size:var(--fsm)}
+
+/* SUCCESS */
+.success-msg{display:none;background:rgba(74,171,138,.08);border:1px solid rgba(74,171,138,.3);
+  border-radius:var(--r);padding:18px 20px;margin-top:16px;font-size:var(--fsm);color:var(--a3);line-height:1.6}
+
+/* DIVIDER */
+.dv{height:1px;background:var(--border);margin:12px 0}
+
+/* PRINT / MOBILE */
+@media(max-width:540px){
+  .hdr-btns{display:none}
+  .radio-group{flex-direction:column}
+  .scale-wrap{gap:4px}
+  .scale-btn{padding:4px 7px;min-width:28px}
+}
+@media print{
+  .hdr-btns,.btn,body{background:#fff;color:#000}
+  .hdr,.intro,.theme-sec,.submit-sec{border-color:#ccc}
+  .theme-body{display:block!important}
+  .th-arrow{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <span class="hdr-ico">◎</span>
+  <div>
+    <div class="hdr-t">Member Checking Form</div>
+    <div class="hdr-s">Beyond the Blueprint · 2812274M · University of Glasgow · MSc Education</div>
+  </div>
+  <div class="hdr-btns">
+    <button class="btn btn-o" onclick="window.print()">Print / Save PDF</button>
+    <button class="btn btn-b" onclick="copyResponses()">Copy Responses</button>
+    <button class="btn btn-g" onclick="submitForm()">Submit Responses</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <div class="intro-t">A message from the researcher</div>
+    <div class="intro-b">
+      <p>Thank you so much for your time and openness during our conversation. What you shared with me has been invaluable to this research, and I want to make sure that what I have written reflects your experience accurately.</p>
+      <p>Below are short summaries of the seven main themes that came out of all the interviews together. I would be very grateful if you could read through them and share your thoughts on whether they feel accurate, whether anything is missing, and whether there is anything you would like me to change or remove.</p>
+      <p>There are no right or wrong answers. Your feedback will directly shape the final chapter of my dissertation. Please take as much or as little space as you need. You can also skip any section you are not comfortable responding to.</p>
+      <p style="color:var(--gold);font-weight:500">Your responses will be kept strictly confidential and used only for research purposes.</p>
+    </div>
+  </div>
+
+  <!-- PID -->
+  <div class="pid-row">
+    <span class="pid-label">Your participant code:</span>
+    <select class="pid-sel" id="pid-select">
+      <option value="">Select your code</option>
+      <option value="T01">T01</option>
+      <option value="T02">T02</option>
+      <option value="T03">T03</option>
+      <option value="T04">T04</option>
+      <option value="T05">T05</option>
+      <option value="T06">T06</option>
+      <option value="T07">T07</option>
+      <option value="T08">T08</option>
+      <option value="T09">T09</option>
+    </select>
+    <span style="font-size:var(--fxs);color:var(--tmut)">(This was given to you at the start of the study)</span>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="prog-label" id="prog-label">0 of 7 themes reviewed</div>
+  <div class="prog-bar-wrap"><div class="prog-bar" id="prog-bar" style="width:0%"></div></div>
+
+  <!-- ── THEME 1 ── -->
+  <div class="theme-sec" id="sec-1">
+    <div class="theme-hdr" onclick="toggle(1)">
+      <div class="th-num" style="background:rgba(212,168,67,.15);color:#d4a843;border:2px solid rgba(212,168,67,.4)">1</div>
+      <div class="th-info">
+        <div class="th-name">Teachers put together small bundles of changes, not single big ones</div>
+        <div class="th-lens">Theme 1: Adaptation Ensembles</div>
+      </div>
+      <div class="th-arrow" id="arr-1">▶</div>
+    </div>
+    <div class="theme-body" id="body-1">
+      <div class="summary-box">
+        <div class="summary-title">Summary</div>
+        <div class="summary-text">When a lesson is not working for a learner, teachers in this study did not just make one change. They made several small adjustments at the same time. For example, a teacher might move a child closer to their desk, switch briefly to Kiswahili, break the task into smaller steps, and pair the child with a helpful classmate, all in the same lesson. These combinations of small changes are things teachers work out from experience and close observation, not things they were specifically taught. They also tend to be low-cost: they do not require special equipment or extra budget. The choice of which combination to use seems to be driven by what the teacher knows about the learner, what is practical in that moment, and what the classroom allows.</div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q1.</span> Does this feel like an accurate description of how you work in the classroom?</div>
+        <div class="radio-group" id="t1q1-group">
+          <label class="radio-opt"><input type="radio" name="t1q1" value="Yes, very much"> Yes, very much</label>
+          <label class="radio-opt"><input type="radio" name="t1q1" value="Mostly yes"> Mostly yes</label>
+          <label class="radio-opt"><input type="radio" name="t1q1" value="Partly"> Partly</label>
+          <label class="radio-opt"><input type="radio" name="t1q1" value="Not really"> Not really</label>
+        </div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q2.</span> Is there anything about how you make these decisions that feels missing or not quite right here?</div>
+        <textarea class="ta" id="t1q2" placeholder="Write as much or as little as you like..."></textarea>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q3.</span> Is there anything you would like to add or change in this summary?</div>
+        <textarea class="ta" id="t1q3" placeholder="Optional..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── THEME 2 ── -->
+  <div class="theme-sec" id="sec-2">
+    <div class="theme-hdr" onclick="toggle(2)">
+      <div class="th-num" style="background:rgba(78,143,202,.15);color:#4e8fca;border:2px solid rgba(78,143,202,.4)">2</div>
+      <div class="th-info">
+        <div class="th-name">Teachers judge success through small signs, not just test scores</div>
+        <div class="th-lens">Theme 2: Inclusive Utility (Presence, Participation, Progression)</div>
+      </div>
+      <div class="th-arrow" id="arr-2">▶</div>
+    </div>
+    <div class="theme-body" id="body-2">
+      <div class="summary-box">
+        <div class="summary-title">Summary</div>
+        <div class="summary-text">When I asked teachers how they know whether what they are doing is working, almost no one mentioned exam results first. Instead, they talked about smaller and more immediate signs. A child who was absent a lot suddenly starts coming every day. A child who never put up their hand starts trying to answer. A child who could not copy a single word from the board manages two or three. These small milestones feel just as significant as a grade, and sometimes more so. Teachers also talked about belonging: whether the child seems comfortable in the room, whether classmates accept them, and whether they feel like they are part of what is happening in the lesson. For some learners, especially those in special needs settings, the definition of progress stretched well beyond curriculum content.</div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q1.</span> Does this capture how you personally judge whether your efforts are working?</div>
+        <div class="radio-group" id="t2q1-group">
+          <label class="radio-opt"><input type="radio" name="t2q1" value="Yes, very much"> Yes, very much</label>
+          <label class="radio-opt"><input type="radio" name="t2q1" value="Mostly yes"> Mostly yes</label>
+          <label class="radio-opt"><input type="radio" name="t2q1" value="Partly"> Partly</label>
+          <label class="radio-opt"><input type="radio" name="t2q1" value="Not really"> Not really</label>
+        </div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q2.</span> Are there other signs of progress you look for that are not mentioned here?</div>
+        <textarea class="ta" id="t2q2" placeholder="What else do you look for?"></textarea>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q3.</span> Is there anything here that feels inaccurate or that you would describe differently?</div>
+        <textarea class="ta" id="t2q3" placeholder="Optional..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── THEME 3 ── -->
+  <div class="theme-sec" id="sec-3">
+    <div class="theme-hdr" onclick="toggle(3)">
+      <div class="th-num" style="background:rgba(74,171,138,.15);color:#4aab8a;border:2px solid rgba(74,171,138,.4)">3</div>
+      <div class="th-info">
+        <div class="th-name">The system makes it very hard, and it was designed for a different kind of school</div>
+        <div class="th-lens">Theme 3: Structural and Ecological Tensions</div>
+      </div>
+      <div class="th-arrow" id="arr-3">▶</div>
+    </div>
+    <div class="theme-body" id="body-3">
+      <div class="summary-box">
+        <div class="summary-title">Summary</div>
+        <div class="summary-text">Teachers across all school settings described significant barriers that limit what they can do for learners who need more support. Class sizes regularly exceed 60 or 70. Government tablets are broken or outdated. Many schools have no Wi-Fi, so teachers use their own phones and pay for their own data to access learning materials. The CBE was partly modelled on education systems in countries like Finland, where there are specialist support teachers in every class, class sizes of around 18 to 21 learners, and fully equipped schools. None of those conditions exist in most Kenyan public schools. Teachers described carrying these gaps largely alone, finding ways to work around them with whatever they could find or buy. The pressure of high-stakes exams also continues to push many teachers back toward exam-focused teaching, even as the curriculum officially promotes a different approach.</div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q1.</span> Do these barriers match what you experience in your school?</div>
+        <div class="radio-group" id="t3q1-group">
+          <label class="radio-opt"><input type="radio" name="t3q1" value="Yes, all of them"> Yes, all of them</label>
+          <label class="radio-opt"><input type="radio" name="t3q1" value="Most of them"> Most of them</label>
+          <label class="radio-opt"><input type="radio" name="t3q1" value="Some of them"> Some of them</label>
+          <label class="radio-opt"><input type="radio" name="t3q1" value="Not really"> Not really</label>
+        </div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q2.</span> Are there any important barriers missing from this summary?</div>
+        <textarea class="ta" id="t3q2" placeholder="What else makes things difficult?"></textarea>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q3.</span> Is there anything here you would describe differently?</div>
+        <textarea class="ta" id="t3q3" placeholder="Optional..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── THEME 4 ── -->
+  <div class="theme-sec" id="sec-4">
+    <div class="theme-hdr" onclick="toggle(4)">
+      <div class="th-num" style="background:rgba(107,91,171,.15);color:#6b5bab;border:2px solid rgba(107,91,171,.4)">4</div>
+      <div class="th-info">
+        <div class="th-name">Teachers rely on each other informally, WhatsApp more than meetings</div>
+        <div class="th-lens">Theme 4: Lateral Collaboration</div>
+      </div>
+      <div class="th-arrow" id="arr-4">▶</div>
+    </div>
+    <div class="theme-body" id="body-4">
+      <div class="summary-box">
+        <div class="summary-title">Summary</div>
+        <div class="summary-text">When teachers need support, whether to understand a learner better, find a resource, or figure out how to explain something, they usually turn to a trusted colleague rather than a formal structure. WhatsApp groups among teachers are the most commonly mentioned platform: teachers share resources, ask questions, and sometimes solve problems together through these groups. Subject panel meetings also happen, but they tend to be irregular and often do not lead to changes in classroom practice. Where two teachers share a classroom, as happens in a couple of the schools in this study, that arrangement makes a big difference. Having a second person who can support individual learners while the lesson continues changes what is possible. Parental involvement varies greatly: helpful in some urban settings, resistant or absent in many rural ones.</div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q1.</span> Does this reflect the kind of support and teamwork that actually happens in your school?</div>
+        <div class="radio-group" id="t4q1-group">
+          <label class="radio-opt"><input type="radio" name="t4q1" value="Yes, very much"> Yes, very much</label>
+          <label class="radio-opt"><input type="radio" name="t4q1" value="Mostly yes"> Mostly yes</label>
+          <label class="radio-opt"><input type="radio" name="t4q1" value="Partly"> Partly</label>
+          <label class="radio-opt"><input type="radio" name="t4q1" value="Not really"> Not really</label>
+        </div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q2.</span> Is there a form of support or teamwork that is missing from this picture?</div>
+        <textarea class="ta" id="t4q2" placeholder="What else matters in your school?"></textarea>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q3.</span> Anything you would change or add?</div>
+        <textarea class="ta" id="t4q3" placeholder="Optional..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── THEME 5 ── -->
+  <div class="theme-sec" id="sec-5">
+    <div class="theme-hdr" onclick="toggle(5)">
+      <div class="th-num" style="background:rgba(196,91,91,.15);color:#c45b5b;border:2px solid rgba(196,91,91,.4)">5</div>
+      <div class="th-info">
+        <div class="th-name">Teachers do all of this because they care deeply, and it costs them personally</div>
+        <div class="th-lens">Theme 5: Teacher Adaptive Agency as Moral Vocation</div>
+      </div>
+      <div class="th-arrow" id="arr-5">▶</div>
+    </div>
+    <div class="theme-body" id="body-5">
+      <div class="summary-box">
+        <div class="summary-title">Summary</div>
+        <div class="summary-text">One of the most striking things across all nine conversations was how much teachers invest beyond what is expected or paid. Teachers arrive before 6:30am, come in on Saturdays without pay, give up lunch breaks for individual sessions with learners who are struggling, and spend their own money on materials, printed worksheets, and mobile data for accessing teaching resources. When I asked why, nobody gave a professional obligation as the reason. They talked about caring for the child, about not being able to set aside knowing a learner has not understood, about teaching being something that comes from the heart. This deep personal investment is what keeps inclusive practice alive in conditions that could otherwise justify giving up. But it also means the system is relying heavily on individual teachers in ways that are not sustainable and that hide the need for proper structural support.</div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q1.</span> Does this feel true to what you described about why you teach the way you do?</div>
+        <div class="radio-group" id="t5q1-group">
+          <label class="radio-opt"><input type="radio" name="t5q1" value="Yes, very much"> Yes, very much</label>
+          <label class="radio-opt"><input type="radio" name="t5q1" value="Mostly yes"> Mostly yes</label>
+          <label class="radio-opt"><input type="radio" name="t5q1" value="Partly"> Partly</label>
+          <label class="radio-opt"><input type="radio" name="t5q1" value="Not really"> Not really</label>
+        </div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q2.</span> Is there anything about the personal cost that feels overstated or understated?</div>
+        <textarea class="ta" id="t5q2" placeholder="Feel free to be honest here..."></textarea>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q3.</span> Is there anything you would like to add?</div>
+        <textarea class="ta" id="t5q3" placeholder="Optional..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── THEME 6 ── -->
+  <div class="theme-sec" id="sec-6">
+    <div class="theme-hdr" onclick="toggle(6)">
+      <div class="th-num" style="background:rgba(212,120,67,.15);color:#d47843;border:2px solid rgba(212,120,67,.4)">6</div>
+      <div class="th-info">
+        <div class="th-name">Teachers see learner differences clearly, but get almost no professional support to respond to them</div>
+        <div class="th-lens">Theme 6: Neurodivergence Recognition</div>
+      </div>
+      <div class="th-arrow" id="arr-6">▶</div>
+    </div>
+    <div class="theme-body" id="body-6">
+      <div class="summary-box">
+        <div class="summary-title">Summary</div>
+        <div class="summary-text">Every teacher in this study described learners with noticeable differences in how they learn: difficulties with reading, writing, copying from the board, following verbal instructions, or engaging socially in the classroom. Some teachers named these directly, using terms like autism, dyslexia, or dyscalculia. Others described the behaviours in detail without using clinical labels. In almost every case, there was no formal diagnosis, no specialist support, and no referral process that moved quickly enough to help. Teachers figured out what they could by themselves: moving the child closer, switching to Kiswahili, giving a different kind of task. Several teachers also noticed what learners were good at, for example drawing, carpentry, music, or sports, and used these strengths as a starting point for the lesson. Researchers who study neurodiversity say that this is exactly what schools should do, even though none of the teachers had been trained in that approach.</div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q1.</span> Does this match your experience of identifying and responding to learners who learn differently?</div>
+        <div class="radio-group" id="t6q1-group">
+          <label class="radio-opt"><input type="radio" name="t6q1" value="Yes, very much"> Yes, very much</label>
+          <label class="radio-opt"><input type="radio" name="t6q1" value="Mostly yes"> Mostly yes</label>
+          <label class="radio-opt"><input type="radio" name="t6q1" value="Partly"> Partly</label>
+          <label class="radio-opt"><input type="radio" name="t6q1" value="Not really"> Not really</label>
+        </div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q2.</span> Is the referral process described here accurate to what you have experienced?</div>
+        <textarea class="ta" id="t6q2" placeholder="How does it actually work in your school?"></textarea>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q3.</span> Is there anything important that is missing from this summary?</div>
+        <textarea class="ta" id="t6q3" placeholder="Optional..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── THEME 7 ── -->
+  <div class="theme-sec" id="sec-7">
+    <div class="theme-hdr" onclick="toggle(7)">
+      <div class="th-num" style="background:rgba(107,171,107,.15);color:#6bab6b;border:2px solid rgba(107,171,107,.4)">7</div>
+      <div class="th-info">
+        <div class="th-name">The CBE is a good idea that has not yet become a reality for most learners</div>
+        <div class="th-lens">Theme 7: The CBE Paradox</div>
+      </div>
+      <div class="th-arrow" id="arr-7">▶</div>
+    </div>
+    <div class="theme-body" id="body-7">
+      <div class="summary-box">
+        <div class="summary-title">Summary</div>
+        <div class="summary-text">Without exception, every teacher in this study expressed genuine support for what the CBE is trying to do: move away from rote learning and towards competency, allow learners to be recognised for different kinds of ability, and create pathways based on strength rather than a single exam result. And without exception, every teacher also described a significant gap between that vision and what is actually happening in schools. The high-stakes exam still determines transition, so teachers still teach for the exam. The cluster school system still ranks schools, so parents still push for the top schools. The pathway system that was supposed to send learners to schools matching their talents often leads to schools that lack the very facilities needed for those pathways. Teachers described living in what one called a "hybrid system": officially CBE, but structurally still shaped by the logic of the system it was meant to replace.</div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q1.</span> Does this capture the tensions you experience between what the CBE promises and what you can actually deliver?</div>
+        <div class="radio-group" id="t7q1-group">
+          <label class="radio-opt"><input type="radio" name="t7q1" value="Yes, very much"> Yes, very much</label>
+          <label class="radio-opt"><input type="radio" name="t7q1" value="Mostly yes"> Mostly yes</label>
+          <label class="radio-opt"><input type="radio" name="t7q1" value="Partly"> Partly</label>
+          <label class="radio-opt"><input type="radio" name="t7q1" value="Not really"> Not really</label>
+        </div>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q2.</span> Is there anything about the CBE or the system around it that feels misrepresented or missing?</div>
+        <textarea class="ta" id="t7q2" placeholder="Your experience of the CBE in practice..."></textarea>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q3.</span> Is there anything you would like to change or add?</div>
+        <textarea class="ta" id="t7q3" placeholder="Optional..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERALL -->
+  <div class="theme-sec" style="border-color:rgba(212,168,67,.3)">
+    <div class="theme-hdr" onclick="toggle('ov')" style="cursor:pointer">
+      <div class="th-num" style="background:var(--gold-dim);color:var(--gold);border:2px solid rgba(212,168,67,.4)">+</div>
+      <div class="th-info">
+        <div class="th-name">Overall reflections</div>
+        <div class="th-lens">Your overall view of the research</div>
+      </div>
+      <div class="th-arrow" id="arr-ov">▶</div>
+    </div>
+    <div class="theme-body" id="body-ov">
+      <div style="height:14px"></div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q1.</span> Across all seven themes, how well do you feel these summaries represent your experience overall?</div>
+        <div class="scale-labels"><span>Not at all accurately</span><span>Extremely accurately</span></div>
+        <div class="scale-wrap" id="overall-scale">
+          <button class="scale-btn" onclick="setScale(1)" data-val="1">1</button>
+          <button class="scale-btn" onclick="setScale(2)" data-val="2">2</button>
+          <button class="scale-btn" onclick="setScale(3)" data-val="3">3</button>
+          <button class="scale-btn" onclick="setScale(4)" data-val="4">4</button>
+          <button class="scale-btn" onclick="setScale(5)" data-val="5">5</button>
+          <button class="scale-btn" onclick="setScale(6)" data-val="6">6</button>
+          <button class="scale-btn" onclick="setScale(7)" data-val="7">7</button>
+        </div>
+        <input type="hidden" id="overall-score" value="">
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q2.</span> Is there anything you would like the researcher to know that was not covered in any of the themes?</div>
+        <textarea class="ta" id="ov-q2" rows="4" placeholder="Any final thoughts, corrections, or additions..."></textarea>
+      </div>
+      <div class="q-block">
+        <div class="q-label"><span class="qn">Q3.</span> Are you comfortable with these summaries being used in the final dissertation?</div>
+        <div class="radio-group" id="consent-group">
+          <label class="radio-opt"><input type="radio" name="consent" value="Yes"> Yes, I am comfortable</label>
+          <label class="radio-opt"><input type="radio" name="consent" value="Yes with changes"> Yes, with the changes I have noted above</label>
+          <label class="radio-opt"><input type="radio" name="consent" value="I need to discuss"> I would like to discuss this further</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-sec">
+    <div class="submit-t">Thank you for your time</div>
+    <div class="submit-s">When you are ready, you can copy your responses to paste into a WhatsApp message, email them directly, or print this form as a PDF to send. Your participant code will be included automatically so your responses are correctly matched.</div>
+    <div class="submit-actions">
+      <button class="btn btn-g" onclick="copyResponses()">Copy all responses</button>
+      <button class="btn btn-o" onclick="window.print()">Print as PDF</button>
+      <button class="btn btn-b" onclick="emailResponses()">Email responses</button>
+    </div>
+    <div class="success-msg" id="copy-success">Responses copied to clipboard. You can now paste them into a WhatsApp message, email, or any other document.</div>
+  </div>
+
+</div><!-- /wrap -->
+
+<script>
+// Toggle theme body
+const opened=new Set();
+function toggle(n){
+  const b=document.getElementById('body-'+n);
+  const a=document.getElementById('arr-'+n);
+  const isOpen=b.classList.toggle('open');
+  a.classList.toggle('open',isOpen);
+  if(isOpen)opened.add(n); else opened.delete(n);
+  updateProgress();
+}
+function updateProgress(){
+  const themeNums=[1,2,3,4,5,6,7];
+  const done=themeNums.filter(n=>{
+    const q1=document.querySelector(`[name="t${n}q1"]:checked`);
+    const q2=document.getElementById(`t${n}q2`)?.value?.trim();
+    return q1||q2;
+  }).length;
+  const pct=Math.round(done/7*100);
+  document.getElementById('prog-bar').style.width=pct+'%';
+  document.getElementById('prog-label').textContent=`${done} of 7 themes reviewed`;
+}
+
+// Radio styling
+document.addEventListener('change',e=>{
+  if(e.target.type==='radio'){
+    const group=e.target.closest('.radio-group');
+    if(group)group.querySelectorAll('.radio-opt').forEach(o=>o.classList.remove('selected'));
+    e.target.closest('.radio-opt')?.classList.add('selected');
+    updateProgress();
+  }
+});
+document.addEventListener('input',e=>{if(e.target.tagName==='TEXTAREA')updateProgress()});
+
+// Scale buttons
+let scaleVal='';
+function setScale(v){
+  scaleVal=String(v);
+  document.getElementById('overall-score').value=scaleVal;
+  document.querySelectorAll('.scale-btn').forEach(b=>{
+    b.classList.toggle('sel',parseInt(b.dataset.val)<=v);
+  });
+}
+
+// Collect responses
+function collectResponses(){
+  const pid=document.getElementById('pid-select').value||'[not selected]';
+  const now=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  const themes=['Adaptation Ensembles','Inclusive Utility (3P)','Structural Tensions','Lateral Collaboration','Moral Vocation','Neurodivergence Recognition','CBE Paradox'];
+  let out=`MEMBER CHECKING RESPONSES\nBeyond the Blueprint: Teachers' Adaptive Agency in CBE Kenya\nParticipant Code: ${pid}\nDate: ${now}\n${'='.repeat(60)}\n\n`;
+  for(let i=1;i<=7;i++){
+    const q1=document.querySelector(`[name="t${i}q1"]:checked`)?.value||'[not answered]';
+    const q2=document.getElementById(`t${i}q2`)?.value?.trim()||'[not answered]';
+    const q3=document.getElementById(`t${i}q3`)?.value?.trim()||'[not answered]';
+    out+=`THEME ${i}: ${themes[i-1]}\nQ1 (Accuracy): ${q1}\nQ2 (Missing/incorrect): ${q2}\nQ3 (Changes/additions): ${q3}\n\n`;
+  }
+  const score=document.getElementById('overall-score').value||'[not rated]';
+  const ov2=document.getElementById('ov-q2')?.value?.trim()||'[not answered]';
+  const consent=document.querySelector('[name="consent"]:checked')?.value||'[not answered]';
+  out+=`OVERALL REFLECTIONS\nAccuracy rating (1-7): ${score}\nAdditional comments: ${ov2}\nConsent to use: ${consent}\n\n${'='.repeat(60)}\nEnd of responses`;
+  return out;
+}
+
+function copyResponses(){
+  const txt=collectResponses();
+  navigator.clipboard.writeText(txt).then(()=>{
+    const msg=document.getElementById('copy-success');
+    msg.style.display='block';
+    setTimeout(()=>msg.style.display='none',5000);
+  }).catch(()=>{
+    const ta=document.createElement('textarea');
+    ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    alert('Responses copied to clipboard.');
+  });
+}
+
+function emailResponses(){
+  const pid=document.getElementById('pid-select').value||'Participant';
+  const subject=encodeURIComponent(`Member Checking Responses - ${pid} - Beyond the Blueprint`);
+  const body=encodeURIComponent(collectResponses());
+  window.location.href=`mailto:b.mungai.1@research.gla.ac.uk?subject=${subject}&body=${body}`;
+}
+
+function submitForm(){
+  copyResponses();
+  emailResponses();
+}
+</script>
+</body>
+</html>
