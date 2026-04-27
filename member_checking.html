@@ -482,6 +482,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 </div><!-- /wrap -->
 
 <script>
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwmcTMcHoZJcMA7-XfmG8Rc__oT84nYmBaZUjp1mdzSRc6CYVRqKizqTNDg2OhWBrRy/exec';
 // Toggle theme body
 const opened=new Set();
 function toggle(n){
@@ -544,6 +545,48 @@ function collectResponses(){
   return out;
 }
 
+function submitToSheet() {
+  const pid = document.getElementById('pid-select').value || '';
+  const payload = {
+    pid,
+    t1q1: document.querySelector('[name="t1q1"]:checked')?.value || '',
+    t1q2: document.getElementById('t1q2')?.value?.trim() || '',
+    t1q3: document.getElementById('t1q3')?.value?.trim() || '',
+    t2q1: document.querySelector('[name="t2q1"]:checked')?.value || '',
+    t2q2: document.getElementById('t2q2')?.value?.trim() || '',
+    t2q3: document.getElementById('t2q3')?.value?.trim() || '',
+    t3q1: document.querySelector('[name="t3q1"]:checked')?.value || '',
+    t3q2: document.getElementById('t3q2')?.value?.trim() || '',
+    t3q3: document.getElementById('t3q3')?.value?.trim() || '',
+    t4q1: document.querySelector('[name="t4q1"]:checked')?.value || '',
+    t4q2: document.getElementById('t4q2')?.value?.trim() || '',
+    t4q3: document.getElementById('t4q3')?.value?.trim() || '',
+    t5q1: document.querySelector('[name="t5q1"]:checked')?.value || '',
+    t5q2: document.getElementById('t5q2')?.value?.trim() || '',
+    t5q3: document.getElementById('t5q3')?.value?.trim() || '',
+    t6q1: document.querySelector('[name="t6q1"]:checked')?.value || '',
+    t6q2: document.getElementById('t6q2')?.value?.trim() || '',
+    t6q3: document.getElementById('t6q3')?.value?.trim() || '',
+    t7q1: document.querySelector('[name="t7q1"]:checked')?.value || '',
+    t7q2: document.getElementById('t7q2')?.value?.trim() || '',
+    t7q3: document.getElementById('t7q3')?.value?.trim() || '',
+    overall_score: document.getElementById('overall-score')?.value || '',
+    ov_q2: document.getElementById('ov-q2')?.value?.trim() || '',
+    consent: document.querySelector('[name="consent"]:checked')?.value || ''
+  };
+  fetch(SHEET_URL, {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  }).then(() => {
+    const msg = document.getElementById('copy-success');
+    msg.textContent = 'Responses submitted successfully to the research database. Thank you.';
+    msg.style.display = 'block';
+    setTimeout(() => msg.style.display = 'none', 6000);
+  }).catch(() => {
+    alert('Submission failed. Please use the Copy button and send your responses via WhatsApp.');
+  });
+}
+
 function copyResponses(){
   const txt=collectResponses();
   navigator.clipboard.writeText(txt).then(()=>{
@@ -561,13 +604,14 @@ function emailResponses(){
   const pid=document.getElementById('pid-select').value||'Participant';
   const subject=encodeURIComponent(`Member Checking Responses - ${pid} - Beyond the Blueprint`);
   const body=encodeURIComponent(collectResponses());
-  window.location.href=`mailto:b.mungai.1@research.gla.ac.uk?subject=${subject}&body=${body}`;
+  window.location.href=`mailto:mutukupaul76@gmail.com?subject=${subject}&body=${body}`;
 }
 
-function submitForm(){
+function submitForm() {
+  submitToSheet();
   copyResponses();
-  emailResponses();
 }
+
 </script>
 </body>
 </html>
