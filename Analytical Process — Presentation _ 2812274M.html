@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)file:///C:/Users/admin/Downloads/analysis_oral_presentation.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytical Process — Oral Presentation | 2812274M</title>
+<link href="./Analytical Process — Presentation _ 2812274M_files/css2" rel="stylesheet">
+<style>
+:root{
+  --navy:#1A2B4A;--gold:#C49A22;--teal:#2E6B5E;--slate:#4A5A72;
+  --lgold:#FDF6E3;--lnavy:#EAF0F8;--lgrey:#F5F7FA;--white:#FFFFFF;
+  --text:#1a1a2e;--tdim:#4a5568;--tmut:#718096;
+  --fxs:10px;--fsm:11.5px;--fb:12.5px;--fmd:14px;--flg:17px;--fxl:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',sans-serif;background:#fff;color:var(--text);font-size:var(--fb);line-height:1.6;padding:0}
+
+/* PRINT */
+@media print{
+  .no-print{display:none}
+  .page-break{page-break-before:always}
+  body{font-size:11px}
+  .section{margin-bottom:20px}
+}
+
+/* LAYOUT */
+.cover{background:var(--navy);color:#fff;padding:40px 48px;min-height:180px}
+.cover-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.2}
+.cover-sub{font-size:var(--fsm);color:rgba(255,255,255,.7);line-height:1.7}
+.cover-gold{color:var(--gold);font-weight:600}
+.wrap{max-width:960px;margin:0 auto;padding:32px 40px}
+
+/* SECTIONS */
+.section{margin-bottom:36px}
+.sec-title{font-family:'Playfair Display',serif;font-size:var(--flg);color:var(--navy);font-weight:700;border-bottom:2px solid var(--gold);padding-bottom:6px;margin-bottom:14px}
+.sec-sub{font-family:'Playfair Display',serif;font-size:var(--fmd);color:var(--teal);font-weight:600;margin-bottom:8px;margin-top:16px}
+p.body-text{font-size:var(--fsm);color:var(--tdim);line-height:1.7;margin-bottom:9px}
+p.body-text strong{color:var(--navy);font-weight:600}
+
+/* STEPS */
+.steps{counter-reset:step;margin:12px 0}
+.step{display:flex;gap:14px;margin-bottom:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;min-width:28px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-body{flex:1}
+.step-body .step-title{font-weight:600;color:var(--navy);font-size:var(--fsm);margin-bottom:3px}
+.step-body .step-text{font-size:var(--fxs);color:var(--tdim);line-height:1.65}
+
+/* SCRIPT BOX */
+.script{background:var(--lgold);border-left:4px solid var(--gold);border-radius:6px;padding:14px 16px;margin:12px 0 16px}
+.script-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:6px}
+.script-text{font-size:var(--fsm);color:var(--text);line-height:1.7;font-style:italic}
+
+/* TABLES */
+.tw{overflow-x:auto;margin:10px 0 16px}
+table{border-collapse:collapse;width:100%;font-size:var(--fxs)}
+thead th{background:var(--navy);color:#fff;padding:7px 10px;text-align:left;font-weight:600;font-size:9px;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+tbody tr:nth-child(even){background:var(--lgrey)}
+tbody tr:hover{background:var(--lnavy)}
+td{padding:7px 10px;border-bottom:1px solid #e2e8f0;vertical-align:top;line-height:1.55}
+td.pid{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10px;white-space:nowrap}
+td.quote{font-style:italic;color:var(--tdim);max-width:280px}
+td.code{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--teal);font-weight:500}
+td.level{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+td.sem{color:var(--teal)}.td.lat{color:#6b5bab}
+td.rationale{font-size:10px;color:var(--tmut);max-width:200px}
+td.theme{font-weight:600;color:var(--navy);font-size:10px}
+
+/* PID BADGES */
+.p01{color:#4e8fca}.p02{color:#4aab8a}.p03{color:#d47843}.p04{color:#6b5bab}
+.p05{color:#c45b5b}.p06{color:#d4a843}.p07{color:#6bab6b}.p08{color:#ab6b9a}.p09{color:#5a9ab5}
+
+/* MERGE TABLE */
+.merge-row td{padding:8px 10px;border-bottom:1px solid #e2e8f0;vertical-align:top}
+td.v1codes{font-size:9.5px;color:var(--tmut);font-family:'IBM Plex Mono',monospace;line-height:1.6}
+td.arrow{text-align:center;color:var(--gold);font-size:16px;vertical-align:middle;width:30px}
+td.v2code{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--teal);font-weight:600}
+td.why{font-size:10px;color:var(--tdim);line-height:1.55}
+
+/* THEME CARDS */
+.theme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin:12px 0}
+.tcard{border:1px solid #e2e8f0;border-radius:8px;padding:12px 14px;border-top:3px solid}
+.tcard .tc-num{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.tcard .tc-name{font-family:'Playfair Display',serif;font-size:13px;color:var(--navy);font-weight:600;margin-bottom:6px;line-height:1.3}
+.tcard .tc-codes{font-size:10px;color:var(--tmut);line-height:1.6}
+
+/* DIVIDER */
+.dv{height:1px;background:#e2e8f0;margin:20px 0}
+
+/* TABS NAV (screen only) */
+.nav-bar{background:var(--lgrey);padding:10px 40px;border-bottom:1px solid #e2e8f0;display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50}
+.nav-btn{background:none;border:1px solid #cbd5e0;border-radius:20px;padding:5px 14px;font-family:'IBM Plex Sans',sans-serif;font-size:11px;cursor:pointer;color:var(--slate);transition:all .15s}
+.nav-btn:hover,.nav-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+@media print{.nav-bar{display:none}}
+
+/* MEMO */
+.memo{background:#f8f4ff;border-left:4px solid #6b5bab;border-radius:6px;padding:12px 14px;margin:10px 0}
+.memo-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#6b5bab;margin-bottom:5px}
+.memo-text{font-size:var(--fxs);color:var(--tdim);line-height:1.65}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-title">Analytical Process — Oral Presentation</div>
+  <div class="cover-sub">
+    <span class="cover-gold">Beyond the Blueprint: Exploring Teachers' Adaptive Agency in Maximising Inclusive Utility under Kenya's CBC</span><br>
+    Beatrice Wairimu Mungai &nbsp;·&nbsp; 2812274M &nbsp;·&nbsp; MSc Education &nbsp;·&nbsp; University of Glasgow<br>
+    Supervisory Meeting &nbsp;·&nbsp; Wednesday 27 May 2026
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-bar no-print">
+  <button class="nav-btn active" onclick="scrollTo(&#39;process&#39;)">Process Overview</button>
+  <button class="nav-btn" onclick="scrollTo(&#39;phase1&#39;)">Phase 1: Familiarisation</button>
+  <button class="nav-btn" onclick="scrollTo(&#39;phase2&#39;)">Phase 2: Initial Codes</button>
+  <button class="nav-btn" onclick="scrollTo(&#39;phase3&#39;)">Phase 3: Consolidation</button>
+  <button class="nav-btn" onclick="scrollTo(&#39;phase4&#39;)">Phase 4: Themes</button>
+  <button class="nav-btn" onclick="scrollTo(&#39;codebook&#39;)">Final Codebook</button>
+</div>
+
+<div class="wrap">
+
+<!-- SECTION 0: WHAT THIS IS -->
+<div class="section" id="process">
+  <div class="sec-title">Overview: How I Conducted the Analysis</div>
+  <p class="body-text">This document provides a step-by-step account of how I moved from nine interview transcripts to the seven final themes presented in Chapter 4. It is organised around the six phases of Braun and Clarke's (2006) reflexive thematic analysis, adapted to my abductive analytic logic. Each phase is documented with specific evidence of what I did, what decisions I made, and why.</p>
+
+  <div class="script">
+    <div class="script-label">What I will say to Matthew</div>
+    <div class="script-text">"I want to walk you through exactly how I did the analysis — not the finished product, but the process. I'll show you the actual decisions I made at each stage, the codes I generated from individual participants, how I consolidated them, and how I arrived at the seven themes. Everything here is documented so the process is reconstructable."</div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Familiarisation — reading all 9 transcripts before coding anything</div><div class="step-text">I read each transcript twice in full before assigning a single code. I kept a reflexive journal during this phase, noting what struck me, what surprised me, and where my own experience as a Kenyan educator threatened to shape my reading before the data could.</div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Initial coding — 47 open codes from raw participant extracts</div><div class="step-text">I went line by line through each transcript and assigned initial codes. These were close to the participants' own language. I did not yet think about themes. I documented every coding decision in the spreadsheet below.</div></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Focused coding — consolidating 47 codes into 22</div><div class="step-text">After completing initial coding across all 9 transcripts, I looked across the codes and identified clusters. Where codes were doing the same analytical work, I merged them. Where codes required latent-level interpretation rather than surface description, I flagged them. This produced Codebook v2.</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Theme construction — 7 candidate themes from 22 focused codes</div><div class="step-text">I mapped focused codes onto candidate themes, wrote analytic memos for each theme explaining the interpretive logic, and checked each theme against the full dataset for confirming and disconfirming evidence.</div></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-title">Theme review and refinement — checking against data and RQs</div><div class="step-text">I reviewed each theme against every transcript to ensure it held. Where evidence was thin or a code did not fit neatly, I documented the decision. I then checked each theme was addressable by the interview data and aligned to at least one RQ.</div></div></div>
+    <div class="step"><div class="step-num">6</div><div class="step-body"><div class="step-title">Member checking — 4 participants confirmed theme summaries</div><div class="step-text">I sent plain-language summaries of all 7 themes to T01, T03, T07, and T09 via WhatsApp. All four responded, rated overall accuracy at 6–7 out of 7, and added three substantive qualifications that I incorporated into the final analysis.</div></div></div>
+  </div>
+</div>
+
+<div class="dv page-break"></div>
+
+<!-- SECTION 1: PHASE 1 -->
+<div class="section" id="phase1">
+  <div class="sec-title">Phase 1: Familiarisation — Reflexive Journal Entries</div>
+  <p class="body-text">Before coding, I read all nine transcripts in full twice. The following journal entries document what I noticed, what surprised me, and what analytical risks I identified in my own reading at this stage.</p>
+
+  <div class="script">
+    <div class="script-label">What I will say</div>
+    <div class="script-text">"I deliberately did not code anything until I had read the whole corpus. This is Braun and Clarke's requirement for reflexive TA — you have to know what you are dealing with before you start assigning meaning. These are the actual notes I made during familiarisation."</div>
+  </div>
+
+  <div class="memo"><div class="memo-label">Familiarisation Note — After reading T01 and T08</div><div class="memo-text">What struck me immediately: both T01 (22 years, urban) and T08 (3 years public, rural) described arriving early without pay or buying materials from their own pocket. This is not an individual story — it is a structural pattern. I noticed I was drawn to this because it confirms something I suspected from my own knowledge of the Kenyan system. I flagged this as a potential analytical bias risk: I need to make sure I am reading the data, not confirming what I already believe. Decision: I will code this as "personal financial investment" at the semantic level, and then return to ask whether there is a latent dimension that the semantic code does not capture.</div></div>
+
+  <div class="memo"><div class="memo-label">Familiarisation Note — After reading T03</div><div class="memo-text">T03's account of the boy who cannot copy from the board is the most analytically dense transcript in the corpus. Three years of unresolved effort without any institutional support. What is striking is not the complaint — it is the flatness of "I don't know what to do." This is a teacher who has reached the limit of their adaptive capacity without any system response. I am also noticing that T03 spontaneously describes what the child can do (drawing, colouring, memorising) before I ask about strengths. This is analytically significant and I need a code for it that is separate from the adaptation strategies. It is a framing move, not a strategy.</div></div>
+
+  <div class="memo"><div class="memo-label">Familiarisation Note — After reading T04 and T07</div><div class="memo-text">T04 is different from the others. The SNE unit context produces a qualitatively different kind of account — there is an IEP, there are gadgets from KISE, there is a pre-vocational programme. But the most striking thing is that T04 is describing a pipeline that is being blocked at the head teacher and parent level. The specialist provision exists; the learners who need it are not being referred. I need to be careful not to let T04's data pull the adaptation theme toward specialist practice. The comparison value is the highest in this transcript. T07 has a co-teacher — the only one described as structurally enabling rather than coincidental.</div></div>
+</div>
+
+<div class="dv page-break"></div>
+
+<!-- SECTION 2: INITIAL CODING PER PARTICIPANT -->
+<div class="section" id="phase2">
+  <div class="sec-title">Phase 2: Initial Coding — Selected Extracts Per Participant</div>
+  <p class="body-text">The table below shows selected extracts from each participant, the initial code I assigned, the coding level (semantic or latent), and the analytical rationale. This is not the complete coding spreadsheet — it shows the key coding decisions for each participant across the analytical dimensions that became most significant.</p>
+
+  <div class="script">
+    <div class="script-label">What I will say</div>
+    <div class="script-text">"I coded each transcript line by line. This table shows the specific extracts I worked with and the codes I gave them. I made a note of my reasoning at the time. You can see that some codes are straightforwardly descriptive — what I call semantic codes — and others required me to interpret what the extract implied rather than what it stated. Those are the latent codes."</div>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead>
+        <tr>
+          <th>PID</th>
+          <th>Extract (verbatim)</th>
+          <th>Initial Code</th>
+          <th>Level</th>
+          <th>Analytical Rationale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- T01 -->
+        <tr>
+          <td class="pid p01">T01</td>
+          <td class="quote">"The grouping is heterogeneous. They sit in mixed ability. Competition is really discouraged in the system; it's more of collaboration."</td>
+          <td class="code">grouping_mixed_ability</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">Direct description of a deliberate seating/grouping strategy. Teacher names the rationale (anti-competition) without prompting.</td>
+        </tr>
+        <tr>
+          <td class="pid p01">T01</td>
+          <td class="quote">"It's a hybrid. It's a hybrid of what is the intended and what is actual."</td>
+          <td class="code">hybrid_system_coinage</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">Participant's own conceptual invention. "Hybrid" is not my term — it is T01's. This is insider language with strong analytic purchase. Flagged as a candidate for latent development in v2.</td>
+        </tr>
+        <tr>
+          <td class="pid p01">T01</td>
+          <td class="quote">"I'll come to school every Saturday at 7:00 without anyone paying me anything, just to try and reach out to the child."</td>
+          <td class="code">unpaid_extra_time</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">Semantic code for the behaviour. Note: semantic code alone does not capture why. Flagged for latent revisit — is there a moral logic here that differs from professional obligation?</td>
+        </tr>
+        <tr>
+          <td class="pid p01">T01</td>
+          <td class="quote">"Labels also constitute part of the diversity. Once a label sticks long enough, you almost want to change because you move from one class to the next being labelled as this child, the difficult child."</td>
+          <td class="code">labelling_effects_awareness</td>
+          <td class="level" style="color:#6b5bab">Latent</td>
+          <td class="rationale">T01 is theorising, not just describing. The awareness of how labels travel across classrooms and shape expectations is latent-level analysis by the participant themselves.</td>
+        </tr>
+        <!-- T02 -->
+        <tr>
+          <td class="pid p02">T02</td>
+          <td class="quote">"We have very severe cases of dyslexia and dysgraphia — any situation where learners cannot construct language sentences. On the dyscalculia, confusing multiplication and addition. It's very common and very severe."</td>
+          <td class="code">clinical_label_use_without_diagnosis</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">Teacher is naming clinical categories without formal diagnostic support. This is one of the strongest instances of "identification without diagnosis" in the corpus.</td>
+        </tr>
+        <tr>
+          <td class="pid p02">T02</td>
+          <td class="quote">"I carry projectors almost as many times as I can to tap into those learners who are visual."</td>
+          <td class="code">visual_aid_personal_provision</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">Specific adaptation strategy. "Almost as many times as I can" signals resource constraint without naming it. Will revisit in v2 — this may need a combined code with personal financial investment.</td>
+        </tr>
+        <tr>
+          <td class="pid p02">T02</td>
+          <td class="quote">"This is a very good curriculum. I support it 100%. Mind you, this curriculum is not competitive; it is competency-based."</td>
+          <td class="code">CBE_explicit_endorsement</td>
+          <td class="level" style="color:#6b5bab">Latent</td>
+          <td class="rationale">The unconditional endorsement alongside extensive critique in the same interview generates a latent code — this is a double consciousness (endorsement + critique) that no individual statement captures alone.</td>
+        </tr>
+        <tr>
+          <td class="pid p02">T02</td>
+          <td class="quote">"You are forced to teach a mathematics lesson in Kiswahili at times. That's the first greatest barrier, so you have to reduce your content to a learner to a micro level."</td>
+          <td class="code">translanguaging_forced_not_chosen</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">Compare with T03's translanguaging — T03 describes it as a diagnostic insight; T02 frames it as a structural necessity. Same practice, different phenomenology. Both coded initially as translanguaging but the distinction matters.</td>
+        </tr>
+        <!-- T03 -->
+        <tr>
+          <td class="pid p03">T03</td>
+          <td class="quote">"I've been with him for three years now. I've tried my best, but I don't know what to do."</td>
+          <td class="code">teacher_isolation_no_specialist_support</td>
+          <td class="level" style="color:#6b5bab">Latent</td>
+          <td class="rationale">Latent code: the statement is simple but implies three years of unresolved effort without institutional response. The duration is the analytical point — this is not a new problem awaiting referral. It is a chronic absence of support.</td>
+        </tr>
+        <tr>
+          <td class="pid p03">T03</td>
+          <td class="quote">"Like let's say I put a question in English, and then I explain the same question in Kiswahili, you will see his hand up, and he answers correctly."</td>
+          <td class="code">translanguaging_as_diagnostic_insight</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">Different from T02's translanguaging code. Here the practice reveals the learner's competence hidden by the medium of instruction. The adaptation produces an insight, not just access. Flagged for UDL representation cluster in v2.</td>
+        </tr>
+        <tr>
+          <td class="pid p03">T03</td>
+          <td class="quote">"Even shaping letters, he used to shape them very well. He also liked drawing and colouring. He can make copies of a whole chart, well drawn and coloured."</td>
+          <td class="code">spontaneous_strength_observation</td>
+          <td class="level" style="color:#6b5bab">Latent</td>
+          <td class="rationale">Critical latent code. T03 has not been asked about strengths — this observation arises spontaneously in the context of describing a learner's difficulties. This is the strength-turn without any training in neurodiversity frameworks. One of the most analytically significant codes in the corpus.</td>
+        </tr>
+        <tr>
+          <td class="pid p03">T03</td>
+          <td class="quote">"There is another principle that we use here in school: I do, we do, then you do. Yeah, it works."</td>
+          <td class="code">scaffolding_gradual_release</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">Explicit naming of a scaffolding framework. Teacher has not been told about this as a pedagogical strategy — they have named it independently. Connected to Vygotsky's ZPD without knowing Vygotsky.</td>
+        </tr>
+        <!-- T04 -->
+        <tr>
+          <td class="pid p04">T04</td>
+          <td class="quote">"When teaching learners with special needs, it comes from your heart. Kama huna roho ya utu, ata kama ume-train on special needs, you cannot teach."</td>
+          <td class="code">vocation_moral_not_professional</td>
+          <td class="level" style="color:#6b5bab">Latent</td>
+          <td class="rationale">Latent code: training is necessary but insufficient. The necessary condition named by T04 is moral orientation, not qualification. This is the clearest articulation of "ni moyo" in the corpus and anchors the moral vocation theme.</td>
+        </tr>
+        <tr>
+          <td class="pid p04">T04</td>
+          <td class="quote">"The biggest problem comes from the head of institutions who are not ready to assist. But now I have a new head of institution who is very cooperative. Now we are very much okay."</td>
+          <td class="code">leadership_as_enabler_or_barrier</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">The contrast between two head teachers in the same account is the analytical point. A single leadership change produced a qualitative shift in what T04 could do. This codes at the mesosystem level in ecological terms.</td>
+        </tr>
+        <tr>
+          <td class="pid p04">T04</td>
+          <td class="quote">"One time last year, we made a chicken coop with the learner. I bought a hammer, a saw, msumeno. We got materials from broken desks."</td>
+          <td class="code">personal_material_investment_vocational</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">T04 purchased tools from personal funds for a vocational lesson. This is simultaneously a semantic code (the behaviour) and a latent signifier of the moral vocation — the adaptation required financial sacrifice beyond any professional expectation.</td>
+        </tr>
+        <tr>
+          <td class="pid p04">T04</td>
+          <td class="quote">"Some parents, they don't accept that my child has special needs. When I tried to talk with the headteacher, he said, Leave these children, let them stay."</td>
+          <td class="code">referral_blocked_by_parent_and_HT</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">Two-level barrier: parent denial and leadership dismissal. T04's unit is adjacent to the mainstream school — the barrier is not that there is no specialist provision; it is that the pipeline to that provision is blocked. Critical for accurate reading of T04's positionality.</td>
+        </tr>
+        <!-- T05 -->
+        <tr>
+          <td class="pid p05">T05</td>
+          <td class="quote">"A student who reported in Grade 1 is now in Grade 10. That tells you we are almost 10 years. And we are still retooling."</td>
+          <td class="code">retooling_failure_decade_long</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">The ten-year timeline is the analytical point. This is not a recent gap — it is a structural failure that has persisted across the entire implementation period. One of the most damning quantifications in the corpus.</td>
+        </tr>
+        <tr>
+          <td class="pid p05">T05</td>
+          <td class="quote">"To be honest, we were teaching the learners to pass the exam. And since we have been doing it for a while, we are still doing it."</td>
+          <td class="code">exam_logic_persisting_under_CBE</td>
+          <td class="level" style="color:#6b5bab">Latent</td>
+          <td class="rationale">Pedagogical inertia as a latent phenomenon: the old system has colonised the new one. "We are not supposed to" (implied) shows awareness of the contradiction. This is not ignorance; it is systemic drift that the teacher recognises but cannot individually arrest.</td>
+        </tr>
+        <tr>
+          <td class="pid p05">T05</td>
+          <td class="quote">"Schemes of work are just done because we are being followed. If nobody's coming to check them, we don't do that."</td>
+          <td class="code">formal_structures_compliance_only</td>
+          <td class="level" style="color:#6b5bab">Latent</td>
+          <td class="rationale">Critical latent code for the cooperation vs collaboration distinction. Formal structures are performed for inspection, not used for professional development. The contrast with WhatsApp groups in the same interview makes the distinction analytically clear.</td>
+        </tr>
+        <!-- T06 -->
+        <tr>
+          <td class="pid p06">T06</td>
+          <td class="quote">"Even when I explain to him there is no school today, he insists on going. I think it is because of the teacher."</td>
+          <td class="code">belonging_as_presence_driver</td>
+          <td class="level" style="color:#6b5bab">Latent</td>
+          <td class="rationale">Parent testimony relayed by teacher. The affective pull toward the classroom is not about curriculum — it is about the teacher-learner relationship. Latent code: this is belonging operationalised as a presence indicator. One of the strongest pieces of evidence for the P1 dimension.</td>
+        </tr>
+        <tr>
+          <td class="pid p06">T06</td>
+          <td class="quote">"They will not get the concept, but they will love the lesson. You will find that in class, they are very attentive. They are willing, ni vile hawashiki."</td>
+          <td class="code">participation_without_comprehension</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">T06 is making a sophisticated implicit distinction between participation (P2) and cognitive acquisition (not yet P3). Participation here does not require comprehension — it requires willingness and emotional safety. Key evidence for P2 operationalisation.</td>
+        </tr>
+        <!-- T07 -->
+        <tr>
+          <td class="pid p07">T07</td>
+          <td class="quote">"We always have another teacher in the room. The co-teacher will make sure that the learner who is differently abled will get into the group."</td>
+          <td class="code">co_teaching_structured_differentiation</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">Co-teaching enables real-time differentiated support without extracting the learner from the group. Distinct from all other collaborative practices in the sample — this is genuine collaboration, not cooperation.</td>
+        </tr>
+        <tr>
+          <td class="pid p07">T07</td>
+          <td class="quote">"When she was in Grade 1, she could not communicate right, but right now you can hear her calling teacher. She can come tell you, Huyu anapiga."</td>
+          <td class="code">progression_longitudinal_communication</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">Two-year progression arc documented by the same teacher. This is the clearest example of P3 (progression) measured against individual baseline rather than curriculum norm. The milestone (initiating verbal communication) is not in the CBE framework. T07 constructed it from observation.</td>
+        </tr>
+        <!-- T08 -->
+        <tr>
+          <td class="pid p08">T08</td>
+          <td class="quote">"It is costly, but now you have to do it. You just do it. You just close your eyes and do it."</td>
+          <td class="code">resilience_moral_compulsion_not_calculation</td>
+          <td class="level" style="color:#6b5bab">Latent</td>
+          <td class="rationale">"Close your eyes and do it" is phenomenologically precise: the teacher does not weigh cost and decide it is worth it. They suspend the calculation. This is the latent logic of moral vocation expressed in its most direct form. Strongest anchor for the T5 theme.</td>
+        </tr>
+        <tr>
+          <td class="pid p08">T08</td>
+          <td class="quote">"Monanda had taken the sports pathway; it does not have a field, no teachers. The school has 13 learners."</td>
+          <td class="code">pathway_empty_designation</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">Specific empirical instance of the pathway-rhetoric-reality gap. The pathway exists on paper and is non-functional on the ground. T08's rural context makes this the most visible exposure of the CBE paradox in the corpus.</td>
+        </tr>
+        <tr>
+          <td class="pid p08">T08</td>
+          <td class="quote">"Attendance changes. In January we have very few pupils. When we approach the planting season, they often come back to school to escape the farm labour."</td>
+          <td class="code">presence_seasonal_poverty_driven</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">Rural poverty drives attendance patterns directly. Farm labour cycle as an external macrosystem constraint on P1. Counterpoint to urban near-universal attendance — shows context-dependence of the first P.</td>
+        </tr>
+        <!-- T09 -->
+        <tr>
+          <td class="pid p09">T09</td>
+          <td class="quote">"Instead of him writing because he might take the whole day, he can answer orally. If it's something to do with drawing and writing, we can do drawing and reading. I can also make some matching."</td>
+          <td class="code">oral_alternatives_multimodal_expression</td>
+          <td class="level sem">Semantic</td>
+          <td class="rationale">Three alternative response modalities offered without prompting in a single sentence. This is the phenomenology of adaptive expertise — rapid generation of options under uncertainty. Key evidence for UDL expression cluster.</td>
+        </tr>
+        <tr>
+          <td class="pid p09">T09</td>
+          <td class="quote">"My co-teacher is an SNE teacher. It was just a coincidence that she's an SNE."</td>
+          <td class="code">co_teaching_incidental_not_designed</td>
+          <td class="level" style="color:#6b5bab">Latent</td>
+          <td class="rationale">"Coincidence" is the analytically important word. The most enabling collaborative arrangement in the sample was not designed — it arose by chance. Latent implication: the system does not produce this by design. Strongest evidence for the ecological argument about incidental collaboration.</td>
+        </tr>
+        <tr>
+          <td class="pid p09">T09</td>
+          <td class="quote">"When they are accepted by others, they try. But if they feel that they are neglected, they withdraw."</td>
+          <td class="code">belonging_enables_participation</td>
+          <td class="level" style="color:#6b5bab">Latent</td>
+          <td class="rationale">T09 is theorising the causal chain: belonging → engagement → exposure → potential acquisition. This is Vygotsky's social mediation logic without Vygotsky. Latent code for the P2 dimension of inclusive utility.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="dv page-break"></div>
+
+<!-- SECTION 3: CONSOLIDATION -->
+<div class="section" id="phase3">
+  <div class="sec-title">Phase 3: Code Consolidation — From 47 Initial Codes to 22 Focused Codes</div>
+  <p class="body-text">After completing initial coding across all nine transcripts, I reviewed the full list of 47 codes and identified where codes were doing overlapping analytical work. The table below shows the key merging decisions and the reasoning behind each.</p>
+
+  <div class="script">
+    <div class="script-label">What I will say</div>
+    <div class="script-text">"At this point I had 47 codes and needed to ask which ones were genuinely distinct and which were doing the same analytical work under different labels. I did not merge codes mechanically — I checked each merge decision against the data to make sure the merged code still captured both original codes accurately."</div>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead>
+        <tr>
+          <th>V1 Codes (merged)</th>
+          <th style="width:30px"></th>
+          <th>V2 Focused Code</th>
+          <th>Reason for merging</th>
+          <th>What was preserved</th>
+        </tr>
+      </thead>
+      <tbody class="merge-row">
+        <tr>
+          <td class="v1codes">visual_aid_personal_provision<br>projector_personal_phone<br>pictures_from_internet<br>wall_charts_teacher_made</td>
+          <td class="arrow">→</td>
+          <td class="v2code">visual_multimodal</td>
+          <td class="why">All four codes describe teachers making content visually accessible through different media. The analytical distinction is not between projector and wall chart — it is between visual modality and verbal modality. The resourcing dimension (personal cost) is retained in the coding spreadsheet notes.</td>
+          <td class="why">Resourcing context noted per extract; origin of materials documented</td>
+        </tr>
+        <tr>
+          <td class="v1codes">translanguaging_forced_not_chosen (T02)<br>translanguaging_as_diagnostic_insight (T03)<br>language_switching_individual_initiative</td>
+          <td class="arrow">→</td>
+          <td class="v2code">translanguaging</td>
+          <td class="why">Retained as a single focused code but with a notation that the phenomenology differs: T02 describes it as structural necessity; T03 describes it as diagnostic tool. The code covers both but the distinction is preserved in the extract-level memo for use in the Theme 1 analysis.</td>
+          <td class="why">Phenomenological distinction preserved in memo notes; both T02 and T03 extracts cited</td>
+        </tr>
+        <tr>
+          <td class="v1codes">coming_in_6am_saturdays<br>staying_late_lunch_tutorials<br>unpaid_extra_time_generic</td>
+          <td class="arrow">→</td>
+          <td class="v2code">unpaid_extra_time</td>
+          <td class="why">All three describe the same category of behaviour — uncompensated time given to learners beyond contractual obligation. Specific instances retained in extract-level documentation.</td>
+          <td class="why">T01 Saturday detail, T09 lunch break detail kept as illustrative instances</td>
+        </tr>
+        <tr>
+          <td class="v1codes">CBE_explicit_endorsement (T02)<br>CBC_goodwill_despite_critique (T05)<br>curriculum_ideals_valued (T09)</td>
+          <td class="arrow">→</td>
+          <td class="v2code">CBE_goodwill_despite_constraints [LATENT]</td>
+          <td class="why">The focused code is latent because the pattern only emerges when you read multiple accounts together. No single extract states "I endorse CBE despite its failures" — the double-consciousness is a structural pattern across the corpus, not a statement by any one participant.</td>
+          <td class="why">Individual instances kept; latent status flagged</td>
+        </tr>
+        <tr>
+          <td class="v1codes">formal_structures_compliance_only (T05)<br>subject_panels_attended_not_actioned<br>schemes_of_work_for_inspection</td>
+          <td class="arrow">→</td>
+          <td class="v2code">cooperation_vs_collaboration [LATENT]</td>
+          <td class="why">These codes all point to the same latent phenomenon: formal collaboration structures are performed for institutional visibility while informal networks carry the actual professional work. The Harris (2013) distinction between cooperation and collaboration maps precisely onto this pattern. Introduced as a latent code at the v2 stage.</td>
+          <td class="why">T05 extract retained as anchor; Harris (2013) noted as sensitising lens</td>
+        </tr>
+        <tr>
+          <td class="v1codes">clinical_label_use_without_diagnosis (T02)<br>eye_hand_coordination_observation (T03)<br>ADHD_type_attention_described (T05, T01)</td>
+          <td class="arrow">→</td>
+          <td class="v2code">identification_without_diagnosis</td>
+          <td class="why">All describe the same default operating condition: teachers recognising neurodivergent profiles through observation, in the absence of formal clinical or specialist diagnostic support. The specific profiles (dyslexia, coordination difficulties, attention difficulties) are preserved as illustrative instances.</td>
+          <td class="why">Specific profile descriptions retained per participant for Theme 6 analysis</td>
+        </tr>
+        <tr>
+          <td class="v1codes">spontaneous_strength_observation (T03)<br>art_sport_oral_as_competency (T06, T07)<br>using_learner_strengths_as_entry_point</td>
+          <td class="arrow">→</td>
+          <td class="v2code">strength_based_framing [LATENT]</td>
+          <td class="why">This is a latent code because the strength-turn was spontaneous — not in response to a question about strengths. The analytical significance is precisely that it arose without prompting and without formal training in the neurodiversity paradigm. Coded as latent to signal it is an implied orientation, not a stated strategy.</td>
+          <td class="why">T03's unprompted description retained as primary anchor</td>
+        </tr>
+        <tr>
+          <td class="v1codes">ni_moyo_teaching_from_heart (T04)<br>child_first_despite_exhaustion (T01, T09)<br>vocation_moral_not_professional</td>
+          <td class="arrow">→</td>
+          <td class="v2code">vocation_heart [LATENT]</td>
+          <td class="why">Cross-participant latent code. T04 states it directly ("ni moyo"); T01 and T09 imply it through behaviour (Saturdays, lunch breaks). The code captures the moral orientation that sustains adaptive effort — present in all 9 transcripts at some level even where not explicitly named.</td>
+          <td class="why">T04 "ni moyo" as explicit anchor; other participants as latent instances</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="script">
+    <div class="script-label">On codes I dropped entirely</div>
+    <div class="script-text">"I also dropped some codes from v1. 'Flashcards' was absorbed into visual_multimodal because it was doing the same work. 'Consulting lower primary teacher' was absorbed into subject_panels — it is a form of the same lateral knowledge-seeking. 'ADHD-type attention issues' was absorbed into identification_without_diagnosis because the analytical point is the absence of diagnosis, not the specific profile type. None of these drops lost any data — they are all documented in the full coding spreadsheet."</div>
+  </div>
+</div>
+
+<div class="dv page-break"></div>
+
+<!-- SECTION 4: THEME CONSTRUCTION -->
+<div class="section" id="phase4">
+  <div class="sec-title">Phase 4: Theme Construction and Analytic Memos</div>
+  <p class="body-text">From 22 focused codes, I constructed 7 candidate themes. For each theme, I wrote an analytic memo documenting the interpretive logic, the central analytical claim, and any counter-evidence I checked for. Selected memos are shown below.</p>
+
+  <div class="script">
+    <div class="script-label">What I will say</div>
+    <div class="script-text">"This is where interpretation rather than description begins. Each theme required me to ask not just what the codes have in common, but what claim can be made about them — what they reveal about teachers' practice, reasoning, or context that was not visible in any single extract."</div>
+  </div>
+
+  <div class="memo">
+    <div class="memo-label">Analytic Memo — Theme 5: Moral Vocation</div>
+    <div class="memo-text">The decision to make this a standalone theme rather than absorbing it into Theme 1 (Adaptation Ensembles) was the hardest of the theme construction phase. The argument for absorption: moral vocation is what produces the adaptation ensembles, so it belongs as a substrate of Theme 1. The argument for separation: moral vocation explains the sustainability of adaptive effort, not the form it takes. It speaks directly to the "pedagogical reasoning" component of RQ1, whereas Theme 1 speaks to the "what teachers do" component. Decision: keep separate. The tension between them is itself analytically productive — the themes illuminate each other by being distinct. Counter-evidence check: are there participants whose adaptive behaviour is not accompanied by any evidence of moral orientation? No — all nine described some form of personal investment. The latent code "vocation_heart" is present at some level in every transcript.</div>
+  </div>
+
+  <div class="memo">
+    <div class="memo-label">Analytic Memo — Theme 4: Lateral Collaboration (counter-evidence check)</div>
+    <div class="memo-text">T05 is the strongest counter-evidence to any claim that collaboration is functional. "Schemes of work are just done because we are being followed" directly disconfirms the idea that formal structures support genuine professional exchange. But T05 also participates in WhatsApp sharing — so the counter-evidence is not against the theme, it is against any simplistic version of it. The resolution: Theme 4 holds if it is framed as "lateral cooperation compensates for absent formal collaboration" rather than "teachers collaborate." The distinction between cooperation and collaboration is not imposed by me — it is what the data shows when you read T05's formal and informal descriptions side by side. The Harris (2013) framework is a sensitising lens that names the distinction, not a framework imposed on the data.</div>
+  </div>
+
+  <div class="memo">
+    <div class="memo-label">Analytic Memo — Deciding the sequence of themes in Chapter 4</div>
+    <div class="memo-text">The seven themes are not presented in the order they emerged in the data or in numerical order. I made a deliberate sequencing decision: begin with Theme 6 (Neurodivergence Recognition) because it establishes the conditions — who the teachers are trying to include — before moving to what they do (Theme 1), how they judge it (Theme 2), why they persist (Theme 5), and then outward to the collaborative and systemic conditions (Themes 4, 3, 7). This sequence builds an argument rather than listing findings. The analytical logic is: establish the learner profile, then trace the teacher response, then contextualise it ecologically.</div>
+  </div>
+</div>
+
+<div class="dv page-break"></div>
+
+<!-- SECTION 5: FINAL CODEBOOK -->
+<div class="section" id="codebook">
+  <div class="sec-title">Final Codebook — 7 Themes, 34 Codes</div>
+  <p class="body-text">The final codebook maps all 34 codes to their parent theme, coding level, and frequency across the nine participants. This is the confirmed final structure after theme review, counter-evidence checking, and member checking.</p>
+
+  <div class="theme-grid">
+    <div class="tcard" style="border-top-color:#C49A22">
+      <div class="tc-num" style="color:#C49A22">Theme 1 — RQ1</div>
+      <div class="tc-name">Adaptation Ensembles: Assembling the Feasible Frontier</div>
+      <div class="tc-codes">13 codes · All semantic<br>heterogeneous_grouping · translanguaging · visual_multimodal · task_chunking · peer_pairing · seating_proximity · scaffolding_ido_wedo_youdo · flexible_extra_time · oral_alternatives · practical_handson · music_songs · modelling_clay · ICT_personal_phone</div>
+    </div>
+    <div class="tcard" style="border-top-color:#4e8fca">
+      <div class="tc-num" style="color:#4e8fca">Theme 2 — RQ2</div>
+      <div class="tc-name">Inclusive Utility in Practice: Reading the 3Ps</div>
+      <div class="tc-codes">6 codes · Mix semantic/latent<br>3P_presence · 3P_participation · 3P_progression · celebrating_small_wins [L] · belonging [L] · dropout_disengagement</div>
+    </div>
+    <div class="tcard" style="border-top-color:#4aab8a">
+      <div class="tc-num" style="color:#4aab8a">Theme 3 — RQ3</div>
+      <div class="tc-name">Structural-Ecological Tensions: Borrowed Architecture</div>
+      <div class="tc-codes">9 codes · Mix semantic/latent<br>class_size · resource_scarcity · technology_gap · retooling_inadequacy · assessment_pressure [L] · clustering_contradiction [L] · social_worker_absence [L] · teacher_wellbeing [L] · leadership_variability</div>
+    </div>
+    <div class="tcard" style="border-top-color:#6b5bab">
+      <div class="tc-num" style="color:#6b5bab">Theme 4 — RQ3</div>
+      <div class="tc-name">Lateral Collaboration as Lifeline</div>
+      <div class="tc-codes">6 codes · Mix semantic/latent<br>whatsapp_lateral · subject_panels · co_teaching · parental_engagement · sne_as_resource · cooperation_vs_collaboration [L]</div>
+    </div>
+    <div class="tcard" style="border-top-color:#c45b5b">
+      <div class="tc-num" style="color:#c45b5b">Theme 5 — RQ1</div>
+      <div class="tc-name">Teacher Adaptive Agency as Moral Vocation</div>
+      <div class="tc-codes">5 codes · Mix semantic/latent<br>child_first_philosophy [L] · personal_financial_investment · vocation_heart [L] · unpaid_extra_time · resilience_under_constraint [L]</div>
+    </div>
+    <div class="tcard" style="border-top-color:#d47843">
+      <div class="tc-num" style="color:#d47843">Theme 6 — RQ1+2</div>
+      <div class="tc-name">Neurodivergence: Recognition, Resourcelessness, Strength-Turn</div>
+      <div class="tc-codes">5 codes · Mix semantic/latent<br>identification_without_diagnosis · strength_based_framing [L] · parent_denial · medical_model_referral · labelling_effects [L]</div>
+    </div>
+    <div class="tcard" style="border-top-color:#6bab6b">
+      <div class="tc-num" style="color:#6bab6b">Theme 7 — RQ3</div>
+      <div class="tc-name">The CBE Paradox: Aspirational Design, Enacted Contradiction</div>
+      <div class="tc-codes">5 codes · Mix semantic/latent<br>aspirational_vs_enacted [L] · hybrid_system · pathway_promise_vs_reality [L] · parental_8_4_4_mindset · CBE_goodwill_despite_constraints [L]</div>
+    </div>
+  </div>
+
+  <p class="body-text" style="margin-top:12px"><strong>[L] = Latent code</strong> — requires interpretive reading of what the account implies, not just what it states. All latent codes were documented with a rationale in the coding spreadsheet at the time they were assigned.</p>
+
+  <div class="script">
+    <div class="script-label">Closing statement for the meeting</div>
+    <div class="script-text">"The process I have just walked you through is the one that produced the analysis in Chapter 4. Every code has a paper trail: it started as an extract from a specific participant, was assigned an initial code with a rationale, was reviewed in the consolidation pass, was mapped to a theme with an analytic memo, was checked against counter-evidence, and for the four participants who responded to member checking, was confirmed as resonant with their experience. I am not claiming the analysis is objective — reflexive thematic analysis does not make that claim. But it is accountable: every interpretive decision can be traced back to a documented moment in this process."</div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+function scrollTo(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+}
+</script>
+
+
+</body></html>
