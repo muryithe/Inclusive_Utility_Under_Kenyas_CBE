@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!-- saved from url=(0064)file:///C:/Users/admin/Downloads/analysis_oral_presentation.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Analytical Process — Oral Presentation | 2812274M</title>
-<link href="./Analytical Process — Presentation _ 2812274M_files/css2" rel="stylesheet">
+<title>Analytical Process — Presentation | 2812274M</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --navy:#1A2B4A;--gold:#C49A22;--teal:#2E6B5E;--slate:#4A5A72;
@@ -21,6 +20,11 @@ body{font-family:'IBM Plex Sans',sans-serif;background:#fff;color:var(--text);fo
   .page-break{page-break-before:always}
   body{font-size:11px}
   .section{margin-bottom:20px}
+  /* In print mode, tables revert to natural height */
+  .tw{max-height:none!important;overflow:visible!important}
+  thead th{position:static!important}
+  td.pid{position:static!important}
+  th.col-pid{position:static!important}
 }
 
 /* LAYOUT */
@@ -50,31 +54,129 @@ p.body-text strong{color:var(--navy);font-weight:600}
 .script-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:6px}
 .script-text{font-size:var(--fsm);color:var(--text);line-height:1.7;font-style:italic}
 
-/* TABLES */
-.tw{overflow-x:auto;margin:10px 0 16px}
-table{border-collapse:collapse;width:100%;font-size:var(--fxs)}
-thead th{background:var(--navy);color:#fff;padding:7px 10px;text-align:left;font-weight:600;font-size:9px;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+/* ============================================================
+   SCROLLABLE TABLE WRAPPER
+   - max-height limits vertical size → vertical scroll
+   - overflow-x:auto → horizontal scroll
+   - border + border-radius for polish
+   ============================================================ */
+.tw{
+  overflow:auto;
+  max-height:420px;           /* vertical scroll threshold */
+  margin:10px 0 16px;
+  border:1px solid #cbd5e0;
+  border-radius:6px;
+  /* subtle inset shadow so user knows it's scrollable */
+  box-shadow:inset 0 -6px 10px -6px rgba(0,0,0,.07);
+  position:relative;
+}
+
+/* Scrollbar styling (webkit) */
+.tw::-webkit-scrollbar{width:8px;height:8px}
+.tw::-webkit-scrollbar-track{background:#f1f5f9;border-radius:4px}
+.tw::-webkit-scrollbar-thumb{background:#cbd5e0;border-radius:4px}
+.tw::-webkit-scrollbar-thumb:hover{background:#94a3b8}
+.tw::-webkit-scrollbar-corner{background:#f1f5f9}
+
+table{
+  border-collapse:collapse;
+  /* do NOT set width:100% when h-scrolling — let content dictate width */
+  width:max-content;
+  min-width:100%;
+  font-size:var(--fxs);
+}
+
+/* ============================================================
+   FROZEN HEADER — vertical sticky
+   z-index:3 so it sits above frozen column (z-index:2)
+   ============================================================ */
+thead th{
+  background:var(--navy);
+  color:#fff;
+  padding:8px 11px;
+  text-align:left;
+  font-weight:600;
+  font-size:9px;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  white-space:nowrap;
+  /* STICKY HEADER */
+  position:sticky;
+  top:0;
+  z-index:3;
+}
+
+/* ============================================================
+   FROZEN FIRST COLUMN (PID) — horizontal sticky
+   Works for both <th> and <td> in col 1
+   ============================================================ */
+thead th:first-child,
+tbody td:first-child{
+  position:sticky;
+  left:0;
+  z-index:2;
+  /* Column background so it doesn't bleed through when scrolling */
+  background:var(--navy);   /* header cell */
+}
+tbody td:first-child{
+  background:#fff;           /* body cells default white */
+  border-right:2px solid #cbd5e0;  /* visual divider for frozen col */
+}
+/* Maintain alternating row colours on frozen col */
+tbody tr:nth-child(even) td:first-child{
+  background:var(--lgrey);
+}
+tbody tr:hover td:first-child{
+  background:var(--lnavy);
+}
+
+/* Merge table uses class .merge-row — same first-col freeze applies */
+.merge-row td:first-child{
+  background:#fff;
+  border-right:2px solid #cbd5e0;
+}
+.merge-row tr:nth-child(even) td:first-child{
+  background:var(--lgrey);
+}
+
+/* Corner cell (top-left when first col frozen) needs highest z */
+thead th:first-child{
+  z-index:4;
+  background:var(--navy);
+}
+
 tbody tr:nth-child(even){background:var(--lgrey)}
 tbody tr:hover{background:var(--lnavy)}
-td{padding:7px 10px;border-bottom:1px solid #e2e8f0;vertical-align:top;line-height:1.55}
+td{padding:7px 11px;border-bottom:1px solid #e2e8f0;vertical-align:top;line-height:1.55}
 td.pid{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10px;white-space:nowrap}
-td.quote{font-style:italic;color:var(--tdim);max-width:280px}
-td.code{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--teal);font-weight:500}
-td.level{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
-td.sem{color:var(--teal)}.td.lat{color:#6b5bab}
-td.rationale{font-size:10px;color:var(--tmut);max-width:200px}
+td.quote{font-style:italic;color:var(--tdim);min-width:240px;max-width:300px}
+td.code{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--teal);font-weight:500;white-space:nowrap}
+td.level{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+td.sem{color:var(--teal)}
+td.rationale{font-size:10px;color:var(--tmut);min-width:180px;max-width:220px}
 td.theme{font-weight:600;color:var(--navy);font-size:10px}
+
+/* Scroll hint badge — appears only when JS confirms overflow */
+.tw-hint{
+  display:none;
+  font-size:9px;
+  color:var(--tmut);
+  text-align:right;
+  margin-bottom:3px;
+  letter-spacing:.3px;
+}
+.tw-hint.visible{display:block}
 
 /* PID BADGES */
 .p01{color:#4e8fca}.p02{color:#4aab8a}.p03{color:#d47843}.p04{color:#6b5bab}
 .p05{color:#c45b5b}.p06{color:#d4a843}.p07{color:#6bab6b}.p08{color:#ab6b9a}.p09{color:#5a9ab5}
 
 /* MERGE TABLE */
-.merge-row td{padding:8px 10px;border-bottom:1px solid #e2e8f0;vertical-align:top}
-td.v1codes{font-size:9.5px;color:var(--tmut);font-family:'IBM Plex Mono',monospace;line-height:1.6}
-td.arrow{text-align:center;color:var(--gold);font-size:16px;vertical-align:middle;width:30px}
-td.v2code{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--teal);font-weight:600}
-td.why{font-size:10px;color:var(--tdim);line-height:1.55}
+.merge-row td{padding:8px 11px;border-bottom:1px solid #e2e8f0;vertical-align:top}
+td.v1codes{font-size:9.5px;color:var(--tmut);font-family:'IBM Plex Mono',monospace;line-height:1.6;min-width:160px}
+td.arrow{text-align:center;color:var(--gold);font-size:16px;vertical-align:middle;width:34px;white-space:nowrap}
+td.v2code{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--teal);font-weight:600;white-space:nowrap}
+td.why{font-size:10px;color:var(--tdim);line-height:1.55;min-width:200px;max-width:260px}
 
 /* THEME CARDS */
 .theme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin:12px 0}
@@ -105,35 +207,34 @@ td.why{font-size:10px;color:var(--tdim);line-height:1.55}
   <div class="cover-title">Analytical Process — Oral Presentation</div>
   <div class="cover-sub">
     <span class="cover-gold">Beyond the Blueprint: Exploring Teachers' Adaptive Agency in Maximising Inclusive Utility under Kenya's CBC</span><br>
-    Beatrice Wairimu Mungai &nbsp;·&nbsp; 2812274M &nbsp;·&nbsp; MSc Education &nbsp;·&nbsp; University of Glasgow<br>
-    Supervisory Meeting &nbsp;·&nbsp; Wednesday 27 May 2026
+    Beatrice Wairimu Mungai &nbsp;·&nbsp; 2812274M &nbsp;·&nbsp; MSc Education &nbsp;·&nbsp; University of Glasgow
   </div>
 </div>
 
 <!-- NAV -->
 <div class="nav-bar no-print">
-  <button class="nav-btn active" onclick="scrollTo(&#39;process&#39;)">Process Overview</button>
-  <button class="nav-btn" onclick="scrollTo(&#39;phase1&#39;)">Phase 1: Familiarisation</button>
-  <button class="nav-btn" onclick="scrollTo(&#39;phase2&#39;)">Phase 2: Initial Codes</button>
-  <button class="nav-btn" onclick="scrollTo(&#39;phase3&#39;)">Phase 3: Consolidation</button>
-  <button class="nav-btn" onclick="scrollTo(&#39;phase4&#39;)">Phase 4: Themes</button>
-  <button class="nav-btn" onclick="scrollTo(&#39;codebook&#39;)">Final Codebook</button>
+  <button class="nav-btn active" onclick="navTo('process')">Process Overview</button>
+  <button class="nav-btn" onclick="navTo('phase1')">Phase 1: Familiarisation</button>
+  <button class="nav-btn" onclick="navTo('phase2')">Phase 2: Initial Codes</button>
+  <button class="nav-btn" onclick="navTo('phase3')">Phase 3: Consolidation</button>
+  <button class="nav-btn" onclick="navTo('phase4')">Phase 4: Themes</button>
+  <button class="nav-btn" onclick="navTo('codebook')">Final Codebook</button>
 </div>
 
 <div class="wrap">
 
-<!-- SECTION 0: WHAT THIS IS -->
+<!-- SECTION 0 -->
 <div class="section" id="process">
   <div class="sec-title">Overview: How I Conducted the Analysis</div>
-  <p class="body-text">This document provides a step-by-step account of how I moved from nine interview transcripts to the seven final themes presented in Chapter 4. It is organised around the six phases of Braun and Clarke's (2006) reflexive thematic analysis, adapted to my abductive analytic logic. Each phase is documented with specific evidence of what I did, what decisions I made, and why.</p>
+  <p class="body-text">This document provides a step-by-step account of how I moved from nine interview transcripts to the seven final themes presented in Chapter 4. It is organised around the six phases of Braun and Clarke's (2006) reflexive thematic analysis, adapted to my abductive analytic logic.</p>
 
   <div class="script">
-    <div class="script-label">What I will say to Matthew</div>
-    <div class="script-text">"I want to walk you through exactly how I did the analysis — not the finished product, but the process. I'll show you the actual decisions I made at each stage, the codes I generated from individual participants, how I consolidated them, and how I arrived at the seven themes. Everything here is documented so the process is reconstructable."</div>
+    <div class="script-label">Objective</div>
+    <div class="script-text">"I want to walk you through exactly how I did the analysis (the process), showing the actual decisions made at each stage, the codes generated from individual participants, how I consolidated them, and how I arrived at the seven themes.</div>
   </div>
 
   <div class="steps">
-    <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Familiarisation — reading all 9 transcripts before coding anything</div><div class="step-text">I read each transcript twice in full before assigning a single code. I kept a reflexive journal during this phase, noting what struck me, what surprised me, and where my own experience as a Kenyan educator threatened to shape my reading before the data could.</div></div></div>
+    <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Familiarisation — reading all 9 transcripts before coding</div><div class="step-text">I read each transcript twice (during transcription and after) in full before assigning a single code, noting what struck/surprised me (only focusing on the research-relevant info), and where my own experience as a Kenyan educator threatened to shape my reading before the data could.</div></div></div>
     <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Initial coding — 47 open codes from raw participant extracts</div><div class="step-text">I went line by line through each transcript and assigned initial codes. These were close to the participants' own language. I did not yet think about themes. I documented every coding decision in the spreadsheet below.</div></div></div>
     <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Focused coding — consolidating 47 codes into 22</div><div class="step-text">After completing initial coding across all 9 transcripts, I looked across the codes and identified clusters. Where codes were doing the same analytical work, I merged them. Where codes required latent-level interpretation rather than surface description, I flagged them. This produced Codebook v2.</div></div></div>
     <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Theme construction — 7 candidate themes from 22 focused codes</div><div class="step-text">I mapped focused codes onto candidate themes, wrote analytic memos for each theme explaining the interpretive logic, and checked each theme against the full dataset for confirming and disconfirming evidence.</div></div></div>
@@ -144,7 +245,7 @@ td.why{font-size:10px;color:var(--tdim);line-height:1.55}
 
 <div class="dv page-break"></div>
 
-<!-- SECTION 1: PHASE 1 -->
+<!-- SECTION 1 -->
 <div class="section" id="phase1">
   <div class="sec-title">Phase 1: Familiarisation — Reflexive Journal Entries</div>
   <p class="body-text">Before coding, I read all nine transcripts in full twice. The following journal entries document what I noticed, what surprised me, and what analytical risks I identified in my own reading at this stage.</p>
@@ -163,17 +264,18 @@ td.why{font-size:10px;color:var(--tdim);line-height:1.55}
 
 <div class="dv page-break"></div>
 
-<!-- SECTION 2: INITIAL CODING PER PARTICIPANT -->
+<!-- SECTION 2 -->
 <div class="section" id="phase2">
   <div class="sec-title">Phase 2: Initial Coding — Selected Extracts Per Participant</div>
-  <p class="body-text">The table below shows selected extracts from each participant, the initial code I assigned, the coding level (semantic or latent), and the analytical rationale. This is not the complete coding spreadsheet — it shows the key coding decisions for each participant across the analytical dimensions that became most significant.</p>
+  <p class="body-text">The table below shows selected extracts from each participant, the initial code I assigned, the coding level (semantic or latent), and the analytical rationale. Scroll horizontally to see all columns; the PID column and header row are frozen.</p>
 
   <div class="script">
     <div class="script-label">What I will say</div>
     <div class="script-text">"I coded each transcript line by line. This table shows the specific extracts I worked with and the codes I gave them. I made a note of my reasoning at the time. You can see that some codes are straightforwardly descriptive — what I call semantic codes — and others required me to interpret what the extract implied rather than what it stated. Those are the latent codes."</div>
   </div>
 
-  <div class="tw">
+  <div class="tw-hint" id="hint-phase2">↔ Scroll horizontally · ↕ Scroll vertically &nbsp;|&nbsp; PID column &amp; header frozen</div>
+  <div class="tw" id="tw-phase2">
     <table>
       <thead>
         <tr>
@@ -404,22 +506,23 @@ td.why{font-size:10px;color:var(--tdim);line-height:1.55}
 
 <div class="dv page-break"></div>
 
-<!-- SECTION 3: CONSOLIDATION -->
+<!-- SECTION 3 -->
 <div class="section" id="phase3">
   <div class="sec-title">Phase 3: Code Consolidation — From 47 Initial Codes to 22 Focused Codes</div>
-  <p class="body-text">After completing initial coding across all nine transcripts, I reviewed the full list of 47 codes and identified where codes were doing overlapping analytical work. The table below shows the key merging decisions and the reasoning behind each.</p>
+  <p class="body-text">After completing initial coding across all nine transcripts, I reviewed the full list of 47 codes and identified where codes were doing overlapping analytical work. The table below shows the key merging decisions and the reasoning behind each. Scroll horizontally to see all columns; first column and header are frozen.</p>
 
   <div class="script">
     <div class="script-label">What I will say</div>
     <div class="script-text">"At this point I had 47 codes and needed to ask which ones were genuinely distinct and which were doing the same analytical work under different labels. I did not merge codes mechanically — I checked each merge decision against the data to make sure the merged code still captured both original codes accurately."</div>
   </div>
 
-  <div class="tw">
+  <div class="tw-hint" id="hint-phase3">↔ Scroll horizontally · ↕ Scroll vertically &nbsp;|&nbsp; First column &amp; header frozen</div>
+  <div class="tw" id="tw-phase3">
     <table>
       <thead>
         <tr>
           <th>V1 Codes (merged)</th>
-          <th style="width:30px"></th>
+          <th style="width:34px"></th>
           <th>V2 Focused Code</th>
           <th>Reason for merging</th>
           <th>What was preserved</th>
@@ -494,7 +597,7 @@ td.why{font-size:10px;color:var(--tdim);line-height:1.55}
 
 <div class="dv page-break"></div>
 
-<!-- SECTION 4: THEME CONSTRUCTION -->
+<!-- SECTION 4 -->
 <div class="section" id="phase4">
   <div class="sec-title">Phase 4: Theme Construction and Analytic Memos</div>
   <p class="body-text">From 22 focused codes, I constructed 7 candidate themes. For each theme, I wrote an analytic memo documenting the interpretive logic, the central analytical claim, and any counter-evidence I checked for. Selected memos are shown below.</p>
@@ -522,7 +625,7 @@ td.why{font-size:10px;color:var(--tdim);line-height:1.55}
 
 <div class="dv page-break"></div>
 
-<!-- SECTION 5: FINAL CODEBOOK -->
+<!-- SECTION 5 -->
 <div class="section" id="codebook">
   <div class="sec-title">Final Codebook — 7 Themes, 34 Codes</div>
   <p class="body-text">The final codebook maps all 34 codes to their parent theme, coding level, and frequency across the nine participants. This is the confirmed final structure after theme review, counter-evidence checking, and member checking.</p>
@@ -576,12 +679,30 @@ td.why{font-size:10px;color:var(--tdim);line-height:1.55}
 </div><!-- /wrap -->
 
 <script>
-function scrollTo(id){
+/* Nav scroll */
+function navTo(id){
   const el = document.getElementById(id);
   if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
 }
-</script>
 
+/* Show scroll hints only when tables actually overflow */
+function checkOverflow(){
+  const pairs = [
+    ['tw-phase2','hint-phase2'],
+    ['tw-phase3','hint-phase3']
+  ];
+  pairs.forEach(([twId, hintId]) => {
+    const tw = document.getElementById(twId);
+    const hint = document.getElementById(hintId);
+    if(!tw || !hint) return;
+    const overflowsH = tw.scrollWidth > tw.clientWidth;
+    const overflowsV = tw.scrollHeight > tw.clientHeight;
+    if(overflowsH || overflowsV) hint.classList.add('visible');
+  });
+}
+window.addEventListener('load', checkOverflow);
+window.addEventListener('resize', checkOverflow);
+</script>
 
 </body></html>
