@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytical Process — Visual Map</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1A2B4A;--gold:#C49A22;--teal:#2E6B5E;--slate:#4A5A72;--purple:#6B5BAB;
+  --coral:#C45B5B;--green:#4AAB8A;--cream:#F3EFE6;--white:#FFFFFF;
+  --text:#1a1a2e;--muted:#5a6880;--faint:#8a96a8;
+  --p1:#2E6B5E;--p2:#4A5A72;--p3:#6B5BAB;--p4:#C49A22;--p5:#C45B5B;--p6:#4AAB8A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);font-family:'IBM Plex Sans',sans-serif;color:var(--text);overflow-x:auto;overflow-y:auto;min-height:100vh}
+
+/* TOP BAR */
+.topbar{
+  position:sticky;top:0;left:0;z-index:100;
+  background:var(--navy);color:#fff;
+  padding:14px 40px;
+  display:flex;align-items:baseline;gap:20px;
+  min-width:max-content;
+  border-bottom:3px solid var(--gold);
+}
+.topbar-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;white-space:nowrap}
+.topbar-sub{font-size:11px;color:rgba(255,255,255,.55);white-space:nowrap}
+.topbar-legend{display:flex;gap:16px;margin-left:auto;align-items:center}
+.leg-item{display:flex;align-items:center;gap:6px;font-size:10px;color:rgba(255,255,255,.6)}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.leg-pill-s{background:rgba(46,107,94,.25);border:1px solid var(--teal);color:rgba(255,255,255,.7);font-size:9px;padding:1px 6px;border-radius:20px}
+.leg-pill-l{background:rgba(107,91,171,.25);border:1px solid var(--purple);color:rgba(255,255,255,.7);font-size:9px;padding:1px 6px;border-radius:20px}
+
+/* CANVAS */
+.canvas{
+  display:flex;
+  align-items:flex-start;
+  gap:0;
+  padding:48px 60px 80px;
+  min-width:max-content;
+  width:max-content;
+}
+
+/* CONNECTOR */
+.connector{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  width:72px;
+  flex-shrink:0;
+  padding-top:4px;
+  align-self:stretch;
+}
+.conn-inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  margin-top:140px;
+}
+.conn-line{
+  width:1px;
+  height:0;
+  border-top:none;
+  position:relative;
+}
+.conn-arrow{
+  display:flex;
+  align-items:center;
+  gap:0;
+}
+.conn-arrow svg{display:block}
+.conn-label{font-size:9px;color:var(--faint);text-transform:uppercase;letter-spacing:.8px;white-space:nowrap;text-align:center;margin-top:5px}
+
+/* PHASE WRAPPER */
+.phase-wrap{display:flex;flex-direction:column;align-items:stretch;flex-shrink:0}
+
+/* PHASE CARD */
+.phase-card{
+  background:var(--white);
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,.08);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 2px 16px rgba(0,0,0,.05);
+}
+
+.phase-header{
+  padding:18px 22px 14px;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  background:var(--white);
+}
+.phase-num{
+  font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--faint);margin-bottom:4px;
+}
+.phase-title{
+  font-family:'Playfair Display',serif;
+  font-size:16px;font-weight:700;color:var(--navy);line-height:1.25;margin-bottom:3px;
+}
+.phase-sub{font-size:10.5px;color:var(--muted);line-height:1.5}
+
+.phase-body{padding:18px 22px;flex:1;display:flex;flex-direction:column;gap:14px}
+
+/* STAT BADGE */
+.stat-badge{
+  display:inline-flex;align-items:baseline;gap:6px;
+  background:var(--cream);border:1px solid rgba(0,0,0,.07);
+  border-radius:8px;padding:8px 14px;align-self:flex-start;
+}
+.stat-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--navy)}
+.stat-label{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+
+.stat-row{display:flex;gap:8px;flex-wrap:wrap}
+
+/* SECTION LABEL */
+.sec-label{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--faint);margin-bottom:6px}
+
+/* MEMO CARD */
+.memo{
+  background:#faf8ff;border-left:3px solid var(--purple);
+  border-radius:0 6px 6px 0;padding:9px 12px;
+}
+.memo-label{font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--purple);margin-bottom:3px}
+.memo-text{font-size:10px;color:var(--muted);line-height:1.55}
+
+/* JOURNAL CARD */
+.journal{
+  background:#f0faf7;border-left:3px solid var(--teal);
+  border-radius:0 6px 6px 0;padding:9px 12px;
+}
+.journal-label{font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--teal);margin-bottom:3px}
+.journal-text{font-size:10px;color:var(--muted);line-height:1.55}
+
+/* PARTICIPANT GRID */
+.pid-grid{display:flex;flex-direction:column;gap:7px}
+.pid-row{display:flex;align-items:flex-start;gap:8px}
+.pid-badge{
+  width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;
+  flex-shrink:0;color:#fff;
+}
+.pid-codes{display:flex;flex-wrap:wrap;gap:4px;align-items:center;padding-top:7px}
+.code-pill{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;
+  padding:2px 7px;border-radius:20px;white-space:nowrap;
+}
+.code-pill.sem{background:rgba(46,107,94,.1);border:1px solid rgba(46,107,94,.3);color:var(--teal)}
+.code-pill.lat{background:rgba(107,91,171,.1);border:1px solid rgba(107,91,171,.3);color:var(--purple)}
+
+/* MERGE ROW */
+.merge-list{display:flex;flex-direction:column;gap:10px}
+.merge-item{display:flex;align-items:center;gap:8px}
+.merge-from{
+  background:var(--cream);border:1px solid rgba(0,0,0,.1);
+  border-radius:6px;padding:7px 10px;
+  font-size:9.5px;font-family:'IBM Plex Mono',monospace;color:var(--muted);
+  line-height:1.55;min-width:155px;max-width:155px;
+}
+.merge-arrow{color:var(--gold);font-size:18px;flex-shrink:0}
+.merge-to{
+  background:rgba(46,107,94,.08);border:1px solid rgba(46,107,94,.2);
+  border-radius:6px;padding:7px 10px;
+  font-size:9.5px;font-family:'IBM Plex Mono',monospace;color:var(--teal);font-weight:600;
+  white-space:nowrap;
+}
+.merge-to.lat{
+  background:rgba(107,91,171,.08);border:1px solid rgba(107,91,171,.2);color:var(--purple);
+}
+
+/* COUNTER DISPLAY */
+.counter-display{
+  display:flex;align-items:center;gap:12px;
+  background:var(--cream);border-radius:10px;padding:12px 16px;
+}
+.cnt-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--navy)}
+.cnt-arrow{font-size:22px;color:var(--gold)}
+.cnt-label{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+
+/* THEME MINI CARDS */
+.theme-grid{display:flex;flex-direction:column;gap:6px}
+.theme-mini{
+  border-radius:7px;border:1px solid rgba(0,0,0,.07);
+  padding:8px 10px;
+  border-left:3px solid;
+  display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+}
+.theme-mini-name{font-size:10.5px;font-weight:600;color:var(--navy);line-height:1.3;flex:1}
+.theme-mini-sub{font-size:9px;color:var(--faint);white-space:nowrap}
+.theme-mini-rq{font-size:8.5px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+
+/* REVIEW ITEMS */
+.review-list{display:flex;flex-direction:column;gap:8px}
+.review-item{display:flex;align-items:flex-start;gap:8px}
+.review-icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:1px}
+.review-text{font-size:10.5px;color:var(--muted);line-height:1.5}
+.review-text strong{color:var(--navy);font-weight:600}
+
+/* MEMBER CHECK */
+.member-grid{display:flex;gap:8px;flex-wrap:wrap}
+.member-card{
+  background:var(--cream);border-radius:8px;padding:10px 14px;
+  text-align:center;border:1px solid rgba(0,0,0,.07);flex:1;min-width:60px;
+}
+.member-pid{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--navy);display:block;margin-bottom:2px}
+.member-rating{font-size:9px;color:var(--gold);letter-spacing:.5px}
+
+/* COVER CARD */
+.cover-card{
+  background:var(--navy);color:#fff;width:280px;
+  border:none;
+}
+.cover-body{padding:28px 24px;flex:1;display:flex;flex-direction:column;gap:16px}
+.cover-tag{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.4);margin-bottom:2px}
+.cover-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;line-height:1.25;margin-bottom:4px}
+.cover-subtitle{font-size:10.5px;color:rgba(255,255,255,.55);line-height:1.65;font-style:italic}
+.cover-author{font-size:10px;color:rgba(255,255,255,.4);margin-top:auto;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)}
+.cover-author strong{color:rgba(255,255,255,.7);font-size:11px;display:block;margin-bottom:2px}
+.cover-method{
+  background:rgba(196,154,34,.15);border-left:3px solid var(--gold);
+  padding:8px 12px;border-radius:0 6px 6px 0;
+}
+.cover-method-label{font-size:8px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:3px}
+.cover-method-text{font-size:10px;color:rgba(255,255,255,.65);line-height:1.5}
+
+/* FINAL CARD */
+.final-card{background:var(--navy);color:#fff;width:300px;border:none}
+.final-body{padding:24px;flex:1;display:flex;flex-direction:column;gap:14px}
+.final-stat{text-align:center;padding:16px;background:rgba(196,154,34,.1);border-radius:8px;border:1px solid rgba(196,154,34,.2)}
+.final-stat .big{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--gold);display:block;line-height:1}
+.final-stat .small{font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px}
+.accountability{font-size:10px;color:rgba(255,255,255,.5);line-height:1.65;font-style:italic;border-top:1px solid rgba(255,255,255,.1);padding-top:14px;margin-top:auto}
+
+/* COLORED TOP BORDER TRICK */
+.p1-card{border-top:3px solid var(--p1)}
+.p2-card{border-top:3px solid var(--p2)}
+.p3-card{border-top:3px solid var(--p3)}
+.p4-card{border-top:3px solid var(--p4)}
+.p5-card{border-top:3px solid var(--p5)}
+.p6-card{border-top:3px solid var(--p6)}
+
+/* PHASE ACCENT TEXT */
+.acc-p1{color:var(--p1)}.acc-p2{color:var(--p2)}.acc-p3{color:var(--p3)}
+.acc-p4{color:var(--p4)}.acc-p5{color:var(--p5)}.acc-p6{color:var(--p6)}
+
+/* DIVIDER */
+.divider{height:1px;background:rgba(0,0,0,.06);margin:4px 0}
+
+/* BOTTOM NOTE STRIP */
+.bottom-strip{
+  margin-top:10px;
+  background:rgba(196,154,34,.08);border:1px solid rgba(196,154,34,.2);
+  border-radius:8px;padding:9px 13px;
+}
+.bottom-strip-label{font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:3px}
+.bottom-strip-text{font-size:10px;color:var(--muted);line-height:1.55}
+
+/* PID COLORS */
+.p01c{background:#4e8fca}.p02c{background:#4aab8a}.p03c{background:#d47843}
+.p04c{background:#6b5bab}.p05c{background:#c45b5b}.p06c{background:#d4a843}
+.p07c{background:#6bab6b}.p08c{background:#ab6b9a}.p09c{background:#5a9ab5}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-title">Analytical Process — Reflexive Thematic Analysis</div>
+  <div class="topbar-sub">Beyond the Blueprint · Beatrice Wairimu Mungai · 2812274M · MSc Education · University of Glasgow</div>
+  <div class="topbar-legend">
+    <div class="leg-item"><span class="leg-pill-s">sem</span> Semantic code</div>
+    <div class="leg-item"><span class="leg-pill-l">lat</span> Latent code</div>
+    <div class="leg-item"><span class="leg-dot" style="background:#4e8fca"></span>T01&nbsp;<span class="leg-dot" style="background:#4aab8a"></span>T02&nbsp;<span class="leg-dot" style="background:#d47843"></span>T03&nbsp;<span class="leg-dot" style="background:#6b5bab"></span>T04&nbsp;<span class="leg-dot" style="background:#c45b5b"></span>T05&nbsp;<span class="leg-dot" style="background:#d4a843"></span>T06&nbsp;<span class="leg-dot" style="background:#6bab6b"></span>T07&nbsp;<span class="leg-dot" style="background:#ab6b9a"></span>T08&nbsp;<span class="leg-dot" style="background:#5a9ab5"></span>T09</div>
+  </div>
+</div>
+
+<div class="canvas">
+
+  <!-- ═══ COVER ═══ -->
+  <div class="phase-wrap">
+    <div class="phase-card cover-card">
+      <div class="cover-body">
+        <div>
+          <div class="cover-tag">Oral Presentation</div>
+          <div class="cover-title">Analytical Process</div>
+          <div class="cover-subtitle">How nine interview transcripts became seven themes — every interpretive decision documented</div>
+        </div>
+        <div class="cover-method">
+          <div class="cover-method-label">Method</div>
+          <div class="cover-method-text">Braun &amp; Clarke (2006) Reflexive Thematic Analysis · Abductive logic · All phases documented</div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span style="background:rgba(196,154,34,.15);border:1px solid rgba(196,154,34,.3);color:var(--gold);font-size:9px;padding:3px 9px;border-radius:20px">9 participants</span>
+          <span style="background:rgba(196,154,34,.15);border:1px solid rgba(196,154,34,.3);color:var(--gold);font-size:9px;padding:3px 9px;border-radius:20px">6 phases</span>
+          <span style="background:rgba(196,154,34,.15);border:1px solid rgba(196,154,34,.3);color:var(--gold);font-size:9px;padding:3px 9px;border-radius:20px">7 themes</span>
+        </div>
+        <div class="cover-author">
+          <strong>Beatrice Wairimu Mungai</strong>
+          2812274M · MSc Education · University of Glasgow
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTOR 1 -->
+  <div class="connector">
+    <div class="conn-inner">
+      <div class="conn-arrow">
+        <svg width="72" height="20" viewBox="0 0 72 20">
+          <line x1="0" y1="10" x2="62" y2="10" stroke="#C49A22" stroke-width="1.5"/>
+          <polygon points="60,6 72,10 60,14" fill="#C49A22"/>
+        </svg>
+      </div>
+      <div class="conn-label">Begin</div>
+    </div>
+  </div>
+
+  <!-- ═══ PHASE 1: FAMILIARISATION ═══ -->
+  <div class="phase-wrap">
+    <div class="phase-card p1-card" style="width:288px">
+      <div class="phase-header" style="border-top:none">
+        <div class="phase-num" style="color:var(--p1)">Phase 01</div>
+        <div class="phase-title">Familiarisation</div>
+        <div class="phase-sub">Read all 9 transcripts before coding anything</div>
+      </div>
+      <div class="phase-body">
+
+        <div class="stat-row">
+          <div class="stat-badge">
+            <span class="stat-num" style="color:var(--p1)">9</span>
+            <span class="stat-label">Transcripts</span>
+          </div>
+          <div class="stat-badge">
+            <span class="stat-num" style="color:var(--p1)">×2</span>
+            <span class="stat-label">reads each</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="sec-label">What I noticed</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div class="journal">
+              <div class="journal-label">After T01 &amp; T08</div>
+              <div class="journal-text">Personal financial investment emerges across contexts — bias risk flagged. Noted to code semantically first, then revisit for latent dimension.</div>
+            </div>
+            <div class="journal">
+              <div class="journal-label">After T03</div>
+              <div class="journal-text">"I don't know what to do" — three years, no system response. T03 names learner strengths spontaneously, before any prompt about strengths.</div>
+            </div>
+            <div class="journal">
+              <div class="journal-label">After T04 &amp; T07</div>
+              <div class="journal-text">T04's specialist pipeline is blocked, not absent. T07 uniquely has a co-teacher described as structurally enabling.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-strip">
+          <div class="bottom-strip-label">Analytical risk flagged</div>
+          <div class="bottom-strip-text">Own experience as Kenyan educator could shape reading. Decision: code data, not prior knowledge.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTOR 2 -->
+  <div class="connector">
+    <div class="conn-inner">
+      <div class="conn-arrow">
+        <svg width="72" height="20" viewBox="0 0 72 20">
+          <line x1="0" y1="10" x2="62" y2="10" stroke="#C49A22" stroke-width="1.5"/>
+          <polygon points="60,6 72,10 60,14" fill="#C49A22"/>
+        </svg>
+      </div>
+      <div class="conn-label">line-by-line</div>
+    </div>
+  </div>
+
+  <!-- ═══ PHASE 2: INITIAL CODING ═══ -->
+  <div class="phase-wrap">
+    <div class="phase-card p2-card" style="width:410px">
+      <div class="phase-header">
+        <div class="phase-num" style="color:var(--p2)">Phase 02</div>
+        <div class="phase-title">Initial Coding</div>
+        <div class="phase-sub">Line-by-line coding of all 9 transcripts, close to participants' own language</div>
+      </div>
+      <div class="phase-body">
+
+        <div class="stat-row">
+          <div class="stat-badge">
+            <span class="stat-num" style="color:var(--p2)">47</span>
+            <span class="stat-label">open codes</span>
+          </div>
+          <div class="stat-badge">
+            <span class="stat-num" style="color:var(--p2)">9</span>
+            <span class="stat-label">participants</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="sec-label">Key codes per participant — representative sample</div>
+          <div class="pid-grid">
+
+            <div class="pid-row">
+              <div class="pid-badge p01c">T01</div>
+              <div class="pid-codes">
+                <span class="code-pill sem">grouping_mixed_ability</span>
+                <span class="code-pill sem">hybrid_system_coinage</span>
+                <span class="code-pill lat">labelling_effects_awareness</span>
+              </div>
+            </div>
+
+            <div class="pid-row">
+              <div class="pid-badge p02c">T02</div>
+              <div class="pid-codes">
+                <span class="code-pill sem">clinical_label_without_diagnosis</span>
+                <span class="code-pill sem">translanguaging_forced</span>
+                <span class="code-pill lat">CBE_explicit_endorsement</span>
+              </div>
+            </div>
+
+            <div class="pid-row">
+              <div class="pid-badge p03c">T03</div>
+              <div class="pid-codes">
+                <span class="code-pill lat">teacher_isolation_no_support</span>
+                <span class="code-pill sem">translanguaging_as_diagnostic</span>
+                <span class="code-pill lat">spontaneous_strength_observation</span>
+              </div>
+            </div>
+
+            <div class="pid-row">
+              <div class="pid-badge p04c">T04</div>
+              <div class="pid-codes">
+                <span class="code-pill lat">vocation_moral_not_professional</span>
+                <span class="code-pill sem">leadership_enabler_or_barrier</span>
+                <span class="code-pill sem">personal_material_investment</span>
+              </div>
+            </div>
+
+            <div class="pid-row">
+              <div class="pid-badge p05c">T05</div>
+              <div class="pid-codes">
+                <span class="code-pill sem">retooling_failure_decade</span>
+                <span class="code-pill lat">exam_logic_persisting_under_CBE</span>
+                <span class="code-pill lat">formal_structures_compliance_only</span>
+              </div>
+            </div>
+
+            <div class="pid-row">
+              <div class="pid-badge p06c">T06</div>
+              <div class="pid-codes">
+                <span class="code-pill lat">belonging_as_presence_driver</span>
+                <span class="code-pill sem">participation_without_comprehension</span>
+              </div>
+            </div>
+
+            <div class="pid-row">
+              <div class="pid-badge p07c">T07</div>
+              <div class="pid-codes">
+                <span class="code-pill sem">co_teaching_structured</span>
+                <span class="code-pill sem">progression_longitudinal</span>
+              </div>
+            </div>
+
+            <div class="pid-row">
+              <div class="pid-badge p08c">T08</div>
+              <div class="pid-codes">
+                <span class="code-pill lat">resilience_moral_compulsion</span>
+                <span class="code-pill sem">pathway_empty_designation</span>
+                <span class="code-pill sem">presence_seasonal_poverty</span>
+              </div>
+            </div>
+
+            <div class="pid-row">
+              <div class="pid-badge p09c">T09</div>
+              <div class="pid-codes">
+                <span class="code-pill sem">oral_alternatives_multimodal</span>
+                <span class="code-pill lat">co_teaching_incidental_not_designed</span>
+                <span class="code-pill lat">belonging_enables_participation</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="bottom-strip">
+          <div class="bottom-strip-label">Coding rule</div>
+          <div class="bottom-strip-text">No thinking about themes at this stage. Every decision logged with rationale. Latent codes flagged for interpretive revisit in v2.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTOR 3 -->
+  <div class="connector">
+    <div class="conn-inner">
+      <div class="conn-arrow">
+        <svg width="72" height="20" viewBox="0 0 72 20">
+          <line x1="0" y1="10" x2="62" y2="10" stroke="#C49A22" stroke-width="1.5"/>
+          <polygon points="60,6 72,10 60,14" fill="#C49A22"/>
+        </svg>
+      </div>
+      <div class="conn-label">merged</div>
+    </div>
+  </div>
+
+  <!-- ═══ PHASE 3: FOCUSED CODING ═══ -->
+  <div class="phase-wrap">
+    <div class="phase-card p3-card" style="width:370px">
+      <div class="phase-header">
+        <div class="phase-num" style="color:var(--p3)">Phase 03</div>
+        <div class="phase-title">Focused Coding</div>
+        <div class="phase-sub">Consolidating 47 initial codes into 22 focused codes</div>
+      </div>
+      <div class="phase-body">
+
+        <div class="counter-display">
+          <div style="text-align:center">
+            <div class="cnt-num">47</div>
+            <div class="cnt-label">initial</div>
+          </div>
+          <div class="cnt-arrow">→</div>
+          <div style="text-align:center">
+            <div class="cnt-num" style="color:var(--p3)">22</div>
+            <div class="cnt-label">focused</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="sec-label">Key merge decisions</div>
+          <div class="merge-list">
+
+            <div class="merge-item">
+              <div class="merge-from">visual_aid_personal<br>projector_phone<br>pictures_internet<br>wall_charts</div>
+              <div class="merge-arrow">→</div>
+              <div class="merge-to">visual_multimodal</div>
+            </div>
+
+            <div class="merge-item">
+              <div class="merge-from">translanguaging_forced (T02)<br>translanguaging_diagnostic (T03)<br>language_switching</div>
+              <div class="merge-arrow">→</div>
+              <div class="merge-to">translanguaging<br><span style="font-size:8px;font-weight:400;color:var(--faint)">(phenomenology preserved in notes)</span></div>
+            </div>
+
+            <div class="merge-item">
+              <div class="merge-from">CBE_endorsement (T02)<br>CBC_goodwill (T05)<br>curriculum_ideals (T09)</div>
+              <div class="merge-arrow">→</div>
+              <div class="merge-to lat">CBE_goodwill_despite_constraints</div>
+            </div>
+
+            <div class="merge-item">
+              <div class="merge-from">ni_moyo_from_heart (T04)<br>child_first_exhaustion (T01, T09)<br>vocation_moral</div>
+              <div class="merge-arrow">→</div>
+              <div class="merge-to lat">vocation_heart</div>
+            </div>
+
+            <div class="merge-item">
+              <div class="merge-from">spontaneous_strength (T03)<br>art_sport_oral (T06, T07)<br>strength_as_entry_point</div>
+              <div class="merge-arrow">→</div>
+              <div class="merge-to lat">strength_based_framing</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="bottom-strip">
+          <div class="bottom-strip-label">Codes dropped entirely</div>
+          <div class="bottom-strip-text">Flashcards → visual_multimodal · Consulting lower primary → subject_panels · ADHD-type → identification_without_diagnosis. No data lost — all documented in full spreadsheet.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTOR 4 -->
+  <div class="connector">
+    <div class="conn-inner">
+      <div class="conn-arrow">
+        <svg width="72" height="20" viewBox="0 0 72 20">
+          <line x1="0" y1="10" x2="62" y2="10" stroke="#C49A22" stroke-width="1.5"/>
+          <polygon points="60,6 72,10 60,14" fill="#C49A22"/>
+        </svg>
+      </div>
+      <div class="conn-label">interpreted</div>
+    </div>
+  </div>
+
+  <!-- ═══ PHASE 4: THEME CONSTRUCTION ═══ -->
+  <div class="phase-wrap">
+    <div class="phase-card p4-card" style="width:380px">
+      <div class="phase-header">
+        <div class="phase-num" style="color:var(--p4)">Phase 04</div>
+        <div class="phase-title">Theme Construction</div>
+        <div class="phase-sub">From 22 focused codes to 7 candidate themes — interpretation begins</div>
+      </div>
+      <div class="phase-body">
+
+        <div class="stat-row">
+          <div class="stat-badge">
+            <span class="stat-num" style="color:var(--p4)">7</span>
+            <span class="stat-label">themes</span>
+          </div>
+          <div class="stat-badge">
+            <span class="stat-num" style="color:var(--p4)">34</span>
+            <span class="stat-label">total codes</span>
+          </div>
+          <div class="stat-badge">
+            <span class="stat-num" style="color:var(--p4)">3</span>
+            <span class="stat-label">RQs addressed</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="sec-label">Final 7 themes — analytic memos written for each</div>
+          <div class="theme-grid">
+            <div class="theme-mini" style="border-left-color:#C49A22">
+              <div>
+                <div class="theme-mini-rq acc-p4">T1 · RQ1</div>
+                <div class="theme-mini-name">Adaptation Ensembles: the Feasible Frontier</div>
+              </div>
+              <div class="theme-mini-sub">13 codes · sem</div>
+            </div>
+            <div class="theme-mini" style="border-left-color:#4e8fca">
+              <div>
+                <div class="theme-mini-rq" style="color:#4e8fca">T2 · RQ2</div>
+                <div class="theme-mini-name">Inclusive Utility in Practice: the 3Ps</div>
+              </div>
+              <div class="theme-mini-sub">6 codes · mix</div>
+            </div>
+            <div class="theme-mini" style="border-left-color:#4aab8a">
+              <div>
+                <div class="theme-mini-rq" style="color:#4aab8a">T3 · RQ3</div>
+                <div class="theme-mini-name">Structural-Ecological Tensions: Borrowed Architecture</div>
+              </div>
+              <div class="theme-mini-sub">9 codes · mix</div>
+            </div>
+            <div class="theme-mini" style="border-left-color:#6b5bab">
+              <div>
+                <div class="theme-mini-rq" style="color:#6b5bab">T4 · RQ3</div>
+                <div class="theme-mini-name">Lateral Collaboration as Lifeline</div>
+              </div>
+              <div class="theme-mini-sub">6 codes · mix</div>
+            </div>
+            <div class="theme-mini" style="border-left-color:#c45b5b">
+              <div>
+                <div class="theme-mini-rq" style="color:#c45b5b">T5 · RQ1</div>
+                <div class="theme-mini-name">Teacher Adaptive Agency as Moral Vocation</div>
+              </div>
+              <div class="theme-mini-sub">5 codes · mix</div>
+            </div>
+            <div class="theme-mini" style="border-left-color:#d47843">
+              <div>
+                <div class="theme-mini-rq" style="color:#d47843">T6 · RQ1+2</div>
+                <div class="theme-mini-name">Neurodivergence: Recognition &amp; Strength-Turn</div>
+              </div>
+              <div class="theme-mini-sub">5 codes · mix</div>
+            </div>
+            <div class="theme-mini" style="border-left-color:#6bab6b">
+              <div>
+                <div class="theme-mini-rq" style="color:#6bab6b">T7 · RQ3</div>
+                <div class="theme-mini-name">The CBE Paradox: Aspirational Design, Enacted Contradiction</div>
+              </div>
+              <div class="theme-mini-sub">5 codes · mix</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="memo">
+          <div class="memo-label">Hardest decision — Themes 1 vs 5</div>
+          <div class="memo-text">Moral vocation kept separate from Adaptation Ensembles because it explains the <em>sustainability</em> of effort, not the <em>form</em> it takes. The tension between them is analytically productive.</div>
+        </div>
+
+        <div class="bottom-strip">
+          <div class="bottom-strip-label">Sequencing decision</div>
+          <div class="bottom-strip-text">Themes presented in Ch.4 as T6 → T1 → T2 → T5 → T4 → T3 → T7 (not in numerical order) — builds an argument: learner profile → teacher response → collaborative context → systemic.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTOR 5 -->
+  <div class="connector">
+    <div class="conn-inner">
+      <div class="conn-arrow">
+        <svg width="72" height="20" viewBox="0 0 72 20">
+          <line x1="0" y1="10" x2="62" y2="10" stroke="#C49A22" stroke-width="1.5"/>
+          <polygon points="60,6 72,10 60,14" fill="#C49A22"/>
+        </svg>
+      </div>
+      <div class="conn-label">reviewed</div>
+    </div>
+  </div>
+
+  <!-- ═══ PHASE 5: REVIEW ═══ -->
+  <div class="phase-wrap">
+    <div class="phase-card p5-card" style="width:282px">
+      <div class="phase-header">
+        <div class="phase-num" style="color:var(--p5)">Phase 05</div>
+        <div class="phase-title">Theme Review</div>
+        <div class="phase-sub">Counter-evidence checked; themes tested against full dataset and RQs</div>
+      </div>
+      <div class="phase-body">
+
+        <div class="review-list">
+          <div class="review-item">
+            <div class="review-icon" style="background:rgba(196,91,91,.12);color:var(--coral)">✕</div>
+            <div class="review-text"><strong>Counter-evidence: T4 Lateral Collaboration</strong> — T05: "Schemes of work done only because we are followed." Resolved by reframing as cooperation vs collaboration.</div>
+          </div>
+          <div class="review-item">
+            <div class="review-icon" style="background:rgba(74,171,138,.12);color:var(--green)">✓</div>
+            <div class="review-text"><strong>T5 Moral Vocation — all 9 transcripts</strong> — vocation_heart present at some level in every transcript. No disconfirming cases found.</div>
+          </div>
+          <div class="review-item">
+            <div class="review-icon" style="background:rgba(74,171,138,.12);color:var(--green)">✓</div>
+            <div class="review-text"><strong>Each theme aligned to ≥1 RQ</strong> — T3 and T4 both map to RQ3 after review. Structural distinction between them preserved.</div>
+          </div>
+          <div class="review-item">
+            <div class="review-icon" style="background:rgba(196,154,34,.15);color:var(--gold)">→</div>
+            <div class="review-text"><strong>Thin evidence check</strong> — Where a code fit loosely, documented and noted in spreadsheet. No codes forced into themes.</div>
+          </div>
+        </div>
+
+        <div class="memo">
+          <div class="memo-label">Harris (2013) applied</div>
+          <div class="memo-text">Cooperation vs collaboration distinction introduced as sensitising lens at v2 stage — names what the data already showed, not imposed on it.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTOR 6 -->
+  <div class="connector">
+    <div class="conn-inner">
+      <div class="conn-arrow">
+        <svg width="72" height="20" viewBox="0 0 72 20">
+          <line x1="0" y1="10" x2="62" y2="10" stroke="#C49A22" stroke-width="1.5"/>
+          <polygon points="60,6 72,10 60,14" fill="#C49A22"/>
+        </svg>
+      </div>
+      <div class="conn-label">confirmed</div>
+    </div>
+  </div>
+
+  <!-- ═══ PHASE 6: MEMBER CHECKING ═══ -->
+  <div class="phase-wrap">
+    <div class="phase-card p6-card" style="width:280px">
+      <div class="phase-header">
+        <div class="phase-num" style="color:var(--p6)">Phase 06</div>
+        <div class="phase-title">Member Checking</div>
+        <div class="phase-sub">Plain-language theme summaries sent to 4 participants via WhatsApp</div>
+      </div>
+      <div class="phase-body">
+
+        <div class="stat-row">
+          <div class="stat-badge">
+            <span class="stat-num" style="color:var(--p6)">4</span>
+            <span class="stat-label">participants</span>
+          </div>
+          <div class="stat-badge">
+            <span class="stat-num" style="color:var(--p6)">6–7</span>
+            <span class="stat-label">/ 7 accuracy</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="sec-label">Participants contacted</div>
+          <div class="member-grid">
+            <div class="member-card">
+              <span class="member-pid" style="color:#4e8fca">T01</span>
+              <span class="member-rating">★★★★★★★</span>
+            </div>
+            <div class="member-card">
+              <span class="member-pid" style="color:#d47843">T03</span>
+              <span class="member-rating">★★★★★★☆</span>
+            </div>
+            <div class="member-card">
+              <span class="member-pid" style="color:#6bab6b">T07</span>
+              <span class="member-rating">★★★★★★★</span>
+            </div>
+            <div class="member-card">
+              <span class="member-pid" style="color:#5a9ab5">T09</span>
+              <span class="member-rating">★★★★★★☆</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="sec-label">All 4 responded — 3 substantive qualifications added</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div class="journal">
+              <div class="journal-label">Qualification incorporated</div>
+              <div class="journal-text">Language barrier in mathematics described by T03 as structural, not individual — clarified in Theme 1 analysis.</div>
+            </div>
+            <div class="journal">
+              <div class="journal-label">Qualification incorporated</div>
+              <div class="journal-text">T09 added nuance: co-teacher's SNE background as coincidence, not system design — strengthened Theme 4 argument.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTOR 7 -->
+  <div class="connector">
+    <div class="conn-inner">
+      <div class="conn-arrow">
+        <svg width="72" height="20" viewBox="0 0 72 20">
+          <line x1="0" y1="10" x2="62" y2="10" stroke="#C49A22" stroke-width="1.5"/>
+          <polygon points="60,6 72,10 60,14" fill="#C49A22"/>
+        </svg>
+      </div>
+      <div class="conn-label">final</div>
+    </div>
+  </div>
+
+  <!-- ═══ FINAL CODEBOOK ═══ -->
+  <div class="phase-wrap">
+    <div class="phase-card final-card" style="width:290px">
+      <div class="final-body">
+
+        <div style="color:rgba(255,255,255,.4);font-size:9px;text-transform:uppercase;letter-spacing:1.5px">Final codebook</div>
+
+        <div class="final-stat">
+          <span class="big">34</span>
+          <span class="small">Codes across 7 themes</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px;text-align:center">
+            <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gold)">47</div>
+            <div style="font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.5px">Initial codes</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px;text-align:center">
+            <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gold)">22</div>
+            <div style="font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.5px">Focused codes</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px;text-align:center">
+            <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gold)">15</div>
+            <div style="font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.5px">Latent codes</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px;text-align:center">
+            <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gold)">4</div>
+            <div style="font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.5px">Member checks</div>
+          </div>
+        </div>
+
+        <div class="accountability">
+          "Every interpretive decision can be traced back to a documented moment in this process. Not objective — but accountable."
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div><!-- /canvas -->
+
+</body>
+</html>
