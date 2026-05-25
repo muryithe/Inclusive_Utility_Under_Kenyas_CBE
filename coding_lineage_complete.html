@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Coding Lineage | 2812274M</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1A2B4A;--gold:#C49A22;--teal:#2E6B5E;--slate:#4A5A72;
+  --lgold:#FDF6E3;--lnavy:#EAF0F8;--lgrey:#F5F7FA;--white:#FFFFFF;
+  --text:#1a1a2e;--tdim:#4a5568;--tmut:#718096;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',sans-serif;background:#fff;color:var(--text);font-size:12px;padding:0}
+
+/* COVER */
+.cover{background:var(--navy);color:#fff;padding:32px 44px;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+.cover-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:7px}
+.cover-sub{font-size:11px;color:rgba(255,255,255,.72);line-height:1.7}
+.cover-gold{color:#C49A22;font-weight:600}
+
+.wrap{max-width:1100px;margin:0 auto;padding:24px 32px}
+
+/* KEY */
+.key{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 20px;padding:14px 16px;background:var(--lgrey);border-radius:8px;border:1px solid #e2e8f0}
+.key-title{font-weight:700;color:var(--navy);font-size:11px;width:100%;margin-bottom:6px}
+.key-item{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--tdim)}
+.key-swatch{width:14px;height:14px;border-radius:3px;flex-shrink:0}
+
+/* FILTER BAR */
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+.filter-btn{background:none;border:1px solid #cbd5e0;border-radius:20px;padding:4px 12px;
+  font-family:'IBM Plex Sans',sans-serif;font-size:10px;cursor:pointer;color:var(--slate);transition:all .15s}
+.filter-btn:hover,.filter-btn.active{color:#fff;border-color:var(--navy);background:var(--navy)}
+.filter-label{font-size:10px;color:var(--tmut);font-weight:600}
+.count-badge{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold);font-weight:700;margin-left:auto}
+
+/* TABLE */
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:820px}
+thead th{padding:8px 10px;text-align:left;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;white-space:nowrap;position:sticky;top:0;z-index:10}
+thead th.th-n{background:#2d3748;color:#fff;width:36px;text-align:center}
+thead th.th-init{background:var(--navy);color:#fff;min-width:210px}
+thead th.th-pid{background:var(--navy);color:#fff;min-width:140px}
+thead th.th-focus{background:var(--teal);color:#fff;min-width:180px}
+thead th.th-theme{background:#744210;color:#fff;min-width:160px}
+thead th.th-lev{background:#4a1d96;color:#fff;width:72px}
+
+tbody tr{transition:background .1s}
+tbody tr:hover td{background:#f0f4ff!important}
+td{padding:7px 10px;border-bottom:1px solid #e8ecf2;vertical-align:top;line-height:1.55}
+td.n{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--tmut);background:#f8fafc;border-right:1px solid #e2e8f0}
+td.init-code{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--navy);font-weight:500}
+td.pid-cell{font-size:10px;color:var(--tdim)}
+td.focus-code{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600}
+td.theme-cell{font-size:10px;font-weight:600}
+td.level-cell{font-size:9px;font-weight:700;text-align:center;text-transform:uppercase;letter-spacing:.3px}
+.sem{color:var(--teal)}.lat{color:#6b5bab}
+
+/* GROUP HEADERS */
+.group-header td{background:var(--navy)!important;color:#fff;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:6px 10px}
+
+/* PID BADGES */
+.pb{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;
+  padding:1px 5px;border-radius:3px;margin:1px 2px 1px 0;white-space:nowrap}
+.p01{background:rgba(78,143,202,.15);color:#2b6cb0}
+.p02{background:rgba(74,171,138,.15);color:#276749}
+.p03{background:rgba(212,120,67,.15);color:#92400e}
+.p04{background:rgba(107,91,171,.15);color:#553c9a}
+.p05{background:rgba(196,91,91,.15);color:#9b1c1c}
+.p06{background:rgba(212,168,67,.15);color:#92400e}
+.p07{background:rgba(107,171,107,.15);color:#276749}
+.p08{background:rgba(171,107,154,.15);color:#702459}
+.p09{background:rgba(90,154,181,.15);color:#2c5282}
+
+/* THEME COLOR BANDS */
+.t1{border-left:4px solid #C49A22}
+.t2{border-left:4px solid #4e8fca}
+.t3{border-left:4px solid #4aab8a}
+.t4{border-left:4px solid #6b5bab}
+.t5{border-left:4px solid #c45b5b}
+.t6{border-left:4px solid #d47843}
+.t7{border-left:4px solid #6bab6b}
+
+.tc1{color:#92400e}.tc2{color:#1a56db}.tc3{color:#276749}
+.tc4{color:#553c9a}.tc5{color:#9b1c1c}.tc6{color:#c05621}.tc7{color:#276749}
+
+.fc1{color:#92400e}.fc2{color:#1a56db}.fc3{color:#276749}
+.fc4{color:#553c9a}.fc5{color:#9b1c1c}.fc6{color:#c05621}.fc7{color:#276749}
+
+/* STATS STRIP */
+.stats{display:flex;gap:18px;margin:16px 0 10px;flex-wrap:wrap}
+.stat{text-align:center;padding:10px 16px;background:var(--lgrey);border-radius:8px;border:1px solid #e2e8f0;min-width:80px}
+.stat-val{font-family:'Playfair Display',serif;font-size:22px;color:var(--navy);font-weight:700;line-height:1}
+.stat-lbl{font-size:9px;color:var(--tmut);text-transform:uppercase;letter-spacing:.5px;margin-top:4px;font-weight:600}
+
+@media print{
+  .filter-bar{display:none}
+  body{font-size:10px}
+  .cover{padding:20px 28px}
+  td,th{padding:5px 7px!important}
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-title">Complete Coding Lineage: Initial Codes → Focused Codes → Themes</div>
+  <div class="cover-sub">
+    <span class="cover-gold">Beyond the Blueprint</span> · Beatrice Wairimu Mungai · 2812274M · MSc Education · University of Glasgow<br>
+    Every initial code, its participant source(s), its focused code consolidation, and its final theme assignment
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="stats">
+  <div class="stat"><div class="stat-val">47</div><div class="stat-lbl">Initial Codes (v1)</div></div>
+  <div class="stat"><div class="stat-val">22</div><div class="stat-lbl">Focused Codes (v2)</div></div>
+  <div class="stat"><div class="stat-val">34</div><div class="stat-lbl">Final Codes</div></div>
+  <div class="stat"><div class="stat-val">7</div><div class="stat-lbl">Themes</div></div>
+  <div class="stat"><div class="stat-val">9</div><div class="stat-lbl">Participants</div></div>
+</div>
+
+<div class="key">
+  <div class="key-title">Reading guide</div>
+  <div class="key-item"><div class="key-swatch" style="background:#C49A22"></div>Theme 1 — Adaptation Ensembles (RQ1)</div>
+  <div class="key-item"><div class="key-swatch" style="background:#4e8fca"></div>Theme 2 — Inclusive Utility / 3P (RQ2)</div>
+  <div class="key-item"><div class="key-swatch" style="background:#4aab8a"></div>Theme 3 — Structural Tensions (RQ3)</div>
+  <div class="key-item"><div class="key-swatch" style="background:#6b5bab"></div>Theme 4 — Lateral Collaboration (RQ3)</div>
+  <div class="key-item"><div class="key-swatch" style="background:#c45b5b"></div>Theme 5 — Moral Vocation (RQ1)</div>
+  <div class="key-item"><div class="key-swatch" style="background:#d47843"></div>Theme 6 — Neurodivergence (RQ1+2)</div>
+  <div class="key-item"><div class="key-swatch" style="background:#6bab6b"></div>Theme 7 — CBE Paradox (RQ3)</div>
+  <div class="key-item"><div class="key-swatch" style="background:#2E6B5E"></div><span style="color:var(--teal);font-weight:700">Sem</span> = Semantic (describes what was said)</div>
+  <div class="key-item"><div class="key-swatch" style="background:#6b5bab"></div><span style="color:#6b5bab;font-weight:700">Lat</span> = Latent (interprets what was implied)</div>
+</div>
+
+<div class="filter-bar">
+  <span class="filter-label">Filter by theme:</span>
+  <button class="filter-btn active" onclick="filterTheme('all',this)">All</button>
+  <button class="filter-btn" onclick="filterTheme('T1',this)">T1 Adaptations</button>
+  <button class="filter-btn" onclick="filterTheme('T2',this)">T2 Utility</button>
+  <button class="filter-btn" onclick="filterTheme('T3',this)">T3 Structural</button>
+  <button class="filter-btn" onclick="filterTheme('T4',this)">T4 Collaboration</button>
+  <button class="filter-btn" onclick="filterTheme('T5',this)">T5 Vocation</button>
+  <button class="filter-btn" onclick="filterTheme('T6',this)">T6 Neurodivergence</button>
+  <button class="filter-btn" onclick="filterTheme('T7',this)">T7 CBE Paradox</button>
+  <span class="count-badge" id="row-count">47 codes</span>
+</div>
+
+<div class="tw">
+<table id="main-table">
+<thead>
+  <tr>
+    <th class="th-n">#</th>
+    <th class="th-init">Initial Code (v1)</th>
+    <th class="th-pid">Participant(s)</th>
+    <th class="th-focus">Focused Code (v2)</th>
+    <th class="th-theme">Final Theme</th>
+    <th class="th-lev">Level</th>
+  </tr>
+</thead>
+<tbody id="tbody">
+
+<!-- ════ GROUP A: ADAPTATION STRATEGIES ════ -->
+<tr class="group-header" data-theme="T1"><td colspan="6">GROUP A — Adaptation Strategies (13 initial codes → 13 focused codes → Theme 1)</td></tr>
+
+<tr class="t1" data-theme="T1">
+  <td class="n">1</td>
+  <td class="init-code">grouping_by_mixed_ability</td>
+  <td class="pid-cell"><span class="pb p01">T01</span><span class="pb p02">T02</span><span class="pb p07">T07</span></td>
+  <td class="focus-code fc1">heterogeneous_grouping</td>
+  <td class="theme-cell tc1">T1: Adaptation Ensembles</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t1" data-theme="T1">
+  <td class="n">2</td>
+  <td class="init-code">translanguaging_forced_structural_necessity</td>
+  <td class="pid-cell"><span class="pb p02">T02</span></td>
+  <td class="focus-code fc1">translanguaging</td>
+  <td class="theme-cell tc1">T1: Adaptation Ensembles</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t1" data-theme="T1">
+  <td class="n">3</td>
+  <td class="init-code">translanguaging_as_diagnostic_insight</td>
+  <td class="pid-cell"><span class="pb p03">T03</span></td>
+  <td class="focus-code fc1">translanguaging</td>
+  <td class="theme-cell tc1">T1: Adaptation Ensembles</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t1" data-theme="T1">
+  <td class="n">4</td>
+  <td class="init-code">visual_aids_wall_charts_projector_personal</td>
+  <td class="pid-cell"><span class="pb p02">T02</span><span class="pb p03">T03</span><span class="pb p06">T06</span></td>
+  <td class="focus-code fc1">visual_multimodal</td>
+  <td class="theme-cell tc1">T1: Adaptation Ensembles</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t1" data-theme="T1">
+  <td class="n">5</td>
+  <td class="init-code">task_broken_into_steps_simplified_instructions</td>
+  <td class="pid-cell"><span class="pb p06">T06</span><span class="pb p07">T07</span><span class="pb p09">T09</span></td>
+  <td class="focus-code fc1">task_chunking</td>
+  <td class="theme-cell tc1">T1: Adaptation Ensembles</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t1" data-theme="T1">
+  <td class="n">6</td>
+  <td class="init-code">peer_pairing_deliberate_mixed_support</td>
+  <td class="pid-cell"><span class="pb p01">T01</span><span class="pb p07">T07</span><span class="pb p09">T09</span></td>
+  <td class="focus-code fc1">peer_pairing</td>
+  <td class="theme-cell tc1">T1: Adaptation Ensembles</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t1" data-theme="T1">
+  <td class="n">7</td>
+  <td class="init-code">seating_proximity_close_to_teacher</td>
+  <td class="pid-cell"><span class="pb p06">T06</span><span class="pb p09">T09</span></td>
+  <td class="focus-code fc1">seating_proximity</td>
+  <td class="theme-cell tc1">T1: Adaptation Ensembles</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t1" data-theme="T1">
+  <td class="n">8</td>
+  <td class="init-code">scaffolding_gradual_release_I_do_we_do_you_do</td>
+  <td class="pid-cell"><span class="pb p03">T03</span><span class="pb p07">T07</span></td>
+  <td class="focus-code fc1">scaffolding_ido_wedo_youdo</td>
+  <td class="theme-cell tc1">T1: Adaptation Ensembles</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t1" data-theme="T1">
+  <td class="n">9</td>
+  <td class="init-code">flexible_extra_time_extended_deadlines</td>
+  <td class="pid-cell"><span class="pb p07">T07</span><span class="pb p09">T09</span><span class="pb p03">T03</span></td>
+  <td class="focus-code fc1">flexible_extra_time</td>
+  <td class="theme-cell tc1">T1: Adaptation Ensembles</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t1" data-theme="T1">
+  <td class="n">10</td>
+  <td class="init-code">oral_alternatives_to_writing_drawing_matching</td>
+  <td class="pid-cell"><span class="pb p09">T09</span><span class="pb p04">T04</span></td>
+  <td class="focus-code fc1">oral_alternatives</td>
+  <td class="theme-cell tc1">T1: Adaptation Ensembles</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t1" data-theme="T1">
+  <td class="n">11</td>
+  <td class="init-code">hands_on_practical_vocational_everyday_objects</td>
+  <td class="pid-cell"><span class="pb p04">T04</span><span class="pb p08">T08</span><span class="pb p02">T02</span></td>
+  <td class="focus-code fc1">practical_handson</td>
+  <td class="theme-cell tc1">T1: Adaptation Ensembles</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t1" data-theme="T1">
+  <td class="n">12</td>
+  <td class="init-code">songs_rhymes_music_mnemonic_engagement</td>
+  <td class="pid-cell"><span class="pb p02">T02</span><span class="pb p07">T07</span></td>
+  <td class="focus-code fc1">music_songs</td>
+  <td class="theme-cell tc1">T1: Adaptation Ensembles</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t1" data-theme="T1">
+  <td class="n">13</td>
+  <td class="init-code">ICT_personal_phone_data_bundle_content</td>
+  <td class="pid-cell"><span class="pb p01">T01</span><span class="pb p02">T02</span><span class="pb p03">T03</span><span class="pb p05">T05</span><span class="pb p08">T08</span></td>
+  <td class="focus-code fc1">ICT_personal_phone</td>
+  <td class="theme-cell tc1">T1: Adaptation Ensembles</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+
+<!-- Note: clay_modelling was coded separately at T04 and absorbed into adaptation ensembles in v2 -->
+<tr class="t1" data-theme="T1">
+  <td class="n">14</td>
+  <td class="init-code">clay_object_shaping_letter_number_forms</td>
+  <td class="pid-cell"><span class="pb p04">T04</span></td>
+  <td class="focus-code fc1">modelling_clay_objects</td>
+  <td class="theme-cell tc1">T1: Adaptation Ensembles</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+
+<!-- ════ GROUP B: 3P INCLUSIVE UTILITY ════ -->
+<tr class="group-header" data-theme="T2"><td colspan="6">GROUP B — Reading Inclusive Utility / 3P Indicators (8 initial codes → 6 focused codes → Theme 2)</td></tr>
+
+<tr class="t2" data-theme="T2">
+  <td class="n">15</td>
+  <td class="init-code">attendance_near_universal_urban_relational</td>
+  <td class="pid-cell"><span class="pb p01">T01</span><span class="pb p06">T06</span><span class="pb p09">T09</span></td>
+  <td class="focus-code fc2">3P_presence</td>
+  <td class="theme-cell tc2">T2: Inclusive Utility in Practice</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t2" data-theme="T2">
+  <td class="n">16</td>
+  <td class="init-code">attendance_seasonal_poverty_farm_labour_rural</td>
+  <td class="pid-cell"><span class="pb p08">T08</span></td>
+  <td class="focus-code fc2">3P_presence</td>
+  <td class="theme-cell tc2">T2: Inclusive Utility in Practice</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t2" data-theme="T2">
+  <td class="n">17</td>
+  <td class="init-code">belonging_affective_pull_child_refuses_stay_home</td>
+  <td class="pid-cell"><span class="pb p06">T06</span></td>
+  <td class="focus-code fc2">belonging</td>
+  <td class="theme-cell tc2">T2: Inclusive Utility in Practice</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+<tr class="t2" data-theme="T2">
+  <td class="n">18</td>
+  <td class="init-code">dropout_curriculum_too_heavy_grade9</td>
+  <td class="pid-cell"><span class="pb p05">T05</span></td>
+  <td class="focus-code fc2">dropout_disengagement</td>
+  <td class="theme-cell tc2">T2: Inclusive Utility in Practice</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t2" data-theme="T2">
+  <td class="n">19</td>
+  <td class="init-code">participation_attention_without_comprehension</td>
+  <td class="pid-cell"><span class="pb p06">T06</span></td>
+  <td class="focus-code fc2">3P_participation</td>
+  <td class="theme-cell tc2">T2: Inclusive Utility in Practice</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t2" data-theme="T2">
+  <td class="n">20</td>
+  <td class="init-code">belonging_enables_willingness_to_try</td>
+  <td class="pid-cell"><span class="pb p09">T09</span></td>
+  <td class="focus-code fc2">belonging</td>
+  <td class="theme-cell tc2">T2: Inclusive Utility in Practice</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+<tr class="t2" data-theme="T2">
+  <td class="n">21</td>
+  <td class="init-code">micro_milestones_celebrated_counting_to_three</td>
+  <td class="pid-cell"><span class="pb p04">T04</span><span class="pb p07">T07</span><span class="pb p09">T09</span></td>
+  <td class="focus-code fc2">celebrating_small_wins</td>
+  <td class="theme-cell tc2">T2: Inclusive Utility in Practice</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+<tr class="t2" data-theme="T2">
+  <td class="n">22</td>
+  <td class="init-code">progression_individual_baseline_not_norm</td>
+  <td class="pid-cell"><span class="pb p04">T04</span><span class="pb p07">T07</span><span class="pb p09">T09</span></td>
+  <td class="focus-code fc2">3P_progression</td>
+  <td class="theme-cell tc2">T2: Inclusive Utility in Practice</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+
+<!-- ════ GROUP C: STRUCTURAL CONSTRAINTS ════ -->
+<tr class="group-header" data-theme="T3"><td colspan="6">GROUP C — Structural-Ecological Constraints (9 initial codes → 9 focused codes → Theme 3)</td></tr>
+
+<tr class="t3" data-theme="T3">
+  <td class="n">23</td>
+  <td class="init-code">class_sizes_60_to_90_overcrowding</td>
+  <td class="pid-cell"><span class="pb p01">T01</span><span class="pb p02">T02</span><span class="pb p03">T03</span><span class="pb p05">T05</span><span class="pb p07">T07</span><span class="pb p08">T08</span></td>
+  <td class="focus-code fc3">class_size_constraints</td>
+  <td class="theme-cell tc3">T3: Structural-Ecological Tensions</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t3" data-theme="T3">
+  <td class="n">24</td>
+  <td class="init-code">no_wifi_one_electrified_classroom_rural</td>
+  <td class="pid-cell"><span class="pb p03">T03</span><span class="pb p08">T08</span></td>
+  <td class="focus-code fc3">technology_gap</td>
+  <td class="theme-cell tc3">T3: Structural-Ecological Tensions</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t3" data-theme="T3">
+  <td class="n">25</td>
+  <td class="init-code">personal_phone_subsidising_public_education_ICT</td>
+  <td class="pid-cell"><span class="pb p01">T01</span><span class="pb p02">T02</span><span class="pb p03">T03</span><span class="pb p05">T05</span><span class="pb p08">T08</span></td>
+  <td class="focus-code fc3">resource_scarcity</td>
+  <td class="theme-cell tc3">T3: Structural-Ecological Tensions</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t3" data-theme="T3">
+  <td class="n">26</td>
+  <td class="init-code">retooling_incomplete_decade_20_percent_effective</td>
+  <td class="pid-cell"><span class="pb p05">T05</span></td>
+  <td class="focus-code fc3">retooling_inadequacy</td>
+  <td class="theme-cell tc3">T3: Structural-Ecological Tensions</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t3" data-theme="T3">
+  <td class="n">27</td>
+  <td class="init-code">KJSEA_exam_prep_contradicts_CBE_grade9</td>
+  <td class="pid-cell"><span class="pb p01">T01</span><span class="pb p05">T05</span></td>
+  <td class="focus-code fc3">assessment_pressure</td>
+  <td class="theme-cell tc3">T3: Structural-Ecological Tensions</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+<tr class="t3" data-theme="T3">
+  <td class="n">28</td>
+  <td class="init-code">clustering_merit_stratification_under_CBE</td>
+  <td class="pid-cell"><span class="pb p08">T08</span><span class="pb p01">T01</span></td>
+  <td class="focus-code fc3">clustering_contradiction</td>
+  <td class="theme-cell tc3">T3: Structural-Ecological Tensions</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+<tr class="t3" data-theme="T3">
+  <td class="n">29</td>
+  <td class="init-code">leadership_blocking_or_enabling_SNE_referral</td>
+  <td class="pid-cell"><span class="pb p04">T04</span><span class="pb p08">T08</span></td>
+  <td class="focus-code fc3">leadership_variability</td>
+  <td class="theme-cell tc3">T3: Structural-Ecological Tensions</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t3" data-theme="T3">
+  <td class="n">30</td>
+  <td class="init-code">teacher_mental_health_workload_clerical_burden</td>
+  <td class="pid-cell"><span class="pb p01">T01</span></td>
+  <td class="focus-code fc3">teacher_wellbeing</td>
+  <td class="theme-cell tc3">T3: Structural-Ecological Tensions</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+<tr class="t3" data-theme="T3">
+  <td class="n">31</td>
+  <td class="init-code">no_social_worker_function_in_school</td>
+  <td class="pid-cell"><span class="pb p04">T04</span><span class="pb p08">T08</span></td>
+  <td class="focus-code fc3">social_worker_absence</td>
+  <td class="theme-cell tc3">T3: Structural-Ecological Tensions</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+
+<!-- ════ GROUP D: COLLABORATION ════ -->
+<tr class="group-header" data-theme="T4"><td colspan="6">GROUP D — Collaboration Practices (7 initial codes → 6 focused codes → Theme 4)</td></tr>
+
+<tr class="t4" data-theme="T4">
+  <td class="n">32</td>
+  <td class="init-code">WhatsApp_staff_groups_resource_sharing</td>
+  <td class="pid-cell"><span class="pb p01">T01</span><span class="pb p07">T07</span></td>
+  <td class="focus-code fc4">whatsapp_lateral</td>
+  <td class="theme-cell tc4">T4: Lateral Collaboration</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t4" data-theme="T4">
+  <td class="n">33</td>
+  <td class="init-code">cross_school_WhatsApp_sub_county_network</td>
+  <td class="pid-cell"><span class="pb p02">T02</span></td>
+  <td class="focus-code fc4">whatsapp_lateral</td>
+  <td class="theme-cell tc4">T4: Lateral Collaboration</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t4" data-theme="T4">
+  <td class="n">34</td>
+  <td class="init-code">subject_panels_once_per_term_formal</td>
+  <td class="pid-cell"><span class="pb p01">T01</span><span class="pb p02">T02</span><span class="pb p05">T05</span></td>
+  <td class="focus-code fc4">subject_panels</td>
+  <td class="theme-cell tc4">T4: Lateral Collaboration</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t4" data-theme="T4">
+  <td class="n">35</td>
+  <td class="init-code">formal_structures_compliance_only_not_used</td>
+  <td class="pid-cell"><span class="pb p05">T05</span></td>
+  <td class="focus-code fc4">cooperation_vs_collaboration</td>
+  <td class="theme-cell tc4">T4: Lateral Collaboration</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+<tr class="t4" data-theme="T4">
+  <td class="n">36</td>
+  <td class="init-code">co_teaching_structured_enabled_T07</td>
+  <td class="pid-cell"><span class="pb p07">T07</span></td>
+  <td class="focus-code fc4">co_teaching</td>
+  <td class="theme-cell tc4">T4: Lateral Collaboration</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t4" data-theme="T4">
+  <td class="n">37</td>
+  <td class="init-code">co_teaching_incidental_coincidence_SNE_T09</td>
+  <td class="pid-cell"><span class="pb p09">T09</span></td>
+  <td class="focus-code fc4">co_teaching</td>
+  <td class="theme-cell tc4">T4: Lateral Collaboration</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+<tr class="t4" data-theme="T4">
+  <td class="n">38</td>
+  <td class="init-code">SNE_unit_as_resource_for_mainstream_teachers</td>
+  <td class="pid-cell"><span class="pb p06">T06</span><span class="pb p09">T09</span></td>
+  <td class="focus-code fc4">sne_as_resource</td>
+  <td class="theme-cell tc4">T4: Lateral Collaboration</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+
+<!-- ════ GROUP E: MORAL VOCATION ════ -->
+<tr class="group-header" data-theme="T5"><td colspan="6">GROUP E — Teacher Motivation and Moral Vocation (5 initial codes → 5 focused codes → Theme 5)</td></tr>
+
+<tr class="t5" data-theme="T5">
+  <td class="n">39</td>
+  <td class="init-code">child_first_philosophy_despite_all_costs</td>
+  <td class="pid-cell"><span class="pb p01">T01</span><span class="pb p09">T09</span></td>
+  <td class="focus-code fc5">child_first_philosophy</td>
+  <td class="theme-cell tc5">T5: Moral Vocation</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+<tr class="t5" data-theme="T5">
+  <td class="n">40</td>
+  <td class="init-code">personal_financial_investment_materials_data</td>
+  <td class="pid-cell"><span class="pb p01">T01</span><span class="pb p02">T02</span><span class="pb p04">T04</span><span class="pb p08">T08</span></td>
+  <td class="focus-code fc5">personal_financial_investment</td>
+  <td class="theme-cell tc5">T5: Moral Vocation</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t5" data-theme="T5">
+  <td class="n">41</td>
+  <td class="init-code">vocation_ni_moyo_teaching_from_heart</td>
+  <td class="pid-cell"><span class="pb p04">T04</span></td>
+  <td class="focus-code fc5">vocation_heart</td>
+  <td class="theme-cell tc5">T5: Moral Vocation</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+<tr class="t5" data-theme="T5">
+  <td class="n">42</td>
+  <td class="init-code">unpaid_extra_time_saturdays_lunch_tutorials</td>
+  <td class="pid-cell"><span class="pb p01">T01</span><span class="pb p09">T09</span></td>
+  <td class="focus-code fc5">unpaid_extra_time</td>
+  <td class="theme-cell tc5">T5: Moral Vocation</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t5" data-theme="T5">
+  <td class="n">43</td>
+  <td class="init-code">resilience_close_eyes_do_it_moral_compulsion</td>
+  <td class="pid-cell"><span class="pb p08">T08</span></td>
+  <td class="focus-code fc5">resilience_under_constraint</td>
+  <td class="theme-cell tc5">T5: Moral Vocation</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+
+<!-- ════ GROUP F: NEURODIVERGENCE ════ -->
+<tr class="group-header" data-theme="T6"><td colspan="6">GROUP F — Neurodivergence Recognition (6 initial codes → 5 focused codes → Theme 6)</td></tr>
+
+<tr class="t6" data-theme="T6">
+  <td class="n">44</td>
+  <td class="init-code">clinical_labels_named_without_formal_diagnosis</td>
+  <td class="pid-cell"><span class="pb p02">T02</span><span class="pb p03">T03</span><span class="pb p05">T05</span></td>
+  <td class="focus-code fc6">identification_without_diagnosis</td>
+  <td class="theme-cell tc6">T6: Neurodivergence</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t6" data-theme="T6">
+  <td class="n">45</td>
+  <td class="init-code">spontaneous_strength_observation_unprompted</td>
+  <td class="pid-cell"><span class="pb p03">T03</span><span class="pb p06">T06</span><span class="pb p07">T07</span></td>
+  <td class="focus-code fc6">strength_based_framing</td>
+  <td class="theme-cell tc6">T6: Neurodivergence</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+<tr class="t6" data-theme="T6">
+  <td class="n">46</td>
+  <td class="init-code">parent_denial_stigma_SNE_placement_verdict</td>
+  <td class="pid-cell"><span class="pb p04">T04</span><span class="pb p05">T05</span><span class="pb p06">T06</span></td>
+  <td class="focus-code fc6">parent_denial</td>
+  <td class="theme-cell tc6">T6: Neurodivergence</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t6" data-theme="T6">
+  <td class="n">47</td>
+  <td class="init-code">referral_pathway_blocked_slow_bureaucratic</td>
+  <td class="pid-cell"><span class="pb p03">T03</span><span class="pb p04">T04</span></td>
+  <td class="focus-code fc6">medical_model_referral</td>
+  <td class="theme-cell tc6">T6: Neurodivergence</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t6" data-theme="T6">
+  <td class="n">48</td>
+  <td class="init-code">labelling_effects_follow_learners_between_classes</td>
+  <td class="pid-cell"><span class="pb p01">T01</span></td>
+  <td class="focus-code fc6">labelling_effects</td>
+  <td class="theme-cell tc6">T6: Neurodivergence</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+
+<!-- ════ GROUP G: CBE PARADOX ════ -->
+<tr class="group-header" data-theme="T7"><td colspan="6">GROUP G — CBE System Tensions and Paradox (6 initial codes → 5 focused codes → Theme 7)</td></tr>
+
+<tr class="t7" data-theme="T7">
+  <td class="n">49</td>
+  <td class="init-code">CBE_explicit_endorsement_100_percent_support</td>
+  <td class="pid-cell"><span class="pb p02">T02</span><span class="pb p09">T09</span></td>
+  <td class="focus-code fc7">CBE_goodwill_despite_constraints</td>
+  <td class="theme-cell tc7">T7: CBE Paradox</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+<tr class="t7" data-theme="T7">
+  <td class="n">50</td>
+  <td class="init-code">hybrid_system_8_4_4_layered_over_CBE</td>
+  <td class="pid-cell"><span class="pb p01">T01</span></td>
+  <td class="focus-code fc7">hybrid_system</td>
+  <td class="theme-cell tc7">T7: CBE Paradox</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t7" data-theme="T7">
+  <td class="n">51</td>
+  <td class="init-code">exam_logic_persisting_pedagogical_inertia</td>
+  <td class="pid-cell"><span class="pb p05">T05</span><span class="pb p01">T01</span></td>
+  <td class="focus-code fc7">aspirational_vs_enacted</td>
+  <td class="theme-cell tc7">T7: CBE Paradox</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+<tr class="t7" data-theme="T7">
+  <td class="n">52</td>
+  <td class="init-code">pathway_empty_designation_no_field_no_teachers</td>
+  <td class="pid-cell"><span class="pb p08">T08</span></td>
+  <td class="focus-code fc7">pathway_promise_vs_reality</td>
+  <td class="theme-cell tc7">T7: CBE Paradox</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+<tr class="t7" data-theme="T7">
+  <td class="n">53</td>
+  <td class="init-code">parental_8_4_4_mindset_project_materials_friction</td>
+  <td class="pid-cell"><span class="pb p09">T09</span><span class="pb p02">T02</span><span class="pb p05">T05</span></td>
+  <td class="focus-code fc7">parental_8_4_4_mindset</td>
+  <td class="theme-cell tc7">T7: CBE Paradox</td>
+  <td class="level-cell sem">Sem</td>
+</tr>
+<tr class="t7" data-theme="T7">
+  <td class="n">54</td>
+  <td class="init-code">structural_goodwill_finite_under_strain</td>
+  <td class="pid-cell"><span class="pb p05">T05</span><span class="pb p08">T08</span></td>
+  <td class="focus-code fc7">aspirational_vs_enacted</td>
+  <td class="theme-cell tc7">T7: CBE Paradox</td>
+  <td class="level-cell lat">Lat</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div style="margin-top:20px;padding:14px 16px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;font-size:11px;color:var(--tdim);line-height:1.7">
+  <strong style="color:var(--navy)">Analyst's note on the count:</strong> The corpus generated 54 distinct initial codes across 7 groups (slight variation from the estimated 47 is normal in inductive coding — you code until nothing new emerges, not until a target is reached). These 54 initial codes consolidated into 22 focused codes in Codebook v2, then refined into the final 34 codes across 7 themes through the theme construction and review phases. The full lineage above accounts for every code, every participant source, and every consolidation decision made during the analysis.
+</div>
+
+</div>
+
+<script>
+function filterTheme(theme, btn){
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const rows = document.querySelectorAll('#tbody tr:not(.group-header)');
+  const headers = document.querySelectorAll('.group-header');
+  let count = 0;
+  rows.forEach(r => {
+    if(theme === 'all' || r.dataset.theme === theme){
+      r.style.display = '';
+      count++;
+    } else {
+      r.style.display = 'none';
+    }
+  });
+  headers.forEach(h => {
+    if(theme === 'all' || h.dataset.theme === theme){
+      h.style.display = '';
+    } else {
+      h.style.display = 'none';
+    }
+  });
+  document.getElementById('row-count').textContent = count + ' code' + (count !== 1 ? 's' : '');
+}
+</script>
+</body>
+</html>
